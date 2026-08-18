@@ -1,0 +1,77 @@
+{
+  "name": "fonda-azabache",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Carta digital de la Fonda Azabache",
+  "scripts": {
+    "dev": "next dev",
+    "prebuild": "pnpm run content:check",
+    "build": "next build",
+    "start": "npx serve out",
+    "lint": "eslint . && stylelint \"src/**/*.css\" && tsc --noEmit",
+    "lint:fix": "eslint . --fix && stylelint \"src/**/*.css\" --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "content:check": "tsx scripts/validate-content.ts",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "analyze": "ANALYZE=true next build",
+    "budget": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/budget.ps1",
+    "verify": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1",
+    "lh": "lhci autorun",
+    "prepare": "cd .. && husky app/.husky"
+  },
+  "dependencies": {
+    "clsx": "2.1.1",
+    "next": "16.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "vaul": "1.1.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.2",
+    "@commitlint/config-conventional": "21.2.2",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.1",
+    "husky": "9.1.7",
+    "lint-staged": "17.3.0",
+    "prettier": "3.9.6",
+    "prettier-plugin-tailwindcss": "0.8.1",
+    "stylelint": "17.14.1",
+    "stylelint-config-standard": "40.0.0",
+    "tailwindcss": "^4",
+    "tsx": "4.23.12",
+    "typescript": "^5",
+    "zod": "4.4.3"
+  },
+  "engines": {
+    "node": ">=20.11"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ],
+    "ignoredBuiltDependencies": [
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,mjs}": [
+      "prettier --write"
+    ]
+  },
+  "packageManager": "pnpm@10.0.0"
+}

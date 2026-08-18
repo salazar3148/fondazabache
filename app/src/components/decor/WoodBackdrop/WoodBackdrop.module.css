@@ -1,0 +1,61 @@
+/* docs/03 §2 · Fondo de madera de seis capas. Cero fotos. */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-backdrop-wood);
+  pointer-events: none;
+
+  /* Aísla el repintado del resto del árbol */
+  contain: strict;
+  background-color: var(--c-madera-900);
+  background-image:
+    /* Capa 5: luz de vela, arriba y al centro */
+    radial-gradient(
+      70% 38% at 50% 4%,
+      rgb(224, 117, 47, 0.11) 0%,
+      rgb(224, 117, 47, 0.04) 45%,
+      transparent 78%
+    ),
+    /* Capa 4: viñeta */
+    radial-gradient(
+        130% 88% at 50% 12%,
+        transparent 38%,
+        rgb(14, 11, 8, 0.34) 74%,
+        rgb(14, 11, 8, 0.62) 100%
+      ),
+    /* Capa 2: tablones verticales de ancho irregular */
+    repeating-linear-gradient(
+        90deg,
+        rgb(14, 11, 8, 0.55) 0 1.5px,
+        rgb(246, 239, 227, 0.045) 1.5px 3px,
+        transparent 3px 118px
+      ),
+    /* Capa 1: degradado de profundidad */
+    linear-gradient(175deg, var(--c-madera-800) 0%, var(--c-madera-900) 46%, #100c07 100%);
+  background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+}
+
+/* ── Capa 3: veta ───────────────────────────────────────────── */
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: url('/textures/wood-grain-256.svg');
+  background-size: 256px 256px;
+  background-repeat: repeat;
+  opacity: 0.38;
+  mix-blend-mode: overlay;
+}
+
+/* Rompe el patrón: una segunda pasada más grande y espejada elimina la
+   sensación de tile de 256 px. Coste: cero bytes extra, es el mismo archivo. */
+.grainMacro {
+  position: absolute;
+  inset: 0;
+  background-image: url('/textures/wood-grain-256.svg');
+  background-size: 512px 768px;
+  background-repeat: repeat;
+  opacity: 0.16;
+  mix-blend-mode: soft-light;
+  transform: scaleX(-1);
+}

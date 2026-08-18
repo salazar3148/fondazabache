@@ -1,0 +1,98 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.bloque {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--t-subtitle);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--c-laton-500);
+}
+
+.icono {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+.horarios {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-3);
+}
+
+.dias {
+  font-size: var(--t-meta);
+  color: var(--c-fg-muted);
+}
+
+.horas {
+  font-size: var(--t-meta);
+  font-variant-numeric: tabular-nums;
+  color: var(--c-fg);
+  white-space: nowrap;
+}
+
+.dato {
+  font-size: var(--t-meta);
+  line-height: 1.45;
+  color: var(--c-fg-muted);
+}
+
+.enlace {
+  font-size: var(--t-meta);
+  color: var(--c-candela-400);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  align-self: flex-start;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── El dato más útil de todo el pie ─────────────────────────── */
+.wifi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+}
+
+.wifiDatos {
+  min-width: 0;
+}
+
+.wifiRed {
+  font-size: var(--t-meta);
+  color: var(--c-fg-subtle);
+}
+
+.wifiClave {
+  margin-top: var(--sp-1);
+  font-family: var(--font-display);
+  font-size: var(--t-item);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--c-fg);
+  overflow-wrap: anywhere;
+}

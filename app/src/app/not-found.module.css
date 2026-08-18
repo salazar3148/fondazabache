@@ -1,0 +1,23 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-6);
+  min-height: 100dvh;
+  text-align: center;
+  padding-block: var(--sp-12);
+}
+
+.titulo {
+  font-size: var(--t-display-lg);
+  line-height: 1.1;
+}
+
+.texto {
+  max-width: 28ch;
+  font-size: var(--t-body);
+  line-height: 1.5;
+  color: var(--c-fg-muted);
+  text-wrap: pretty;
+}

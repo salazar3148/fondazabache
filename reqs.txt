@@ -1,0 +1,21 @@
+Necesito crear un front end muy muy completo para una carta de una fonda, una fonda es mucho más que un simple restaurante o bar: es un espacio cultural emblemático que preserva y celebra la tradición paisa.
+Las fondas tienen raíces históricas vinculadas a los arrieros antioqueños, quienes las utilizaban como centros de descanso, comercio y socialización durante sus viajes por la región. Con el tiempo evolucionaron en lo que conocemos hoy: lugares donde se mantienen vivas las costumbres, sabores y relatos que forman parte del patrimonio cultural de Antioquia.
+Tenemos que crear una interfaz muy atractiva, con las mejores practicas de IU/UX, necesito crear una aplicación de NextJs, con las ultimas versiones y sobre todo más estable, que permitan parecer una aplicación muy moderna y muy interactiva.
+Es para ver exclusivamente desde el celular, la idea es que sea ligera para leer en un QR, pero quiero que sea muy muy profesional y muy linda, si tu dices que herramientas usar para tener un resultado muy limpio y impecable y perfecto para lo que busca nuestra marca, dejemoslo entonces asi.
+Es decir quiero el punto medio perfecto, entre que la carta sea ligera para que cargue sin necesidad de muchos datos moviles, y que tenga un diseño muy muy agradable, moderno e innovador, (si hay que sacrificar un poco de rendimiento porque el diseño sea muy muy lindo) entonces prefiero el diseño,antes que el rendimiento, pero no dejarlo de lado.
+La idea es que me ayudes con un prompt con los pasos y todo lo que se requiera para hacer el resultado, la idea es un crear un folder "docs" y ahi poner todos los pasos muy muy extenso (extenso me refiero a calidad y completo) y totalmente detallado, con las mejores practicas de Front-end, en un solo proyecto, mejor separación de carpetas, reutilización de código, separacion de css, de js (en caso de aplicar) mejores practicas, por que es para una aplicación muy muy seria, y que está en constante evolución y en constantes cambios,, entonces es muy importante en que la aplicación sea muy muy bien construida.
+Haz un muy buen prompt muy bien detallado y construido, confio en ti, el nivel de detalle y amor debe llegar a tipo, que cuando alguien la vea piense "una IA enserio hizo esto?, y le encante el flow, el diseño".
+Puedes hacerlo por partes sin problema, o en un folder, con distintas categorias, como lo veas mejor para el diseño.
+Tienes total libertad para hacer el diseño, proponer cosas en caso de que se algo muy innovador y atractivo, lo ideal es hacerlo ligero, sencillo, pero impactante, y formal pero con su toque "disco-maleante"
+La interfaz seria como tipo madera, como tipo fonda. madera de fondo, muy sutil y moderno
+El nombre de la fonda es Fonda azabache, la paleta de colores sería como entre cafe amaderado, como una paleta de colores de madera, tirando a moderno y muy agradable y suave a la vista, te pido que me ayudes a sugerir una paleta de colores para esto.
+
+IMPORTANTE: Tener en cuenta que como es una fonda, y las personas van a ver depronto la carta con algun grado de alcohol encima entonces
+Me gustaría que el fondo de la cartas como tal detras de las letras se vean como tipo ujn marco en madera, y como en tablas al fondo, la tematica del negocio es madera, caballos (levemente),y que por ejemplo los titulos o no sé en que partes puedas sugerir que las letras sean como quemadas, como si le pusieran a la madera algo caliente y ese diseño, y que combine perfectamente con el fondo tambien.
+La tematica de la fonda es como tipo "Aqui se bebe bueno, se canta duro y se sufre bonito"
+Las fondas van es como con musica viejas, clasiquitos, caballos, negocios, etc..
+
+Importante: No abusar de las animaciones, animaciones sutiles y livianas, (Ha no ser que depronto tengas una idea que aporte mucho valor)
+Es exclusivamente para ver desde el celular
+Hacer un gran diseño, limpio, atractivo e innovador
+De momento Mockear la lista de productos (Los productos que llevaria usualmente una fonda, no pon muchos,, pon de 3 a 5 por categoria solamente seria para ver como seria el diseño)

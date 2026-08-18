@@ -1,0 +1,25 @@
+.price {
+  flex: none;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: var(--t-price);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-candela-400);
+}
+
+.agotado {
+  color: var(--c-hueso-500);
+  text-decoration: line-through;
+}
+
+/* Precio pendiente de confirmar con el negocio: se dice, no se inventa. */
+.sinConfirmar {
+  color: var(--c-laton-300);
+  font-size: var(--t-meta);
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

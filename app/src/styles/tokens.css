@@ -1,0 +1,154 @@
+/**
+ * tokens.css · Única fuente de verdad de color, tamaño, sombra y motion.
+ * docs/02-sistema-de-diseno.md
+ *
+ * Este es el ÚNICO archivo donde se permiten valores hexadecimales sueltos
+ * (más los CSS Modules de efectos físicos listados en .stylelintrc.json).
+ */
+
+:root {
+  color-scheme: dark;
+
+  /* ── Color · madera (fondos y superficies) ───────────────── */
+  --c-azabache: #0e0b08;
+  --c-madera-900: #15100b;
+  --c-madera-800: #1c1510;
+  --c-madera-700: #2a1f16;
+  --c-madera-600: #3a2a1d;
+  --c-madera-500: #4e3826;
+  --c-madera-400: #6b4e36;
+  --c-cuero-500: #8a5a32;
+  --c-tabaco-400: #a6703f;
+
+  /* ── Color · hueso (texto) ───────────────────────────────── */
+  --c-hueso-100: #f6efe3;
+  --c-hueso-300: #dccdb6;
+  --c-hueso-500: #a8977e;
+
+  /* ── Color · acentos ─────────────────────────────────────── */
+  --c-candela-500: #c6551f;
+  --c-candela-400: #e0752f;
+  --c-candela-300: #f0975a;
+  --c-laton-500: #b08d57;
+  --c-laton-300: #e3c77e;
+  --c-vino-600: #7b2d26;
+  --c-musgo-500: #7e9b5e;
+
+  /* ── Semánticos ──────────────────────────────────────────── */
+  --c-bg: var(--c-madera-900);
+  --c-surface: var(--c-madera-800);
+  --c-surface-raised: var(--c-madera-700);
+  --c-fg: var(--c-hueso-100);
+  --c-fg-muted: var(--c-hueso-300);
+  --c-fg-subtle: var(--c-hueso-500);
+  --c-border: var(--c-madera-500);
+  --c-border-strong: var(--c-madera-400);
+  --c-accent: var(--c-candela-400);
+  --c-focus: var(--c-laton-300);
+  --c-agotado: var(--c-hueso-500);
+
+  /* Base para derivar rgba() de penumbra cálida (nunca negro puro) */
+  --shadow-rgb: 14 11 8;
+
+  /* ── Espaciado · base 4px ────────────────────────────────── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px; /* gutter lateral canónico */
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+
+  /* ── Safe areas (iOS / Android) ──────────────────────────── */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* ── Layout ──────────────────────────────────────────────── */
+  --nav-h: 56px;
+  --contenido-max: 480px;
+
+  /* ── Tipografía · familias ───────────────────────────────── */
+  --font-display: var(--font-fraunces), georgia, serif;
+  --font-body: var(--font-instrument), system-ui, sans-serif;
+
+  /* Familia aparte para la cursiva: no se precarga (ver styles/fonts.ts).
+     Se usa en coplas y notas, siempre con font-style: italic. */
+  --font-display-italic: var(--font-fraunces-italic), georgia, serif;
+
+  /* ── Tipografía · escala (docs/02 §3.2) ──────────────────── */
+  --t-display-xl: clamp(2.75rem, 12vw, 3.5rem);
+  --t-display-lg: clamp(1.75rem, 7vw, 2.25rem);
+  --t-title: 1.5rem;
+  --t-subtitle: 0.75rem;
+  --t-item: 1.0625rem;
+  --t-price: 1.0625rem;
+  --t-body: 0.9375rem;
+  --t-meta: 0.8125rem;
+  --t-badge: 0.6875rem;
+  --t-chip: 0.875rem;
+  --t-copla: 1.0625rem;
+
+  /* ── Radios ──────────────────────────────────────────────── */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-pill: 999px;
+
+  /* ── Bordes ──────────────────────────────────────────────── */
+  --b-hairline: 1px solid var(--c-madera-600);
+  --b-default: 1px solid var(--c-madera-500);
+  --b-strong: 1px solid var(--c-madera-400);
+  --b-brass: 1px solid rgb(176 141 87 / 55%);
+
+  /* ── Sombras · el bisel de madera (docs/02 §5.3) ─────────── */
+  --sh-plank:
+    inset 0 1px 0 rgb(246 239 227 / 9%), inset 0 -1px 0 rgb(14 11 8 / 60%),
+    0 1px 1px rgb(14 11 8 / 45%), 0 10px 22px -14px rgb(14 11 8 / 85%);
+  --sh-raised:
+    inset 0 1px 0 rgb(246 239 227 / 11%), 0 2px 4px rgb(14 11 8 / 50%),
+    0 18px 36px -18px rgb(14 11 8 / 90%);
+  --sh-carved: inset 0 2px 4px rgb(14 11 8 / 75%), inset 0 -1px 0 rgb(246 239 227 / 6%);
+  --sh-ember: 0 0 14px rgb(224 117 47 / 22%);
+
+  /* ── Elevación ───────────────────────────────────────────── */
+  --z-backdrop-wood: 0;
+  --z-grain: 1;
+  --z-content: 10;
+  --z-sticky: 50;
+  --z-fab: 60;
+  --z-overlay: 100;
+  --z-sheet: 110;
+
+  /* ── Motion · 5 duraciones, 3 curvas. Nada más ───────────── */
+  --d-instant: 90ms;
+  --d-fast: 160ms;
+  --d-base: 240ms;
+  --d-slow: 320ms;
+  --d-reveal: 420ms;
+  --e-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --e-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --e-inout: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+/**
+ * Tema claro "Roble de Mediodía" (docs/02 §9).
+ * No es el tema por defecto. Vive aquí para que la arquitectura de tokens lo
+ * soporte sin refactor el día que el negocio lo pida.
+ */
+[data-theme='dia'] {
+  color-scheme: light;
+
+  --c-bg: #e8dcc8;
+  --c-surface: #f0e6d6;
+  --c-surface-raised: #f7efe2;
+  --c-fg: #241a11;
+  --c-fg-muted: #4a3729;
+  --c-fg-subtle: #6e5641;
+  --c-border: #c9b79a;
+  --c-border-strong: #a88f6c;
+  --c-accent: #9c3d11;
+  --c-focus: #7a4a12;
+}

@@ -1,0 +1,48 @@
+/* docs/07 §4.2 */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  padding-top: var(--safe-top);
+
+  /* Degradado de madera semiopaco, SIN blur: backdrop-filter cuesta 4–9 ms
+     por frame justo durante el scroll, que es el momento crítico. */
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--c-madera-800) 96%, transparent),
+    color-mix(in oklab, var(--c-madera-900) 92%, transparent)
+  );
+  border-bottom: 1px solid var(--c-madera-600);
+  box-shadow: 0 0 0 rgb(14, 11, 8, 0);
+  transition: box-shadow var(--d-fast) var(--e-out);
+}
+
+.despegada {
+  box-shadow: var(--sh-raised);
+}
+
+.pista {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: var(--nav-h);
+  padding-inline: var(--sp-4);
+  margin: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  /* Desvanecido de 24 px a la derecha: grita "hay más". Junto con el chip
+     cortado a propósito, es el afordance más honesto que existe. */
+
+  /* En una máscara, black/transparent son alfa (opaco/invisible), no color de
+     marca: por eso no salen de tokens.css. */
+  mask-image: linear-gradient(90deg, black 0, black calc(100% - 24px), transparent 100%);
+}
+
+.pista::-webkit-scrollbar {
+  display: none;
+}

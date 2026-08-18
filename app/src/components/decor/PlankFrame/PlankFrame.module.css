@@ -1,0 +1,43 @@
+/* docs/03 §3 y §5.1 · Marco de tabla + remaches de latón */
+
+.frame {
+  position: relative;
+}
+
+.stud {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 32% 28%,
+    #f0d79b 0%,
+    #b08d57 42%,
+    #6a4f2c 78%,
+    #2c1e0f 100%
+  );
+  box-shadow:
+    0 1px 1.5px rgb(14, 11, 8, 0.9),
+    inset 0 0 1px rgb(246, 239, 227, 0.35);
+}
+
+.studTL {
+  top: 8px;
+  left: 8px;
+}
+
+.studTR {
+  top: 8px;
+  right: 8px;
+}
+
+.studBL {
+  bottom: 8px;
+  left: 8px;
+}
+
+.studBR {
+  bottom: 8px;
+  right: 8px;
+}

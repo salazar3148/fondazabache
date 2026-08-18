@@ -1,0 +1,50 @@
+/* docs/07 §2.3 · 11 px, mayúsculas, tracking .1em */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 3px 7px;
+  border-radius: var(--r-sm);
+  font-size: var(--t-badge);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.casa {
+  background: var(--c-vino-600);
+  color: var(--c-hueso-100);
+}
+
+.favorita {
+  border: 1px solid var(--c-laton-500);
+  color: var(--c-laton-300);
+}
+
+.picante {
+  color: var(--c-candela-400);
+  border: 1px solid color-mix(in oklab, var(--c-candela-400) 45%, transparent);
+}
+
+.sinAlcohol {
+  color: var(--c-musgo-500);
+  border: 1px solid color-mix(in oklab, var(--c-musgo-500) 45%, transparent);
+}
+
+.compartir {
+  color: var(--c-hueso-500);
+  border: 1px solid var(--c-madera-500);
+}
+
+.fuerte {
+  color: var(--c-candela-400);
+  border: 1px solid color-mix(in oklab, var(--c-candela-400) 35%, transparent);
+}
+
+.temporada {
+  color: var(--c-hueso-500);
+  border: 1px solid var(--c-madera-500);
+}

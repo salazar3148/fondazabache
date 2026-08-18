@@ -1,0 +1,57 @@
+# Despliegue de la carta de Fonda Azabache en Netlify.
+#
+# La app es un export estático (ADR-001): Netlify solo sirve archivos desde una
+# CDN. No hace falta el plugin @netlify/plugin-nextjs, que existe para SSR/ISR
+# y aquí solo añadiría funciones serverless que nunca se invocan.
+
+[build]
+  base    = "app"
+  command = "pnpm build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20.11.0"
+  PNPM_VERSION = "10.0.0"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Los despliegues de rama y de PR no deben indexarse ni aparecer en Google.
+[context.deploy-preview.build.environment]
+  ROBOTS_NOINDEX = "true"
+
+[context.branch-deploy.build.environment]
+  ROBOTS_NOINDEX = "true"
+
+# ── Cabeceras ────────────────────────────────────────────────────────
+# El HTML se revalida siempre: un cambio de precio tiene que verse ya.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+
+# Todo lo que Next emite bajo /_next/static lleva hash en el nombre:
+# es inmutable y se puede cachear un año.
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Fuentes y texturas: no llevan hash porque las servimos nosotros desde
+# public/, pero cambian solo cuando cambia la marca.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/textures/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/brand/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

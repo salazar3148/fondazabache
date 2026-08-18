@@ -1,0 +1,115 @@
+/**
+ * animations.css · Las SEIS animaciones de toda la aplicación.
+ * docs/08 §8. Añadir una séptima requiere justificarla en el PR.
+ *
+ * Este archivo se importa AL FINAL de globals.css para que el bloque
+ * prefers-reduced-motion con !important le gane a cualquier cosa.
+ */
+
+/* 1 · El letrero de la portada se mece */
+@keyframes mecer-letrero {
+  from {
+    rotate: -0.5deg;
+  }
+
+  to {
+    rotate: 0.5deg;
+  }
+}
+
+/* 2 · Revelado de cabeceras de sección */
+@keyframes revelar {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* 3 · Entrada del bottom sheet (la aplica vaul sobre su propio data-state) */
+@keyframes sheet-entrar {
+  from {
+    translate: 0 100%;
+  }
+
+  to {
+    translate: 0 0;
+  }
+}
+
+/* 4 · Entrada del backdrop del sheet */
+@keyframes backdrop-entrar {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* 5 · Barajeo del nombre en la Ruleta */
+@keyframes barajear {
+  from {
+    opacity: 0.45;
+  }
+
+  to {
+    opacity: 0.75;
+  }
+}
+
+/* 6 · Destello de brasa al fijar el resultado de la Ruleta.
+       Única animación de box-shadow permitida (docs/08 §8). */
+@keyframes destello-brasa {
+  0% {
+    box-shadow: 0 0 0 rgb(224 117 47 / 0%);
+  }
+
+  35% {
+    box-shadow: 0 0 26px rgb(224 117 47 / 50%);
+  }
+
+  100% {
+    box-shadow: 0 0 14px rgb(224 117 47 / 22%);
+  }
+}
+
+/**
+ * Resaltado temporal de la fila al llegar desde la Ruleta (docs/08 §6.4).
+ *
+ * Es una clase GLOBAL a propósito: la Ruleta la aplica por DOM y no puede
+ * referenciar el nombre hasheado de un CSS Module. Usa `outline` en vez de
+ * `border-color` para no pelear por especificidad con MenuItemRow.module.css.
+ */
+.destacado-ruleta {
+  outline: 1px solid var(--c-candela-400);
+  outline-offset: -1px;
+  border-radius: var(--r-md);
+  background: color-mix(in oklab, var(--c-candela-500) 10%, transparent);
+  animation: destello-brasa 400ms var(--e-out) both;
+}
+
+/* El letrero es el único elemento con animación continua de la app.
+   will-change solo aquí: en todo lo demás crea capas de GPU inútiles. */
+.letrero {
+  animation: mecer-letrero 7s var(--e-inout) infinite alternate;
+  transform-origin: top center;
+  will-change: rotate;
+}
+
+/* ── Regla de oro innegociable (docs/02 §7) ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

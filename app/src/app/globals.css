@@ -1,0 +1,10 @@
+/**
+ * docs/05 §5 · El orden importa: la cascada depende de él.
+ * animations.css va último para que el bloque prefers-reduced-motion con
+ * !important le gane a cualquier cosa.
+ */
+@import '../styles/tokens.css'; /* 1. variables. Nada las usa todavía  */
+@import '../styles/theme.css'; /* 2. Tailwind + @theme (trae el reset) */
+@import '../styles/base.css'; /* 3. reset propio, tipografía, focus   */
+@import '../styles/textures.css'; /* 4. clases de textura reutilizables  */
+@import '../styles/animations.css'; /* 5. keyframes + reduced-motion       */

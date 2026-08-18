@@ -1,0 +1,66 @@
+/* docs/07 §2.1 · Tres variantes, dos tamaños. Nunca menos de 44 px de alto. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-width: 120px;
+  padding-inline: var(--sp-5);
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--t-chip);
+  letter-spacing: 0.03em;
+  text-align: center;
+  transition:
+    scale var(--d-instant) var(--e-out),
+    filter var(--d-instant) var(--e-out),
+    background-color var(--d-fast) var(--e-out),
+    border-color var(--d-fast) var(--e-out);
+}
+
+.btn:active {
+  scale: 0.97;
+  filter: brightness(1.08);
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.md {
+  height: 44px;
+}
+
+.lg {
+  height: 52px;
+  font-size: var(--t-item);
+}
+
+/* ── primary · CTA de portada ─────────────────────────────────── */
+.primary {
+  background: linear-gradient(180deg, var(--c-candela-400) 0%, var(--c-candela-500) 100%);
+  color: var(--c-azabache);
+  border: 1px solid var(--c-candela-300);
+  box-shadow:
+    inset 0 1px 0 rgb(246, 239, 227, 0.28),
+    0 6px 16px -8px rgb(198, 85, 31, 0.75);
+}
+
+/* ── ghost · secundarios, cerrar sheet ───────────────────────── */
+.ghost {
+  background: transparent;
+  color: var(--c-fg-muted);
+  border: 1px solid var(--c-border-strong);
+}
+
+/* ── brass · repetir la ruleta ───────────────────────────────── */
+.brass {
+  background: var(--c-madera-800);
+  color: var(--c-laton-300);
+  border: 1px solid var(--c-laton-500);
+  box-shadow: inset 0 1px 0 rgb(246, 239, 227, 0.08);
+}

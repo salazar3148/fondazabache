@@ -1,0 +1,112 @@
+/* docs/07 §4.1 · Portada */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-6);
+
+  /* dvh, no vh: la barra de Safari se mueve y rompería el encuadre */
+  min-height: calc(100dvh - var(--nav-h));
+  padding-block: calc(var(--safe-top) + var(--sp-12)) var(--sp-10);
+  justify-content: center;
+}
+
+/* ── El letrero colgado ─────────────────────────────────────── */
+
+/* La animación (animación 1 del inventario) la aplica la clase global
+   `.letrero` de animations.css: los nombres de @keyframes no se pueden
+   referenciar desde un CSS Module porque css-loader los reescribe.
+   Aquí va solo la geometría. */
+.letrero {
+  position: relative;
+  padding-top: var(--sp-8);
+}
+
+/* Las dos cadenas de las que cuelga el letrero */
+.cadenas {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  width: 62%;
+  height: var(--sp-8);
+  display: flex;
+  justify-content: space-between;
+}
+
+.cadenas span {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(176, 141, 87, 0.15) 10%,
+    rgb(176, 141, 87, 0.7) 100%
+  );
+  box-shadow: 0 0 3px rgb(14, 11, 8, 0.9);
+}
+
+.tabla {
+  padding: var(--sp-6) var(--sp-8);
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--t-display-xl);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.wordmarkLinea {
+  display: block;
+}
+
+/* ── Lema quemado ───────────────────────────────────────────── */
+.lema {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  font-size: var(--t-display-lg);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+}
+
+.lemaLinea {
+  display: block;
+}
+
+/**
+ * DESVIACIÓN de docs/07 §4.1: la tercera línea del lema iba en itálica.
+ * La itálica no se precarga (ver styles/fonts.ts) y el lema es el LCP, así que
+ * ponerla aquí provocaría un cambio de anchos justo sobre el elemento más
+ * importante de la portada. Se mantiene la redonda y la distinción la da el
+ * salto de línea más el quemado profundo. Reversible en una línea si el
+ * negocio prefiere la itálica y aceptamos precargarla.
+ */
+.lemaCierre {
+  display: block;
+  letter-spacing: 0.04em;
+}
+
+/* ── Bajada ─────────────────────────────────────────────────── */
+.bajada {
+  max-width: 30ch;
+  font-size: var(--t-body);
+  line-height: 1.5;
+  color: var(--c-fg-muted);
+  text-wrap: pretty;
+}
+
+.cta {
+  margin-top: var(--sp-2);
+}
+
+.chevron {
+  width: 22px;
+  height: 22px;
+  color: var(--c-laton-500);
+  opacity: 0.5;
+}

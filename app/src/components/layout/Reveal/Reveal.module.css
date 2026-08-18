@@ -1,0 +1,25 @@
+/**
+ * Animación 2 del inventario (docs/08 §8): revelado de cabeceras de sección.
+ *
+ * Se implementa con `transition` y no con el @keyframes `revelar` de
+ * animations.css porque css-loader reescribe los nombres de animación dentro
+ * de un CSS Module y no encontraría el keyframe global. El resultado visual y
+ * las propiedades animadas (opacity, translate) son idénticos.
+ */
+
+.base {
+  transition:
+    opacity var(--d-reveal) var(--e-out),
+    translate var(--d-reveal) var(--e-out);
+  transition-delay: var(--delay, 0ms);
+}
+
+.oculto {
+  opacity: 0;
+  translate: 0 10px;
+}
+
+.visible {
+  opacity: 1;
+  translate: 0 0;
+}

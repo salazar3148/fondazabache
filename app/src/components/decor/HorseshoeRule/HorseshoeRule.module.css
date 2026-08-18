@@ -1,0 +1,20 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  color: var(--c-laton-500);
+  padding-block: var(--sp-8);
+}
+
+.rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(176, 141, 87, 0.5), transparent);
+}
+
+.shoe {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  filter: drop-shadow(0 1px 0 rgb(14, 11, 8, 0.9));
+}

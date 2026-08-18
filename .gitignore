@@ -1,0 +1,32 @@
+node_modules/
+.pnpm-store/
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+
+# Producción / artefactos
+build/
+dist/
+*.tsbuildinfo
+
+# Entorno
+.env*
+!.env.example
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Herramientas
+.eslintcache
+.stylelintcache
+coverage/
+playwright-report/
+test-results/
+.lighthouseci/
+*.log
+
+# Netlify CLI
+.netlify/

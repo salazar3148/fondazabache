@@ -1,0 +1,59 @@
+/* docs/07 §5.1 */
+
+.section {
+  /* Que el ancla no quede debajo de la barra sticky. Va aquí ADEMÁS del
+     scroll-padding-top de html: el navegador usa uno u otro según cómo se
+     dispare el scroll. */
+  scroll-margin-top: calc(var(--nav-h) + var(--safe-top) + var(--sp-4));
+  padding-top: var(--sp-8);
+}
+
+/* Ahorra ~35 % del tiempo de layout inicial. El contain-intrinsic-size
+   estimado evita que la barra de scroll dé saltos.
+   PENDIENTE Fase 6: calibrar el valor midiendo la altura real de cada
+   sección (las de 13 filas son bastante más altas que las de 5). */
+.deferida {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
+.cabecera {
+  text-align: center;
+  padding-block: var(--sp-6);
+}
+
+.titulo {
+  font-size: var(--t-title);
+  line-height: 1.15;
+  font-variant-caps: small-caps;
+}
+
+.subtitulo {
+  margin-top: var(--sp-2);
+  font-size: var(--t-subtitle);
+  line-height: 1.3;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--c-laton-500);
+}
+
+.filete {
+  display: block;
+  width: 60%;
+  margin: var(--sp-4) auto 0;
+}
+
+.nota {
+  margin-top: var(--sp-3);
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  font-size: var(--t-meta);
+  line-height: 1.45;
+  color: var(--c-fg-subtle);
+  text-wrap: balance;
+}
+
+.items {
+  margin-top: var(--sp-2);
+}

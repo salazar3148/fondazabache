@@ -1,0 +1,50 @@
+/**
+ * theme.css · Puente entre los tokens y las utilidades de Tailwind v4.
+ * docs/02 §10. Todo apunta a tokens.css: cero valores literales aquí.
+ */
+
+@import 'tailwindcss';
+
+@theme inline {
+  /* Color */
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-surface-raised: var(--c-surface-raised);
+  --color-fg: var(--c-fg);
+  --color-fg-muted: var(--c-fg-muted);
+  --color-fg-subtle: var(--c-fg-subtle);
+  --color-border: var(--c-border);
+  --color-border-strong: var(--c-border-strong);
+  --color-accent: var(--c-accent);
+  --color-laton: var(--c-laton-500);
+  --color-laton-bright: var(--c-laton-300);
+  --color-vino: var(--c-vino-600);
+  --color-musgo: var(--c-musgo-500);
+
+  /* Tipografía */
+  --font-display: var(--font-fraunces), georgia, serif;
+  --font-body: var(--font-instrument), system-ui, sans-serif;
+  --text-title: var(--t-title);
+  --text-subtitle: var(--t-subtitle);
+  --text-item: var(--t-item);
+  --text-price: var(--t-price);
+  --text-body: var(--t-body);
+  --text-meta: var(--t-meta);
+  --text-badge: var(--t-badge);
+  --text-chip: var(--t-chip);
+  --text-copla: var(--t-copla);
+
+  /* Espaciado: mismos pasos que --sp-* para que gap-4 == --sp-4 */
+  --spacing: 4px;
+
+  /* Radios */
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-pill: var(--r-pill);
+
+  /* Motion */
+  --ease-out: var(--e-out);
+  --ease-spring: var(--e-spring);
+  --ease-inout: var(--e-inout);
+}

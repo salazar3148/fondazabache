@@ -1,0 +1,74 @@
+.detalles {
+  border-top: 1px solid var(--c-madera-600);
+  border-bottom: 1px solid var(--c-madera-600);
+  padding-block: var(--sp-3);
+}
+
+.resumen {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-height: 44px;
+}
+
+.chevron {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--c-laton-500);
+  transition: rotate var(--d-fast) var(--e-out);
+}
+
+.detalles[open] .chevron {
+  rotate: 180deg;
+}
+
+.titulo {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: var(--t-item);
+  font-weight: 600;
+  color: var(--c-fg);
+}
+
+.cuenta {
+  font-size: var(--t-meta);
+  font-variant-numeric: tabular-nums;
+  color: var(--c-fg-subtle);
+}
+
+.intro {
+  margin-top: var(--sp-3);
+  font-size: var(--t-meta);
+  color: var(--c-fg-subtle);
+}
+
+.lista {
+  margin-top: var(--sp-3);
+}
+
+.cancion {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding-block: var(--sp-3);
+}
+
+.cancion:not(:last-child) {
+  box-shadow:
+    inset 0 -2px 0 -1px rgb(14, 11, 8, 0.85),
+    inset 0 -1px 0 rgb(246, 239, 227, 0.07);
+}
+
+.cancionTitulo {
+  font-size: var(--t-body);
+  color: var(--c-fg);
+}
+
+.artista {
+  font-size: var(--t-meta);
+  color: var(--c-fg-subtle);
+  text-align: right;
+  white-space: nowrap;
+}

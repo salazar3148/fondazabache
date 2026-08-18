@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <!-- Tile de veta de madera. docs/03 §2.3
+       Se sirve como archivo: el navegador lo rasteriza UNA vez y lo cachea,
+       igual que el grano de película. Nunca se aplica como filter en vivo.
+       Fase 6 lo reemplaza por wood-grain-256.avif (~8 KB) para ahorrar el
+       coste de rasterizado inicial en Android de gama media. -->
+  <defs>
+    <filter id="veta" x="0" y="0" width="100%" height="100%">
+      <!-- Ruido muy estirado en Y = veta larga de madera -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.9 0.012" numOctaves="4" seed="7" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="1.35" intercept="-0.18"/>
+        <feFuncG type="linear" slope="1.35" intercept="-0.18"/>
+        <feFuncB type="linear" slope="1.35" intercept="-0.18"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="256" height="256" filter="url(#veta)"/>
+</svg>

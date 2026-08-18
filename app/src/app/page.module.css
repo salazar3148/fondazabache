@@ -1,0 +1,10 @@
+.copla {
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  font-size: var(--t-copla);
+  line-height: 1.45;
+  color: var(--c-fg-subtle);
+  text-align: center;
+  text-wrap: balance;
+  padding-bottom: var(--sp-4);
+}

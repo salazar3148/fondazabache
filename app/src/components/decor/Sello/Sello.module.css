@@ -1,0 +1,38 @@
+/* docs/03 §7 · Sello de lacre. Uso restringido: una aparición por pantalla. */
+
+.sello {
+  --sello-size: 84px;
+
+  width: var(--sello-size);
+  height: var(--sello-size);
+  display: grid;
+  place-items: center;
+  padding: var(--sp-2);
+  rotate: -6deg;
+  text-align: center;
+  color: color-mix(in oklab, var(--c-hueso-100) 85%, var(--c-vino-600));
+  background:
+    radial-gradient(circle at 34% 30%, rgb(246, 239, 227, 0.22) 0%, transparent 46%),
+    radial-gradient(circle at 50% 50%, #94382f 0%, #7b2d26 62%, #58201b 100%);
+
+  /* Ocho radios distintos = borde irregular de lacre derramado */
+  border-radius: 48% 52% 46% 54% / 53% 47%;
+  box-shadow:
+    inset 0 2px 4px rgb(246, 239, 227, 0.18),
+    inset 0 -3px 6px rgb(14, 11, 8, 0.55),
+    0 4px 10px -2px rgb(14, 11, 8, 0.75);
+}
+
+.sm {
+  --sello-size: 56px;
+}
+
+.texto {
+  font-family: var(--font-display);
+  font-size: var(--t-badge);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}

@@ -1,0 +1,94 @@
+/**
+ * Disparador estirado sobre toda la fila. Va por encima del contenido, pero es
+ * transparente: el usuario toca donde le parezca natural y la semántica del
+ * `<h3>` queda fuera del botón.
+ */
+.trigger {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: var(--r-md);
+  background: transparent;
+  transition: background-color var(--d-instant) var(--e-out);
+}
+
+/* Micro-interacción 1: confirma el toque antes de que abra el sheet. Sin esto
+   la app "no responde" durante 300 ms. */
+.trigger:active {
+  background: color-mix(in oklab, var(--c-madera-600) 40%, transparent);
+}
+
+/* ── Contenido del sheet ───────────────────────────────────── */
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-3);
+}
+
+.nombre {
+  font-family: var(--font-display);
+  font-size: var(--t-display-lg);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--c-fg);
+  text-wrap: balance;
+}
+
+.badges {
+  margin-top: var(--sp-3);
+}
+
+.descripcion {
+  margin-top: var(--sp-3);
+  font-size: var(--t-body);
+  line-height: 1.5;
+  color: var(--c-fg-muted);
+}
+
+.filete {
+  display: block;
+  width: 55%;
+  margin: var(--sp-6) auto;
+}
+
+.relato {
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  font-size: var(--t-copla);
+  line-height: 1.45;
+  color: var(--c-fg-muted);
+  text-wrap: pretty;
+}
+
+.relacionadosTitulo {
+  margin-top: var(--sp-8);
+  font-size: var(--t-subtitle);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--c-laton-500);
+}
+
+.relacionados {
+  margin-top: var(--sp-3);
+}
+
+.relacionado {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-3);
+  min-height: 44px;
+  padding-block: var(--sp-2);
+}
+
+.relacionadoNombre {
+  font-size: var(--t-body);
+  color: var(--c-fg);
+}
+
+.cerrar {
+  width: 100%;
+  margin-top: var(--sp-8);
+}

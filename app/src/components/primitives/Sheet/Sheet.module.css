@@ -1,0 +1,47 @@
+/* docs/07 §2.4 · Wrapper de vaul. Los 6 requisitos, todos obligatorios. */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: rgb(14, 11, 8, 0.72);
+
+  /* ÚNICO lugar de la app donde se permite backdrop-filter: es un overlay
+     estático y no compite con el scroll (docs/07 §2.4). */
+  backdrop-filter: blur(6px);
+}
+
+.panel {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: var(--z-sheet);
+  display: flex;
+  flex-direction: column;
+
+  /* Deja ver ~15 % de la carta arriba: nadie se siente perdido. */
+  max-height: 85dvh;
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--contenido-max);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  border-bottom: 0;
+  box-shadow: var(--sh-raised);
+  outline: none;
+}
+
+/* Asa de arrastre */
+.asa {
+  flex: none;
+  width: 36px;
+  height: 4px;
+  margin: var(--sp-3) auto 0;
+  border-radius: var(--r-pill);
+  background: var(--c-madera-400);
+}
+
+.contenido {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--sp-5) var(--sp-5) calc(var(--sp-6) + var(--safe-bottom));
+}

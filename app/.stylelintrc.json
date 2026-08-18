@@ -1,0 +1,35 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "color-no-hex": [
+      true,
+      {
+        "message": "Usa un token de tokens.css (ver docs/02). Excepción: tokens.css y los degradados documentados en docs/03."
+      }
+    ],
+    "no-descending-specificity": null,
+    "import-notation": null,
+    "selector-pseudo-class-no-unknown": [true, { "ignorePseudoClasses": ["global", "local"] }],
+    "custom-property-pattern": null,
+    "selector-class-pattern": null,
+    "at-rule-no-unknown": null,
+    "declaration-property-value-no-unknown": null,
+    "property-no-vendor-prefix": null,
+    "value-keyword-case": null,
+    "alpha-value-notation": null,
+    "color-function-notation": null
+  },
+  "overrides": [
+    {
+      "files": [
+        "src/styles/tokens.css",
+        "**/BurntTitle.module.css",
+        "**/WoodBackdrop.module.css",
+        "**/PlankFrame.module.css",
+        "**/Sello.module.css",
+        "**/FilmGrain.module.css"
+      ],
+      "rules": { "color-no-hex": null }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+export { InfoFonda } from './InfoFonda';
