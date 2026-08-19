@@ -11,22 +11,20 @@ export const pasantes: MenuCategory = {
   chip: 'Pasantes',
   nota: 'Para bajar el trago o para no tomarlo.',
   items: [
-    { id: 'coca-cola', nombre: 'Coca-Cola', precio: 4_000, etiquetas: ['sin-alcohol'] },
+    { id: 'coca-cola', nombre: 'Coca-Cola', precio: 4_000 },
     {
       id: 'soda-bretana',
       nombre: 'Soda Bretaña',
       descripcion: 'La compañera clásica del aguardiente.',
       precio: 4_000,
-      etiquetas: ['sin-alcohol'],
     },
-    { id: 'agua', nombre: 'Agua', precio: 4_000, etiquetas: ['sin-alcohol'] },
-    { id: 'agua-con-gas', nombre: 'Agua con gas', precio: 5_000, etiquetas: ['sin-alcohol'] },
+    { id: 'agua', nombre: 'Agua', precio: 4_000 },
+    { id: 'agua-con-gas', nombre: 'Agua con gas', precio: 5_000 },
     {
       id: 'gatorade',
       nombre: 'Gatorade',
       descripcion: 'El que sabe, lo pide antes y no después.',
       precio: 6_000,
-      etiquetas: ['sin-alcohol'],
     },
   ],
 };

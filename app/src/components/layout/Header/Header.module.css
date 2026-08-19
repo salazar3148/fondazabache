@@ -1,5 +1,5 @@
 /**
- * Estructura tomada del header de la carta de Bello (marca + CTA, sticky, filo
+ * Estructura tomada del header de la carta de Bello (marca, sticky, filo
  * de acento abajo), traducida a la paleta de madera: donde allá hay negro con
  * blur y neón rojo, acá hay tablón oscuro y brasa.
  */
@@ -45,7 +45,6 @@
 .inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--sp-3);
   height: var(--header-h);
   width: 100%;
@@ -90,81 +89,4 @@
 
   /* small-caps: el nombre se lee como grabado y no como un título más */
   font-variant-caps: small-caps;
-}
-
-/* ── CTA de WhatsApp ─────────────────────────────────────────── */
-.cta {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-2);
-  flex: none;
-  height: 36px;
-  padding-inline: var(--sp-3);
-  border-radius: var(--r-pill);
-  background: color-mix(in oklab, var(--c-candela-500) 14%, transparent);
-  border: 1px solid var(--c-candela-400);
-  color: var(--c-candela-300);
-  font-size: var(--t-meta);
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  transition:
-    background-color var(--d-fast) var(--e-out),
-    color var(--d-fast) var(--e-out),
-    box-shadow var(--d-base) var(--e-out),
-    scale var(--d-instant) var(--e-out);
-}
-
-/* El botón mide 36 px pero el dedo alcanza 44: el ::after crece hacia arriba
-   y abajo sin empujar el layout de la barra ni crecer el alto del header. */
-.cta::after {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  inset-block: -4px;
-  border-radius: inherit;
-}
-
-.cta:hover,
-.cta:focus-visible {
-  background: var(--c-candela-500);
-  color: var(--c-hueso-100);
-  box-shadow: var(--sh-ember-md);
-}
-
-.cta:active {
-  scale: 0.96;
-}
-
-.ctaIcono {
-  width: 16px;
-  height: 16px;
-  flex: none;
-}
-
-/* En pantallas muy angostas el icono habla solo: el texto se va antes de que
-   el nombre de la fonda tenga que partirse en dos líneas. */
-@media (width <= 22.5rem) {
-  .ctaTexto {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-
-  .cta {
-    width: 36px;
-    padding-inline: 0;
-  }
-
-  .ctaIcono {
-    width: 18px;
-    height: 18px;
-  }
 }

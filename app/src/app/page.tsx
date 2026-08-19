@@ -7,7 +7,6 @@ import { CategoryNav } from '@/components/layout/CategoryNav';
 import { Footer } from '@/components/layout/Footer';
 import { CategorySection } from '@/components/menu/CategorySection';
 import { HorseshoeRule } from '@/components/decor/HorseshoeRule';
-import { ScrollProgress } from '@/components/decor/ScrollProgress';
 import { RuletaAzabache } from '@/components/features/RuletaAzabache';
 import { WhatsAppFab } from '@/components/features/WhatsAppFab';
 import { CARTA_ID, PORTADA_ID } from '@/lib/constants';
@@ -27,7 +26,6 @@ export default function CartaPage() {
 
   return (
     <>
-      <ScrollProgress />
       <Header />
       <CategoryNav categorias={navItems} />
 

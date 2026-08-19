@@ -54,13 +54,4 @@ export const site = {
     firma: 'Aquí la mesa nunca se queda sola.',
     derechos: 'Fonda, cantina y velorio de canciones',
   },
-
-  avisos: {
-    propina: 'La propina es voluntaria y va completa para el equipo.',
-    precios: 'Precios en pesos colombianos. Incluyen impuestos.',
-    sinConfirmar: 'Los precios marcados como "Pregunte" se confirman en la barra.',
-    // Obligación legal en Colombia. No es opcional ni se omite.
-    alcohol:
-      'El exceso de alcohol es perjudicial para la salud. Ley 30 de 1986. Prohibida la venta de bebidas embriagantes a menores de 18 años.',
-  },
 } as const;

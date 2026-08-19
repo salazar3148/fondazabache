@@ -8,8 +8,7 @@ import styles from './Footer.module.css';
  * docs/07 §4.4 · Server Component.
  *
  * Misma arquitectura que el pie de la carta de Bello — separador con ornamento,
- * marca, redes con iconos vectoriales, y una línea de créditos con firma — más
- * el bloque de avisos que en Colombia no es opcional (Ley 30 de 1986).
+ * marca, redes con iconos vectoriales, y una línea de créditos con firma.
  *
  * Ya no lleva horarios, dirección, wifi ni cancionero: quien está sentado en la
  * mesa no necesita que la carta le diga dónde está ni a qué hora abre. Si algo
@@ -50,15 +49,6 @@ export function Footer() {
             <WhatsApp className={styles.redIcono} />
             <span>{whatsapp.display}</span>
           </a>
-        </div>
-
-        <div className={styles.legal}>
-          <p className={styles.aviso}>{site.avisos.precios}</p>
-          <p className={styles.aviso}>{site.avisos.sinConfirmar}</p>
-          <p className={styles.aviso}>{site.avisos.propina}</p>
-          {/* El aviso de Ley 30 es obligación legal: se lee de verdad, no se
-              esconde a opacidad 30 %. */}
-          <p className={styles.avisoLegal}>{site.avisos.alcohol}</p>
         </div>
 
         <p className={styles.creditos}>

@@ -22,6 +22,11 @@ html {
   scroll-padding-top: calc(var(--barra-h) + var(--safe-top) + var(--sp-3));
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+
+  /* Sin rebote elástico ni scroll chaining al llegar arriba o abajo del
+     todo: en una carta que se lee de un tirón, el "bounce" se siente como un
+     tropiezo, no como un efecto bonito. */
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -36,6 +41,7 @@ body {
   font-variant-ligatures: no-discretionary-ligatures;
   text-rendering: optimizelegibility;
   overflow-x: hidden; /* sin scroll horizontal jamás */
+  overscroll-behavior-y: none;
   hyphens: none; /* una palabra cortada se lee como error */
 }
 
