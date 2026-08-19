@@ -73,7 +73,7 @@ La última es la que más enseña. Si alguien no encuentra los aguardientes en 1
 - [ ] En iPhone SE el contenido cabe sin scroll interno
 - [ ] `padding-bottom` respeta la safe area (no queda tapado por la barra de gestos)
 
-### 2.5 La Ruleta del Arriero
+### 2.5 La Ruleta del Azabache
 
 - [ ] El botón aparece solo después de pasar la portada
 - [ ] No tapa nada importante en el pie

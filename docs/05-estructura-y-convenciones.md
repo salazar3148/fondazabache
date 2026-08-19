@@ -81,7 +81,7 @@ fonda-azabache/
 │   │   │   └── ItemSheet/             ← client, lazy: detalle del producto
 │   │   │
 │   │   ├── features/                  ← funcionalidades con alma
-│   │   │   ├── RuletaArriero/         ← client, lazy
+│   │   │   ├── RuletaAzabache/         ← client, lazy
 │   │   │   ├── Cancionero/
 │   │   │   └── InfoFonda/
 │   │   │
@@ -189,7 +189,7 @@ Un `'use client'` se pone en el componente **más profundo** que lo necesite, nu
 2. `layout/CategoryNav` — `IntersectionObserver` + scroll
 3. `layout/Reveal` — `IntersectionObserver`
 4. `menu/ItemSheet` — abre el sheet
-5. `features/RuletaArriero` — `Math.random` + estado
+5. `features/RuletaAzabache` — `Math.random` + estado
 6. `features/Cancionero` — solo si es colapsable; si no, RSC
 
 ---
@@ -223,7 +223,7 @@ Regla exacta para no dudar:
 
 > Si el término existe en el vocabulario de la fonda, va en español (`plank` es una excepción histórica aceptada porque es CSS: se usa `plank`). Si es un término de programación, va en inglés.
 
-Ejemplos resueltos: `MenuItemRow` (inglés, es UI), `CategoryNav` (inglés), `RuletaArriero` (español, es un concepto de la marca), `Cancionero` (español), `item.disponible: boolean` (español, es dato de negocio), `isOpen` (inglés, es estado de UI).
+Ejemplos resueltos: `MenuItemRow` (inglés, es UI), `CategoryNav` (inglés), `RuletaAzabache` (español, es un concepto de la marca), `Cancionero` (español), `item.disponible: boolean` (español, es dato de negocio), `isOpen` (inglés, es estado de UI).
 
 ---
 
@@ -245,7 +245,7 @@ import styles from './MenuItemRow.module.css';
 // 2 · Props: interface exportada, una prop por línea, con comentario si no es obvia
 export interface MenuItemRowProps {
   item: MenuItem;
-  /** Resalta la fila. Se usa como resultado de la Ruleta del Arriero. */
+  /** Resalta la fila. Se usa como resultado de la Ruleta del Azabache. */
   destacado?: boolean;
   className?: string;
 }

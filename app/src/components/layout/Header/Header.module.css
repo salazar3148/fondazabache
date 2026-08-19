@@ -1,0 +1,170 @@
+/**
+ * Estructura tomada del header de la carta de Bello (marca + CTA, sticky, filo
+ * de acento abajo), traducida a la paleta de madera: donde allá hay negro con
+ * blur y neón rojo, acá hay tablón oscuro y brasa.
+ */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  padding-top: var(--safe-top);
+
+  /* Degradado en vez de un plano liso: la barra se lee como una viga y no
+     como una franja pegada encima. Sin backdrop-filter: cuesta 4–9 ms por
+     frame justo mientras se hace scroll, que es el momento crítico. */
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--c-madera-800) 97%, transparent),
+    color-mix(in oklab, var(--c-madera-900) 94%, transparent)
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(246 239 227 / 7%),
+    0 2px 10px -4px rgb(14 11 8 / 80%);
+}
+
+/* Filo de brasa que se desvanece a los lados. En Bello es una línea roja
+   plena; acá se degrada para no cortar la madera de lado a lado. */
+.header::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--c-candela-500) 18%,
+    var(--c-candela-400) 50%,
+    var(--c-candela-500) 82%,
+    transparent
+  );
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  height: var(--header-h);
+  width: 100%;
+  max-width: var(--contenido-max);
+  margin-inline: auto;
+  padding-inline: var(--sp-4);
+}
+
+/* ── Marca ────────────────────────────────────────────────────── */
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+
+  /* Toca el borde del header arriba y abajo: área táctil de 44 px sin que el
+     texto se mueva de sitio. */
+  padding-block: var(--sp-2);
+  transition: color var(--d-fast) var(--e-out);
+}
+
+.marca:active {
+  scale: 0.98;
+}
+
+.isotipo {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  color: var(--c-laton-300);
+  filter: drop-shadow(0 1px 0 rgb(14 11 8 / 90%));
+}
+
+.nombre {
+  font-family: var(--font-display);
+  font-size: var(--t-item);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--c-fg);
+  white-space: nowrap;
+
+  /* small-caps: el nombre se lee como grabado y no como un título más */
+  font-variant-caps: small-caps;
+}
+
+/* ── CTA de WhatsApp ─────────────────────────────────────────── */
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  flex: none;
+  height: 36px;
+  padding-inline: var(--sp-3);
+  border-radius: var(--r-pill);
+  background: color-mix(in oklab, var(--c-candela-500) 14%, transparent);
+  border: 1px solid var(--c-candela-400);
+  color: var(--c-candela-300);
+  font-size: var(--t-meta);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition:
+    background-color var(--d-fast) var(--e-out),
+    color var(--d-fast) var(--e-out),
+    box-shadow var(--d-base) var(--e-out),
+    scale var(--d-instant) var(--e-out);
+}
+
+/* El botón mide 36 px pero el dedo alcanza 44: el ::after crece hacia arriba
+   y abajo sin empujar el layout de la barra ni crecer el alto del header. */
+.cta::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  inset-block: -4px;
+  border-radius: inherit;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: var(--c-candela-500);
+  color: var(--c-hueso-100);
+  box-shadow: var(--sh-ember-md);
+}
+
+.cta:active {
+  scale: 0.96;
+}
+
+.ctaIcono {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+/* En pantallas muy angostas el icono habla solo: el texto se va antes de que
+   el nombre de la fonda tenga que partirse en dos líneas. */
+@media (width <= 22.5rem) {
+  .ctaTexto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .cta {
+    width: 36px;
+    padding-inline: 0;
+  }
+
+  .ctaIcono {
+    width: 18px;
+    height: 18px;
+  }
+}

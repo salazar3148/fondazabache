@@ -67,8 +67,19 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 
   /* ── Layout ──────────────────────────────────────────────── */
+
+  /* Las dos barras pegajosas tienen alto FIJO a propósito: así el
+     scroll-padding-top, el alto de la portada y el offset del scroll-spy se
+     calculan en CSS sin un ResizeObserver que los mida en runtime. Si cambian
+     aquí, cambian en todas partes. */
+  --header-h: 56px;
   --nav-h: 56px;
+  --barra-h: calc(var(--header-h) + var(--nav-h));
   --contenido-max: 480px;
+
+  /* Pila de botones flotantes: WhatsApp abajo, Ruleta encima. */
+  --fab-size: 56px;
+  --fab-gap: 12px;
 
   /* ── Tipografía · familias ───────────────────────────────── */
   --font-display: var(--font-fraunces), georgia, serif;
@@ -112,13 +123,20 @@
     0 18px 36px -18px rgb(14 11 8 / 90%);
   --sh-carved: inset 0 2px 4px rgb(14 11 8 / 75%), inset 0 -1px 0 rgb(246 239 227 / 6%);
   --sh-ember: 0 0 14px rgb(224 117 47 / 22%);
+  --sh-ember-md: 0 0 14px rgb(224 117 47 / 45%), 0 0 30px rgb(198 85 31 / 25%);
+  --sh-ember-lg: 0 0 22px rgb(224 117 47 / 55%), 0 0 52px rgb(198 85 31 / 30%);
 
   /* ── Elevación ───────────────────────────────────────────── */
   --z-backdrop-wood: 0;
   --z-grain: 1;
   --z-content: 10;
+
+  /* La barra de categorías se pega DEBAJO del header, así que el header
+     tiene que quedar por encima cuando se cruzan al hacer scroll. */
   --z-sticky: 50;
+  --z-header: 55;
   --z-fab: 60;
+  --z-progress: 70;
   --z-overlay: 100;
   --z-sheet: 110;
 

@@ -1,39 +1,35 @@
 /* docs/07 §4.1 · Portada */
 
 .hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   gap: var(--sp-6);
 
-  /* dvh, no vh: la barra de Safari se mueve y rompería el encuadre */
-  min-height: calc(100dvh - var(--nav-h));
-  padding-block: calc(var(--safe-top) + var(--sp-12)) var(--sp-10);
-  justify-content: center;
+  /* Una pantalla exacta descontando las dos barras pegajosas. dvh, no vh: la
+     barra de direcciones de Safari se mueve y rompería el encuadre. */
+  min-height: calc(100dvh - var(--barra-h) - var(--safe-top));
+  padding-block: var(--sp-10) calc(var(--sp-12) + var(--sp-6));
 }
 
 /* ── El letrero colgado ─────────────────────────────────────── */
-
-/* La animación (animación 1 del inventario) la aplica la clase global
-   `.letrero` de animations.css: los nombres de @keyframes no se pueden
-   referenciar desde un CSS Module porque css-loader los reescribe.
-   Aquí va solo la geometría. */
-.letrero {
-  position: relative;
-  padding-top: var(--sp-8);
+.letreroWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 /* Las dos cadenas de las que cuelga el letrero */
 .cadenas {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  translate: -50% 0;
-  width: 62%;
-  height: var(--sp-8);
   display: flex;
   justify-content: space-between;
+  width: 58%;
+  max-width: 220px;
+  height: var(--sp-8);
 }
 
 .cadenas span {
@@ -42,26 +38,23 @@
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgb(176, 141, 87, 0.15) 10%,
-    rgb(176, 141, 87, 0.7) 100%
+    rgb(176 141 87 / 15%) 10%,
+    rgb(176 141 87 / 70%) 100%
   );
-  box-shadow: 0 0 3px rgb(14, 11, 8, 0.9);
+  box-shadow: 0 0 3px rgb(14 11 8 / 90%);
 }
 
+/* La animación (animación 1 del inventario) la aplica la clase global
+   `.letrero` de animations.css: los nombres de @keyframes no se pueden
+   referenciar desde un CSS Module porque css-loader los reescribe.
+   Aquí va solo la geometría. */
 .tabla {
-  padding: var(--sp-6) var(--sp-8);
+  padding: var(--sp-5) var(--sp-6);
 }
 
-.wordmark {
+.marca {
   display: flex;
-  flex-direction: column;
-  font-size: var(--t-display-xl);
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-}
-
-.wordmarkLinea {
-  display: block;
+  justify-content: center;
 }
 
 /* ── Lema quemado ───────────────────────────────────────────── */
@@ -69,8 +62,9 @@
   display: flex;
   flex-direction: column;
   gap: var(--sp-1);
+  max-width: 20ch;
   font-size: var(--t-display-lg);
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: 0.02em;
 }
 
@@ -80,15 +74,14 @@
 
 /**
  * DESVIACIÓN de docs/07 §4.1: la tercera línea del lema iba en itálica.
- * La itálica no se precarga (ver styles/fonts.ts) y el lema es el LCP, así que
- * ponerla aquí provocaría un cambio de anchos justo sobre el elemento más
- * importante de la portada. Se mantiene la redonda y la distinción la da el
- * salto de línea más el quemado profundo. Reversible en una línea si el
- * negocio prefiere la itálica y aceptamos precargarla.
+ * La itálica no se precarga (ver styles/fonts.ts) y el lema es lo más pesado
+ * de la portada, así que ponerla aquí provocaría un cambio de anchos justo
+ * sobre el bloque más visible. Se mantiene la redonda y la distinción la da el
+ * salto de línea más la interletra abierta.
  */
 .lemaCierre {
   display: block;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 
 /* ── Bajada ─────────────────────────────────────────────────── */
@@ -101,12 +94,39 @@
 }
 
 .cta {
-  margin-top: var(--sp-2);
+  margin-top: var(--sp-1);
 }
 
+/* ── Pista de scroll ────────────────────────────────────────── */
+
+/* Anclada al borde inferior de la portada, como en Bello: así marca el límite
+   de la pantalla y no queda flotando en medio del bloque de texto. */
+.pista {
+  position: absolute;
+  inset-inline: 0;
+  bottom: var(--sp-6);
+  width: fit-content;
+  max-width: calc(100% - var(--sp-8));
+  margin-inline: auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  color: var(--c-fg-subtle);
+  pointer-events: none;
+}
+
+.pistaTexto {
+  font-size: var(--t-badge);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* La animación vive en la clase global `.flotar` de animations.css. */
 .chevron {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   color: var(--c-laton-500);
-  opacity: 0.5;
 }

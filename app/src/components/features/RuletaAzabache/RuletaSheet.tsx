@@ -9,7 +9,7 @@ import { PriceTag } from '@/components/menu/PriceTag';
 import { useRandomItem } from '@/hooks/useRandomItem';
 import { useHaptics } from '@/hooks/useHaptics';
 import { cn } from '@/lib/cn';
-import styles from './RuletaArriero.module.css';
+import styles from './RuletaAzabache.module.css';
 
 export interface RuletaSheetProps {
   items: readonly ItemConCategoria[];

@@ -77,39 +77,33 @@ export function Leaf(props: IconProps) {
   );
 }
 
-export function Wifi(props: IconProps) {
+/** Instagram. Trazo, no el logotipo con degradado: aquí manda el latón. */
+export function Instagram(props: IconProps) {
   return (
     <svg {...base} {...props}>
-      <path
-        d="M2.5 9.5a14 14 0 0 1 19 0M6 13a9 9 0 0 1 12 0M9.5 16.5a4 4 0 0 1 5 0"
+      <rect
+        x="2.5"
+        y="2.5"
+        width="19"
+        height="19"
+        rx="5.5"
         stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
+        strokeWidth="1.7"
       />
-      <circle cx="12" cy="20" r="1.2" fill="currentColor" />
+      <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" />
     </svg>
   );
 }
 
-export function Clock(props: IconProps) {
+/**
+ * WhatsApp. Es la única marca registrada de la carta, así que va con su
+ * silueta rellena tal cual: reconocerla de un vistazo es justamente el punto.
+ */
+export function WhatsApp(props: IconProps) {
   return (
-    <svg {...base} {...props}>
-      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
-      <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-export function MapPin(props: IconProps) {
-  return (
-    <svg {...base} {...props}>
-      <path
-        d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.6" />
+    <svg {...base} fill="currentColor" {...props}>
+      <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.8.8.8-2.7-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.25-.13-1.5-.74-1.7-.82-.23-.08-.4-.13-.56.13-.17.25-.65.82-.8.99-.14.17-.3.19-.55.06a6.7 6.7 0 0 1-2-1.23 7.5 7.5 0 0 1-1.37-1.7c-.14-.26 0-.4.11-.53.11-.11.25-.3.38-.44.12-.15.16-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.42h-.48c-.16 0-.42.06-.64.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.13.17 1.72 2.62 4.16 3.67.58.25 1.04.4 1.4.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.29Z" />
     </svg>
   );
 }

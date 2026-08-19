@@ -1,9 +1,48 @@
+/**
+ * docs/07 §4.4 · Pie. Estructura del pie de Bello (filo de acento arriba,
+ * bloque centrado, redes en fila, créditos con firma en cursiva) con nuestra
+ * madera.
+ */
+
 .footer {
   position: relative;
+  z-index: var(--z-content);
+  margin-top: var(--sp-12);
+  overflow: hidden;
 
-  /* Los 72 px extra dejan aire para que el botón flotante de la Ruleta no
-     tape los avisos legales (docs/07 §4.4). */
-  padding-bottom: calc(var(--sp-16) + var(--safe-bottom) + 72px);
+  /* El filo de brasa arriba separa el pie de la última sección sin necesidad
+     de otro separador. */
+  border-top: 2px solid var(--c-candela-500);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--c-madera-900) 55%, transparent),
+    color-mix(in oklab, var(--c-azabache) 75%, transparent)
+  );
+
+  /**
+   * Aire para que la pila de flotantes no tape los avisos legales (docs/07
+   * §4.4). La pila mide: margen (--sp-4) + WhatsApp (--fab-size) + hueco
+   * (--fab-gap) + Ruleta (52px) ≈ 136 px, y de ahí el colchón.
+   */
+  padding-bottom: calc(
+    var(--sp-12) + var(--safe-bottom) + var(--sp-4) + var(--fab-size) + var(--fab-gap) + 52px
+  );
+}
+
+/* Recompone la columna de lectura por dentro: el pie es a sangre, su
+   contenido no. */
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-6);
+  width: 100%;
+  max-width: var(--contenido-max);
+  margin-inline: auto;
+  padding-inline: var(--sp-4);
 }
 
 .copla {
@@ -13,36 +52,66 @@
   line-height: 1.45;
   letter-spacing: 0.01em;
   color: var(--c-fg-muted);
-  text-align: center;
   text-wrap: balance;
-  padding-block: var(--sp-6) var(--sp-10);
 }
 
-.info {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-8);
+.marca {
+  --wordmark-w: 168px;
+
+  /* El letrero del pie es un eco, no el titular: se apaga para que el ojo
+     baje a las redes y no se quede releyendo el nombre. */
+  opacity: 0.75;
 }
 
+/* ── Redes ────────────────────────────────────────────────────── */
 .redes {
   display: flex;
-  gap: var(--sp-2);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-3) var(--sp-6);
 }
 
 .red {
-  flex: 1;
-  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+
+  /* 44 px de alto táctil sin cambiar el tamaño del texto */
+  min-height: 44px;
   padding-inline: var(--sp-2);
+  color: var(--c-fg);
+  font-size: var(--t-body);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  transition:
+    color var(--d-fast) var(--e-out),
+    scale var(--d-instant) var(--e-out);
 }
 
+.red:hover,
+.red:focus-visible {
+  color: var(--c-candela-300);
+}
+
+.red:active {
+  scale: 0.97;
+}
+
+.redIcono {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+/* ── Avisos ───────────────────────────────────────────────────── */
 .legal {
   display: flex;
   flex-direction: column;
   gap: var(--sp-2);
+  width: 100%;
   padding-top: var(--sp-6);
   border-top: 1px solid var(--c-madera-600);
+  text-align: left;
 }
 
 .aviso {
@@ -51,13 +120,27 @@
   color: var(--c-fg-subtle);
 }
 
-/* El aviso de Ley 30 de 1986 es obligación legal: se lee de verdad,
-   no se esconde a opacidad 30 %. */
 .avisoLegal {
   font-size: var(--t-meta);
   line-height: 1.45;
   font-weight: 600;
   color: var(--c-fg-muted);
+}
+
+/* ── Créditos ─────────────────────────────────────────────────── */
+.creditos {
+  font-size: var(--t-badge);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--c-fg-subtle);
+  text-wrap: balance;
+}
+
+.firma {
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  font-size: var(--t-meta);
+  color: var(--c-laton-500);
 }
 
 /* ── Marca de agua del caballo ───────────────────────────────── */

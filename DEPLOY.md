@@ -51,7 +51,7 @@ en producción. Menos de dos minutos de punta a punta.
 - [ ] La vista previa del enlace en WhatsApp muestra `og.jpg` con el lema.
 - [ ] El aviso de la Ley 30 de 1986 está visible en el pie.
 - [ ] La clave del wifi se copia con el botón.
-- [ ] La Ruleta del Arriero aparece al pasar la portada y no repite resultado.
+- [ ] La Ruleta del Azabache aparece al pasar la portada y no repite resultado.
 - [ ] `https://<dominio>/robots.txt` y `/sitemap.xml` responden.
 
 ## Pendiente antes de imprimir el QR

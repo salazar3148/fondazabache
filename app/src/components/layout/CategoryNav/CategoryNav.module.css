@@ -1,10 +1,20 @@
-/* docs/07 §4.2 */
+/**
+ * docs/07 §4.2 · Barra de secciones.
+ *
+ * El comportamiento y el acabado están calcados de la carta de Bello: pastillas
+ * horizontales scrollables, degradado vertical en la barra, filo de acento
+ * abajo que se desvanece a los lados, desvanecido en los extremos de la fila
+ * para insinuar que hay más, y centrado en pantallas anchas. Lo que cambia es
+ * la paleta: madera y brasa en vez de negro y neón rojo.
+ */
 
 .nav {
   position: sticky;
-  top: 0;
+
+  /* Justo debajo del header. Ambos altos son tokens fijos, así que no hace
+     falta medir nada en runtime. */
+  top: calc(var(--header-h) + var(--safe-top));
   z-index: var(--z-sticky);
-  padding-top: var(--safe-top);
 
   /* Degradado de madera semiopaco, SIN blur: backdrop-filter cuesta 4–9 ms
      por frame justo durante el scroll, que es el momento crítico. */
@@ -13,9 +23,27 @@
     color-mix(in oklab, var(--c-madera-800) 96%, transparent),
     color-mix(in oklab, var(--c-madera-900) 92%, transparent)
   );
-  border-bottom: 1px solid var(--c-madera-600);
-  box-shadow: 0 0 0 rgb(14, 11, 8, 0);
+  box-shadow: 0 0 0 rgb(14 11 8 / 0%);
   transition: box-shadow var(--d-fast) var(--e-out);
+}
+
+/* Filo de latón que se apaga en los extremos: el mismo recurso del filete de
+   las cabeceras, no una línea gris apagada. */
+.nav::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(176 141 87 / 55%) 22%,
+    rgb(227 199 126 / 80%) 50%,
+    rgb(176 141 87 / 55%) 78%,
+    transparent
+  );
 }
 
 .despegada {
@@ -27,22 +55,38 @@
   align-items: center;
   gap: var(--sp-2);
   height: var(--nav-h);
+  width: 100%;
+  max-width: var(--contenido-max);
+  margin-inline: auto;
   padding-inline: var(--sp-4);
-  margin: 0;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 
-  /* Desvanecido de 24 px a la derecha: grita "hay más". Junto con el chip
-     cortado a propósito, es el afordance más honesto que existe. */
-
-  /* En una máscara, black/transparent son alfa (opaco/invisible), no color de
+  /* Desvanecido a ambos lados del ancho del gutter: grita "hay más" sin
+     cortar una pastilla legible por la mitad.
+     En una máscara, black/transparent son alfa (opaco/invisible), no color de
      marca: por eso no salen de tokens.css. */
-  mask-image: linear-gradient(90deg, black 0, black calc(100% - 24px), transparent 100%);
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    black var(--sp-4),
+    black calc(100% - var(--sp-4)),
+    transparent 100%
+  );
 }
 
 .pista::-webkit-scrollbar {
   display: none;
 }
+
+/**
+ * NO se centra la fila como en Bello, a propósito. Allá el contenedor es de
+ * 1200px y las pastillas caben; acá la columna es de 480px y seis pastillas en
+ * mayúscula SIEMPRE desbordan. Con `justify-content: center` sobre un flex que
+ * desborda, el primer elemento se sale por el borde de inicio y queda
+ * inalcanzable con el scroll. Alineado al inicio, la primera sección de la
+ * carta es también la primera que se lee.
+ */

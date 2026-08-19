@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import type { ItemConCategoria } from '@/types/menu';
 import { Horseshoe } from '@/components/icons';
 import { cn } from '@/lib/cn';
-import styles from './RuletaArriero.module.css';
+import styles from './RuletaAzabache.module.css';
 
 /** El sheet, vaul y la lógica del sorteo solo bajan al primer toque. */
 const RuletaSheet = dynamic(() => import('./RuletaSheet').then((m) => m.RuletaSheet), {
@@ -13,7 +13,7 @@ const RuletaSheet = dynamic(() => import('./RuletaSheet').then((m) => m.RuletaSh
   loading: () => null,
 });
 
-export interface RuletaArrieroProps {
+export interface RuletaAzabacheProps {
   items: readonly ItemConCategoria[];
   /** id del elemento de portada: el botón aparece cuando deja de verse. */
   portadaId: string;
@@ -31,7 +31,7 @@ const CLAVE_TOOLTIP = 'azabache:ruleta-vista';
  * azabache como amuleto: la casa le echa la suerte. Cuesta ~2 KB que solo se
  * descargan si se usa.
  */
-export function RuletaArriero({ items, portadaId }: RuletaArrieroProps) {
+export function RuletaAzabache({ items, portadaId }: RuletaAzabacheProps) {
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [montado, setMontado] = useState(false);
@@ -45,7 +45,7 @@ export function RuletaArriero({ items, portadaId }: RuletaArrieroProps) {
       // dos lados usan la misma constante PORTADA_ID, así que esto solo pasa
       // si alguien la desconecta.
       if (process.env.NODE_ENV !== 'production') {
-        console.warn(`RuletaArriero: no existe #${portadaId}. El botón no aparecerá.`);
+        console.warn(`RuletaAzabache: no existe #${portadaId}. El botón no aparecerá.`);
       }
       return;
     }

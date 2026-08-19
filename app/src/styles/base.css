@@ -17,8 +17,9 @@ html {
   /* El scroll suave lo maneja el navegador; reduced-motion lo desactiva */
   scroll-behavior: smooth;
 
-  /* Compensa la barra sticky al saltar a un ancla */
-  scroll-padding-top: calc(var(--nav-h) + var(--safe-top) + var(--sp-3));
+  /* Compensa las DOS barras pegajosas al saltar a un ancla: header + barra de
+     secciones. Con una sola el título de la sección quedaba tapado. */
+  scroll-padding-top: calc(var(--barra-h) + var(--safe-top) + var(--sp-3));
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }

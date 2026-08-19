@@ -1,4 +1,11 @@
-/* docs/07 §2.2 · 44 px de alto, área táctil de 48 vía ::after */
+/**
+ * docs/07 §2.2 · Pastilla de sección. 44 px de alto, área táctil de 48 vía ::after.
+ *
+ * Acabado calcado de las pastillas de Bello: relleno propio + borde tenue para
+ * que se lean como objetos sólidos sobre el fondo oscuro, mayúsculas con
+ * interletra amplia, y una sola pastilla con relleno de marca (la activa) para
+ * que el ojo la encuentre de inmediato. La paleta es la nuestra.
+ */
 
 .chip {
   position: relative;
@@ -7,19 +14,22 @@
   height: 44px;
   padding-inline: var(--sp-4);
   border-radius: var(--r-pill);
-  background: var(--c-madera-700);
+  background: color-mix(in oklab, var(--c-madera-700) 70%, transparent);
   border: 1px solid var(--c-madera-500);
   color: var(--c-fg-muted);
   font-size: var(--t-chip);
   font-weight: 600;
-  letter-spacing: 0.03em;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   white-space: nowrap;
   scroll-snap-align: center;
   transition:
     color var(--d-fast) var(--e-out),
     background-color var(--d-fast) var(--e-out),
     border-color var(--d-fast) var(--e-out),
-    box-shadow var(--d-fast) var(--e-out);
+    box-shadow var(--d-base) var(--e-out),
+    translate var(--d-fast) var(--e-out);
 }
 
 /* Amplía el área táctil a 48 sin romper el layout horizontal */
@@ -30,13 +40,58 @@
   border-radius: inherit;
 }
 
-.chip:active {
-  scale: 0.97;
+.chip:hover,
+.chip:focus-visible {
+  color: var(--c-fg);
+  background: color-mix(in oklab, var(--c-candela-500) 12%, var(--c-madera-700));
+  border-color: var(--c-candela-400);
+  translate: 0 -1px;
 }
 
+.chip:active {
+  scale: 0.97;
+  translate: 0 0;
+}
+
+/* Activa: brasa llena. Es el único relleno de marca de la barra. */
 .active {
-  background: color-mix(in oklab, var(--c-candela-500) 18%, var(--c-madera-800));
-  border-color: var(--c-candela-400);
-  color: var(--c-laton-300);
-  box-shadow: var(--sh-ember);
+  background: linear-gradient(180deg, var(--c-candela-400), var(--c-candela-500));
+  border-color: var(--c-candela-300);
+  color: var(--c-azabache);
+  box-shadow:
+    inset 0 1px 0 rgb(246 239 227 / 28%),
+    var(--sh-ember-md);
+}
+
+.active:hover,
+.active:focus-visible {
+  color: var(--c-azabache);
+  background: linear-gradient(180deg, var(--c-candela-300), var(--c-candela-400));
+}
+
+/**
+ * Refuerzo que no depende del color (accesibilidad, docs/02 §7): la activa
+ * lleva además un subrayado. Va en position:absolute a propósito — si ocupara
+ * sitio en el flujo, la pastilla activa crecería y la barra saltaría de alto
+ * cada vez que el scroll-spy cambia de sección.
+ */
+.active::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  bottom: 6px;
+  width: 52%;
+  height: 2px;
+  border-radius: var(--r-pill);
+  background: rgb(14 11 8 / 45%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip:hover,
+  .chip:focus-visible,
+  .chip:active {
+    translate: 0 0;
+    scale: 1;
+  }
 }

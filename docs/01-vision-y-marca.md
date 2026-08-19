@@ -7,7 +7,7 @@ El nombre ya trae el diseño adentro. Solo hay que leerlo bien.
 **Azabache** tiene tres lecturas y las tres son útiles:
 
 1. **La piedra.** Es carbón fósil pulido: **negro con brillo tibio**, no negro plano. Se usa en joyería popular y, sobre todo, es el **amuleto contra el mal de ojo** que en Colombia se le amarra a los recién nacidos. Azabache = protección, cábala, suerte de la casa.
-2. **El caballo.** "Un caballo azabache" es un caballo **negro azabache**, el más lustroso. Conecta directo con el arriero antioqueño y con el pedido de "caballos, levemente".
+2. **El caballo.** "Un caballo azabache" es un caballo **negro azabache**, el más lustroso. Conecta directo con la tradición de montura antioqueña —herradura, latón, aparejo— y con el pedido de "caballos, levemente".
 3. **La superficie.** Negro pulido que refleja la luz de una vela. Eso es literalmente la interfaz que vamos a construir.
 
 **Consecuencia de diseño número uno:** la carta es **oscura**. No es una decisión estética arbitraria, se sostiene sola:
@@ -23,7 +23,9 @@ El nombre ya trae el diseño adentro. Solo hay que leerlo bien.
 
 ## 2. Posicionamiento
 
-Fonda Azabache no es un restaurante temático ni un bar con guitarras colgadas. Es la actualización honesta de la fonda de arriero como sitio de trago: **un lugar de paso que se volvió lugar de encuentro**. Se bebe sin misterio, se pone música que duele y se conversa fuerte.
+Fonda Azabache no es un restaurante temático ni un bar con guitarras colgadas. Es la actualización honesta de la fonda de camino como sitio de trago: **un lugar de paso que se volvió lugar de encuentro**. Se bebe sin misterio, se pone música que duele y se conversa fuerte.
+
+> **Nota de marca.** La palabra *arriero* no se usa en ninguna parte de la carta ni del producto. El caballo sí: es el eje visual entero (herradura, latón de montura, silueta del pie). Lo que se retira es el oficio como etiqueta, no la imagen.
 
 **La carta digital tiene que sentirse como:** una tabla de nogal que alguien marcó con hierro, colgada con herrajes de latón, iluminada por una bombilla amarilla. Impecable, no rústica de mentiras. Bien hecha, como un buen aparejo de montura.
 
@@ -59,7 +61,7 @@ Se compone en tres líneas, quemada, centrada, con la última línea en cursiva 
 **Coplas y remates** — se usan como separadores entre secciones y en el pie. Máximo **tres en toda la carta**, o pierden gracia:
 
 - *"Al que le sirvan poco, que reclame. Al que le duela el pecho, que cante."* → pie de página
-- *"El arriero no llega rápido: llega bien acompañado."* → separador antes de la sección de platos
+- *"Caballo que va sin afán, llega bien acompañado."* → separador a mitad de la carta
 - *"Lo que se pide con hambre, sabe doble."* → separador antes de picadas
 
 **Micro-copys funcionales** (aquí manda la claridad, el chiste es secundario):

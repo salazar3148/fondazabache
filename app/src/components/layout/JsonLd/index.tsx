@@ -17,15 +17,17 @@ export function JsonLd() {
     description: site.bajada,
     url: site.url,
     image: `${site.url}/brand/og.jpg`,
-    telephone: site.contacto.telefono,
+    telephone: site.social.whatsapp.telefono,
+    sameAs: [site.social.instagram.url],
     servesCuisine: 'Licores y bebidas',
     priceRange: '$$',
+    // Sin `streetAddress`: la carta ya no publica la dirección del local. Se
+    // deja la ciudad para que Google siga entendiendo dónde queda el negocio.
     address: {
       '@type': 'PostalAddress',
-      streetAddress: site.contacto.direccion,
-      addressLocality: 'Medellín',
-      addressRegion: 'Antioquia',
-      addressCountry: 'CO',
+      addressLocality: site.ciudad,
+      addressRegion: site.region,
+      addressCountry: site.pais,
     },
     hasMenu: {
       '@type': 'Menu',

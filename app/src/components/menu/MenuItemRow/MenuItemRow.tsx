@@ -10,7 +10,7 @@ export interface MenuItemRowProps {
   item: MenuItem;
   /** Productos de `vaBienCon` ya resueltos, con la sección a la que saltan. */
   relacionados?: Array<{ item: MenuItem; categoriaId: string }> | undefined;
-  /** Resalta la fila. Se usa como resultado de la Ruleta del Arriero. */
+  /** Resalta la fila. Se usa como resultado de la Ruleta del Azabache. */
   destacado?: boolean | undefined;
   className?: string | undefined;
 }

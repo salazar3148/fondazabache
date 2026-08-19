@@ -1,0 +1,29 @@
+/**
+ * Solo geometría y tipografía: el color del wordmark vive en el <defs> del
+ * propio SVG (ver Wordmark.tsx).
+ */
+
+.wordmark {
+  /* Por defecto llena el hueco que le den y nunca pasa de 300px, que es el
+     ancho del viewBox: así el letrero no se sale del marco de la tabla en un
+     teléfono angosto. --wordmark-w es para quien necesite fijarlo (el pie). */
+  width: var(--wordmark-w, 100%);
+  max-width: 300px;
+  height: auto;
+
+  /* La sombra proyectada del letrero sobre la tabla */
+  filter: drop-shadow(0 14px 22px rgb(14 11 8 / 55%));
+}
+
+/* La familia va por CSS y no por atributo: `font-family="var(--…)"` como
+   atributo de presentación funciona, pero se pierde si el SVG se sirve suelto
+   o se copia a otra parte. Así el letrero nunca cae a la serif del sistema
+   mientras Fraunces carga. */
+.linea {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variation-settings:
+    'SOFT' 30,
+    'WONK' 1,
+    'opsz' 72;
+}

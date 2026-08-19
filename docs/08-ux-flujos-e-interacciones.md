@@ -187,7 +187,7 @@ Solo en productos con `relato`. Son **4 de 26**. Que la mayoría de las filas no
 
 ---
 
-## 6. La Ruleta del Arriero
+## 6. La Ruleta del Azabache
 
 La idea que propongo como diferenciador. Vale la pena explicar el razonamiento porque es lo único que no es "una carta bien hecha".
 

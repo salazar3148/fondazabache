@@ -1,0 +1,22 @@
+.pista {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: var(--z-progress);
+  height: 3px;
+  pointer-events: none;
+}
+
+.barra {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+
+  /* El valor real lo escribe el componente en cada frame; este es el estado
+     inicial (nada recorrido). */
+  scale: 0 1;
+  background: linear-gradient(90deg, var(--c-candela-500), var(--c-candela-300));
+  box-shadow: var(--sh-ember);
+  will-change: scale;
+}

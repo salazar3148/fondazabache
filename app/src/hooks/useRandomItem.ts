@@ -8,7 +8,7 @@ const PASOS = 7;
 const PASO_MS = 90;
 
 /**
- * docs/07 §7.4 y docs/08 §6.3 · Toda la lógica de la Ruleta del Arriero.
+ * docs/07 §7.4 y docs/08 §6.3 · Toda la lógica de la Ruleta del Azabache.
  *
  * Dos reglas que sostienen la magia:
  *   · nunca elige un producto agotado;

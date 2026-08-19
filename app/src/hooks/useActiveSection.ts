@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { NAV_HEIGHT_PX } from '@/lib/constants';
+import { BARRA_HEIGHT_PX } from '@/lib/constants';
 
 /**
  * docs/07 §7.1 · Un único IntersectionObserver para todas las secciones.
@@ -26,7 +26,7 @@ export function useActiveSection(ids: readonly string[]): string | null {
       getComputedStyle(document.documentElement).getPropertyValue('--safe-top') || '0',
       10,
     );
-    const top = NAV_HEIGHT_PX + (Number.isNaN(safeTop) ? 0 : safeTop) + 12;
+    const top = BARRA_HEIGHT_PX + (Number.isNaN(safeTop) ? 0 : safeTop) + 12;
 
     const visibles = new Set<string>();
 

@@ -1,5 +1,15 @@
+/** Alto del header pegajoso. Debe coincidir con --header-h de tokens.css. */
+export const HEADER_HEIGHT_PX = 56;
+
 /** Alto de la barra sticky de categorías. Debe coincidir con --nav-h. */
 export const NAV_HEIGHT_PX = 56;
+
+/**
+ * Lo que tapan las dos barras juntas. Es el offset que necesita el scroll-spy
+ * para no activar una sección que en realidad está detrás del header.
+ * Equivale a --barra-h.
+ */
+export const BARRA_HEIGHT_PX = HEADER_HEIGHT_PX + NAV_HEIGHT_PX;
 
 /** Ancla de la sección principal de la carta. */
 export const CARTA_ID = 'carta';

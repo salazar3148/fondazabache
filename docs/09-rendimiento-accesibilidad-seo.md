@@ -24,7 +24,7 @@ intuición:
 
 - **No es código nuestro.** Los tres componentes cliente (`CategoryNav`,
   `Reveal`, `CopyButton`) suman poco más de 2 KB. Añadir toda la Fase 5 (sheet
-  sobre vaul + Ruleta del Arriero) subió el bundle inicial de 170.7 a 173.5 KB:
+  sobre vaul + Ruleta del Azabache) subió el bundle inicial de 170.7 a 173.5 KB:
   2.8 KB. La carga diferida funciona.
 - **No es `vaul` ni Radix filtrándose.** Se verificó buscando `DismissableLayer`,
   `FocusScope`, `react-remove-scroll` y `vaul` en los 7 chunks iniciales:

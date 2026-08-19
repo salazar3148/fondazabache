@@ -72,7 +72,7 @@ CONCEPTO
 ════════════════════════════════════════════════════════════════
 
 "Azabache" es la piedra negra amuleto contra el mal de ojo, y también el nombre del
-caballo negro lustroso del arriero. De ahí sale todo: negro brillante, calor de brasa,
+caballo negro lustroso de montura. De ahí sale todo: negro brillante, calor de brasa,
 latón de montura, madera de nogal.
 
 Lema: "Aquí se bebe bueno, se canta duro y se sufre bonito."
@@ -249,12 +249,12 @@ Reglas de estructura:
 · 'use client' va en el componente MÁS PROFUNDO que lo necesite, nunca en un contenedor.
 · export nombrado siempre. Nunca export default (salvo lo que Next exige).
 · Máximo 120 líneas por componente.
-· Nombres: código y props en inglés; dominio y contenido en español (RuletaArriero,
+· Nombres: código y props en inglés; dominio y contenido en español (RuletaAzabache,
   Cancionero, item.disponible, ids de sección en kebab-case español).
 
 Componentes cliente permitidos, SOLO estos cinco:
   primitives/Sheet · layout/CategoryNav · layout/Reveal · menu/ItemSheet ·
-  features/RuletaArriero
+  features/RuletaAzabache
 (más un CopyButton diminuto para la clave del wifi)
 Todo lo demás es Server Component: 0 KB de JS.
 
@@ -424,7 +424,7 @@ BOTTOM SHEET (vaul, next/dynamic ssr:false, ~7 KB solo tras la primera interacci
   NO hay carrito ni "agregar al pedido": la carta informa, el mesero atiende.
   Meter un pedido falso sería mentirle al usuario.
 
-LA RULETA DEL ARRIERO (la idea diferenciadora, ~2 KB, lazy)
+LA RULETA DEL AZABACHE (la idea diferenciadora, ~2 KB, lazy)
   Por qué existe: a las dos horas en una fonda el problema no es no saber qué hay, es
   no poder decidir. Y "azabache" es amuleto: la casa le echa la suerte.
   Botón flotante de 56 px con herradura de latón, abajo a la derecha + safe-area.

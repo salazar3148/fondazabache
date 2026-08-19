@@ -1,0 +1,53 @@
+/**
+ * Base de la pila de flotantes: este va abajo (es la acción de negocio) y la
+ * Ruleta se apila encima leyendo --fab-size y --fab-gap de tokens.css.
+ */
+
+.fab {
+  position: fixed;
+  right: var(--sp-4);
+  bottom: calc(var(--sp-4) + var(--safe-bottom));
+  z-index: var(--z-fab);
+  display: grid;
+  place-items: center;
+  width: var(--fab-size);
+  height: var(--fab-size);
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--c-candela-400), var(--c-candela-500));
+  border: 1px solid var(--c-candela-300);
+  color: var(--c-azabache);
+  box-shadow:
+    inset 0 1px 0 rgb(246 239 227 / 28%),
+    var(--sh-ember-md);
+  opacity: 0;
+  scale: 0.7;
+  translate: 0 10px;
+  pointer-events: none;
+  transition:
+    opacity var(--d-base) var(--e-out),
+    scale var(--d-base) var(--e-spring),
+    translate var(--d-base) var(--e-out),
+    box-shadow var(--d-base) var(--e-out);
+}
+
+.visible {
+  opacity: 1;
+  scale: 1;
+  translate: 0 0;
+  pointer-events: auto;
+}
+
+.fab:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(246 239 227 / 28%),
+    var(--sh-ember-lg);
+}
+
+.fab:active {
+  scale: 0.94;
+}
+
+.icono {
+  width: 28px;
+  height: 28px;
+}

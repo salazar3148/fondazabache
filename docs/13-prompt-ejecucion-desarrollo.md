@@ -47,7 +47,7 @@ A partir de ahí, sigue las fases EN ORDEN:
 - Fase 4: falta CategoryNav (barra sticky con detección de sección activa),
   Reveal, Footer con InfoFonda y el wifi copiable, y el aviso legal de la
   Ley 30 de 1986 (OBLIGATORIO, no lo omitas).
-- Fase 5: el bottom sheet (vaul) y la Ruleta del Arriero no existen todavía.
+- Fase 5: el bottom sheet (vaul) y la Ruleta del Azabache no existen todavía.
   Antes de construir la Ruleta, revisa qué productos del catálogo real
   tienen sentido con un `relato` (máximo 8 en toda la carta, ver docs/06 §1)
   y agrégaselos tú mismo con textos breves y coherentes con la voz de marca
@@ -104,7 +104,7 @@ Si tienes acceso a los archivos del proyecto, revisa primero:
 - app/src/components/ (los componentes ya construidos)
 
 Luego dime en qué fase seguir: validación de contenido con Zod, barra de
-navegación sticky, bottom sheet de producto, Ruleta del Arriero, o
+navegación sticky, bottom sheet de producto, Ruleta del Azabache, o
 rendimiento/accesibilidad. Empieza preguntándome cuál priorizo si no es obvio
 por el estado del código.
 ```

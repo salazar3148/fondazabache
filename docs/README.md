@@ -37,7 +37,7 @@ Los documentos están numerados en el orden en que conviene leerlos. Los `01`–
 | [`05-estructura-y-convenciones.md`](./05-estructura-y-convenciones.md) | Árbol de carpetas, naming, reglas de CSS vs Tailwind, patrones de componente | Front |
 | [`06-modelo-de-datos-y-contenido.md`](./06-modelo-de-datos-y-contenido.md) | Tipos, validación Zod, **el mock completo de la carta** | Front + Negocio |
 | [`07-catalogo-de-componentes.md`](./07-catalogo-de-componentes.md) | API de cada componente, props, estados, ejemplos | Front |
-| [`08-ux-flujos-e-interacciones.md`](./08-ux-flujos-e-interacciones.md) | Wireframes, navegación sticky, bottom sheet, La Ruleta del Arriero, specs de motion | Diseño + Front |
+| [`08-ux-flujos-e-interacciones.md`](./08-ux-flujos-e-interacciones.md) | Wireframes, navegación sticky, bottom sheet, La Ruleta del Azabache, specs de motion | Diseño + Front |
 | [`09-rendimiento-accesibilidad-seo.md`](./09-rendimiento-accesibilidad-seo.md) | Presupuestos con cifras, técnicas, checklist WCAG, metadata y QR | Front |
 | [`10-roadmap-y-tareas.md`](./10-roadmap-y-tareas.md) | 8 fases con tareas marcables y criterios de aceptación | Todos |
 | [`11-qa-checklist-y-deploy.md`](./11-qa-checklist-y-deploy.md) | QA en dispositivo real, deploy estático, generación del QR | Front + Ops |
@@ -49,7 +49,7 @@ Los documentos están numerados en el orden en que conviene leerlos. Los `01`–
 
 Para quien solo lee esta página:
 
-**Concepto.** *Azabache* es la piedra negra que se le pone a los recién nacidos contra el mal de ojo, y es también el nombre del caballo negro brillante del arriero. Esa doble lectura —**amuleto** y **caballo**— es toda la marca: negro lustroso, calor de brasa, latón de montura. Por eso la interfaz es **oscura**, no clara: la fonda se vive de noche, con luz tibia, y una pantalla oscura no encandila ni se pelea con el ambiente.
+**Concepto.** *Azabache* es la piedra negra que se le pone a los recién nacidos contra el mal de ojo, y es también el nombre del caballo negro brillante de montura. Esa doble lectura —**amuleto** y **caballo**— es toda la marca: negro lustroso, calor de brasa, latón de montura. Por eso la interfaz es **oscura**, no clara: la fonda se vive de noche, con luz tibia, y una pantalla oscura no encandila ni se pelea con el ambiente.
 
 **Paleta.** *Azabache & Candela*: nogal quemado casi negro de fondo, tabla de nogal medio para las superficies, **hueso** para el texto (15.7:1 de contraste), **latón** para lo decorativo y **candela** (naranja brasa) para lo que hay que mirar. Nada de saturaciones chillonas. Detalle completo en [`02`](./02-sistema-de-diseno.md#2-paleta-azabache--candela).
 
@@ -63,7 +63,7 @@ Para quien solo lee esta página:
 
 **Stack.** Next.js 16.3 (App Router) con `output: 'export'` → sitio 100 % estático en CDN, TTFB casi nulo, deploy en cualquier parte. React 19, TypeScript strict, Tailwind v4.3 para layout y espaciado, **CSS Modules para las texturas y efectos** (así el CSS complejo queda separado y versionado, no en clases mágicas). Contenido en módulos TS tipados y validados con Zod en `prebuild`. Justificación y alternativas descartadas en [`04`](./04-arquitectura-tecnica.md#3-decisiones-de-arquitectura-adr).
 
-**La idea que suma valor de verdad.** *La Ruleta del Arriero*: un botón discreto para el que no sabe qué pedir (o ya no está en condiciones de decidir). Elige un plato o trago al azar y lo presenta con un sello de cera: **"El azabache eligió"**. Cuesta ~2 KB de JS y es el detalle que la gente le muestra al de al lado. Spec en [`08`](./08-ux-flujos-e-interacciones.md#6-la-ruleta-del-arriero).
+**La idea que suma valor de verdad.** *La Ruleta del Azabache*: un botón discreto para el que no sabe qué pedir (o ya no está en condiciones de decidir). Elige un plato o trago al azar y lo presenta con un sello de cera: **"El azabache eligió"**. Cuesta ~2 KB de JS y es el detalle que la gente le muestra al de al lado. Spec en [`08`](./08-ux-flujos-e-interacciones.md#6-la-ruleta-del-azabache).
 
 **El segundo detalle con alma.** *El Cancionero de la Casa*: la lista de los clásicos que suenan y se pueden pedir. Darío Gómez, Óscar Agudelo, Las Hermanitas Calle. Es una lista de texto, pesa nada, y es exactamente el "se canta duro y se sufre bonito".
 
@@ -97,7 +97,7 @@ Términos que aparecen en el código y en los docs. Se usan tal cual en nombres 
 | **Remache** (`stud`) | Punto de latón en las esquinas de un marco |
 | **Herradura** (`horseshoe`) | Separador decorativo entre bloques |
 | **Sello** (`sello`) | Estampa/lacre para destacados ("De la casa", "La favorita") |
-| **Ruleta** | La Ruleta del Arriero, selector aleatorio |
+| **Ruleta** | La Ruleta del Azabache, selector aleatorio |
 | **Cancionero** | Lista de canciones de la casa |
 
 ---

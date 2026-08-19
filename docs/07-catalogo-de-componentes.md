@@ -30,7 +30,7 @@ Leyenda: **RSC** = Server Component (0 KB de JS) · **CLI** = Client Component
 [`PriceTag`](#53-pricetag) | RSC | menu |
 [`ItemBadges`](#54-itembadges) | RSC | menu |
 [`ItemSheet`](#55-itemsheet) | **CLI** lazy | menu |
-[`RuletaArriero`](#61-ruletaarriero) | **CLI** lazy | features |
+[`RuletaAzabache`](#61-ruletaazabache) | **CLI** lazy | features |
 [`Cancionero`](#62-cancionero) | RSC | features |
 [`InfoFonda`](#63-infofonda) | RSC | features |
 
@@ -440,12 +440,12 @@ Los relacionados **navegan a su sección** (`href="#bien-fria"`) y cierran el sh
 
 ## 6. Features
 
-### 6.1 `RuletaArriero` — **CLI, lazy**
+### 6.1 `RuletaAzabache` — **CLI, lazy**
 
 La idea que más valor aporta por byte invertido.
 
 ```ts
-interface RuletaArrieroProps {
+interface RuletaAzabacheProps {
   items: ItemConCategoria[];
 }
 ```
@@ -568,7 +568,7 @@ export default function CartaPage() {
       </main>
 
       <Footer />
-      <RuletaArriero items={todosLosItems} />
+      <RuletaAzabache items={todosLosItems} />
     </>
   );
 }

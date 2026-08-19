@@ -71,7 +71,7 @@ pnpm create next-app@latest fonda-azabache \
 | `WoodBackdrop`, `BurntTitle`, `MenuItemRow`, `CategorySection`, `Hero`, `Footer` | ❌ RSC | 0 KB |
 | `CategoryNav` (IntersectionObserver) | ✅ | ~1.5 KB |
 | `ItemSheet` (vaul) | ✅ lazy | ~7 KB, tras la primera interacción |
-| `RuletaArriero` | ✅ lazy | ~2 KB, tras la primera interacción |
+| `RuletaAzabache` | ✅ lazy | ~2 KB, tras la primera interacción |
 | React + runtime de Next | | ~62 KB |
 | **Total inicial** | | **≈ 66 KB gz** |
 

@@ -57,7 +57,7 @@ export interface MenuCategory {
 
 export type Menu = MenuCategory[];
 
-/** Producto enriquecido con su categoría. Lo usa la Ruleta del Arriero. */
+/** Producto enriquecido con su categoría. Lo usa la Ruleta del Azabache. */
 export interface ItemConCategoria extends MenuItem {
   categoriaId: string;
   categoriaTitulo: string;

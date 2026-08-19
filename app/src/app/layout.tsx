@@ -11,7 +11,7 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: `${site.nombre} · Carta`,
-  description: `${site.lema.join(' ')} Carta de licores de la ${site.nombre}, en Medellín.`,
+  description: `${site.lema.join(' ')} Carta de licores de la ${site.nombre}, en ${site.ciudad}.`,
   applicationName: site.nombre,
   alternates: { canonical: '/' },
   openGraph: {

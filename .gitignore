@@ -30,3 +30,7 @@ test-results/
 
 # Netlify CLI
 .netlify/
+
+# Proyectos de referencia (no forman parte de este repo)
+Bello/
+fonda/

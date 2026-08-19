@@ -1,10 +1,10 @@
 /* docs/07 §5.1 */
 
 .section {
-  /* Que el ancla no quede debajo de la barra sticky. Va aquí ADEMÁS del
+  /* Que el ancla no quede debajo de las barras pegajosas. Va aquí ADEMÁS del
      scroll-padding-top de html: el navegador usa uno u otro según cómo se
      dispare el scroll. */
-  scroll-margin-top: calc(var(--nav-h) + var(--safe-top) + var(--sp-4));
+  scroll-margin-top: calc(var(--barra-h) + var(--safe-top) + var(--sp-4));
   padding-top: var(--sp-8);
 }
 

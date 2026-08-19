@@ -1,14 +1,20 @@
 /* docs/07 §6.1 · Botón flotante y contenido del sheet de la Ruleta */
 
+/**
+ * La pila de botones flotantes se ordena de abajo hacia arriba por prioridad
+ * de negocio: WhatsApp abajo (lo que da plata) y la Ruleta encima. Las dos
+ * alturas viven en --fab-size / --fab-gap de tokens.css para que ninguna de
+ * las dos tenga que adivinar el alto de la otra.
+ */
 .fab {
   position: fixed;
   right: var(--sp-4);
-  bottom: calc(var(--sp-4) + var(--safe-bottom));
+  bottom: calc(var(--sp-4) + var(--safe-bottom) + var(--fab-size) + var(--fab-gap));
   z-index: var(--z-fab);
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: var(--c-madera-700);
   border: 1px solid var(--c-laton-500);
@@ -20,7 +26,8 @@
   transition:
     opacity var(--d-base) var(--e-out),
     translate var(--d-base) var(--e-out),
-    scale var(--d-instant) var(--e-out);
+    scale var(--d-instant) var(--e-out),
+    box-shadow var(--d-base) var(--e-out);
 }
 
 /* Solo aparece después de que el usuario pasa la portada: en la primera
@@ -31,20 +38,24 @@
   pointer-events: auto;
 }
 
+.fab:hover {
+  box-shadow: var(--sh-raised), var(--sh-ember);
+}
+
 .fab:active {
   scale: 0.94;
 }
 
 .fabIcono {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
 }
 
 /* Tooltip-chip de primera vez. Se muestra una sola vez por sesión. */
 .tooltip {
   position: fixed;
-  right: calc(var(--sp-4) + 64px);
-  bottom: calc(var(--sp-4) + var(--safe-bottom) + 14px);
+  right: calc(var(--sp-4) + 60px);
+  bottom: calc(var(--sp-4) + var(--safe-bottom) + var(--fab-size) + var(--fab-gap) + 12px);
   z-index: var(--z-fab);
   padding: var(--sp-2) var(--sp-3);
   border-radius: var(--r-pill);

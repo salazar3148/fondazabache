@@ -17,6 +17,25 @@
   }
 }
 
+/* 1b · El chevron de la pista de scroll cabecea.
+       Séptima animación del inventario. Se justifica: es el único afordance
+       que dice "esto sigue hacia abajo" en una portada que ocupa la pantalla
+       completa, y sin él la carta parece terminar en el lema. Es un elemento
+       de 20 px, solo `translate` (compositor), y muere al salir del viewport
+       porque la portada deja de estar en pantalla. */
+@keyframes cabecear {
+  0%,
+  100% {
+    translate: 0 0;
+    opacity: 0.5;
+  }
+
+  50% {
+    translate: 0 5px;
+    opacity: 1;
+  }
+}
+
 /* 2 · Revelado de cabeceras de sección */
 @keyframes revelar {
   from {
@@ -100,6 +119,13 @@
   animation: mecer-letrero 7s var(--e-inout) infinite alternate;
   transform-origin: top center;
   will-change: rotate;
+}
+
+/* Chevron de la pista de scroll. Global por el mismo motivo que `.letrero`:
+   un CSS Module no puede referenciar un @keyframes global. Sin will-change:
+   es un translate de 5 px sobre un icono diminuto. */
+.flotar {
+  animation: cabecear 2.4s var(--e-inout) infinite;
 }
 
 /* ── Regla de oro innegociable (docs/02 §7) ─────────────────── */

@@ -11,7 +11,7 @@
 > | 2 · Texturas | **Hecha** en código: `WoodBackdrop`, `FilmGrain`, `BurntTitle` (con su `@supports`), `PlankFrame` + remaches, `HorseshoeRule`, `Sello`, iconos. Falta la verificación en dispositivo real. El tile de veta es un SVG servido como archivo, precargado; pasarlo a AVIF sigue pendiente. |
 > | 3 · Contenido y validación | **Hecha.** Catálogo real de `carta`: **6 secciones, 46 productos**, con los nombres tal cual la carta física. Esquema Zod + `scripts/validate-content.ts` con 4 invariantes, conectado a `prebuild`. Faltan los tests unitarios. |
 > | 4 · La carta | **Hecha.** `Hero`, `CategoryNav` (sticky + sección activa + centrado manual del chip), `Reveal`, `CategorySection`, `MenuItemRow`, `PriceTag`, `ItemBadges`, `Footer`, `InfoFonda`, `Cancionero`, `CopyButton`, `JsonLd`, `not-found`. |
-> | 5 · Sheet y Ruleta | **Hecha.** `Sheet` (vaul), `ItemSheetTrigger` + `ItemSheetContent` con carga diferida, `RuletaArriero` con FAB que aparece al pasar la portada, tooltip de primera vez en `sessionStorage`, barajeo de 7 pasos, `Sello`, destello de brasa, resaltado de 3 s al volver a la carta, `useRandomItem`, `useHaptics`. Verificado: nada de esto entra en el bundle inicial. |
+> | 5 · Sheet y Ruleta | **Hecha.** `Sheet` (vaul), `ItemSheetTrigger` + `ItemSheetContent` con carga diferida, `RuletaAzabache` con FAB que aparece al pasar la portada, tooltip de primera vez en `sessionStorage`, barajeo de 7 pasos, `Sello`, destello de brasa, resaltado de 3 s al volver a la carta, `useRandomItem`, `useHaptics`. Verificado: nada de esto entra en el bundle inicial. |
 > | 6 · Rendimiento y a11y | **Parcial.** Hechos: `pnpm budget`, metadata completa, `og.jpg`, `icon.svg`, `apple-icon.png`, manifest, `robots.txt`, `sitemap.xml`, JSON-LD, preload del tile. Pendientes: `pnpm analyze`, Lighthouse CI, axe, calibrar `contain-intrinsic-size`, medición en dispositivo real. |
 > | 7 · QA y lanzamiento | **Parcial.** `netlify.toml` + `DEPLOY.md` listos. Faltan el QR, los tests E2E y el QA en dispositivos. |
 >
@@ -150,7 +150,7 @@ Estimación total para una persona: **5 a 7 días de trabajo enfocado.**
 - [ ] Conectar el sheet solo en las filas con `relato` (4 de 26)
 - [ ] `hooks/useRandomItem` + `tests/unit/ruleta.test.ts`
 - [ ] `hooks/useHaptics`
-- [ ] `features/RuletaArriero`: botón flotante, aparición tras el hero, barajeo, sello, resultado, "Otra vez", "Ver en la carta"
+- [ ] `features/RuletaAzabache`: botón flotante, aparición tras el hero, barajeo, sello, resultado, "Otra vez", "Ver en la carta"
 - [ ] Resaltado temporal de 3 s en la fila al llegar desde la Ruleta
 - [ ] Tooltip-chip de primera vez, con `sessionStorage`
 - [ ] `aria-live="polite"` en el resultado, `aria-hidden` durante el barajeo

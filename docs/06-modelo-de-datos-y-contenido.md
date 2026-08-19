@@ -545,7 +545,7 @@ export const menu: Menu = [
   paLaSed,
 ];
 
-/** Todos los productos en un solo arreglo. Lo usa la Ruleta del Arriero. */
+/** Todos los productos en un solo arreglo. Lo usa la Ruleta del Azabache. */
 export const todosLosItems = menu.flatMap((c) =>
   c.items
     .filter((i) => i.disponible !== false)
@@ -570,7 +570,7 @@ export const site = {
   bajada: 'Trago derecho, cerveza bien fría y música de la que duele. Bienvenido a la mesa.',
 
   coplas: {
-    antesDeCocteles: 'El arriero no llega rápido: llega bien acompañado.',
+    antesDeCocteles: 'Caballo que va sin afán, llega bien acompañado.',
     pie: 'Al que le sirvan poco, que reclame. Al que le duela el pecho, que cante.',
   },
 
