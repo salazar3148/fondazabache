@@ -5,6 +5,9 @@ import type { MenuCategory } from '@/types/menu';
  *
  * "Tequila Jugador" era una mala lectura de la carta manuscrita: la marca es
  * El Jimador (tequila 100 % agave de la casa Herradura). Corregido nombre e id.
+ *
+ * `volumen` usa 45 ml: la medida estándar de un trago de licor destilado en
+ * Colombia (docs/13, pendiente #3).
  */
 export const tragos: MenuCategory = {
   id: 'tragos',
@@ -18,6 +21,7 @@ export const tragos: MenuCategory = {
       id: 'trago-aguardiente',
       nombre: 'Aguardiente',
       descripcion: 'Servido derecho, con el limón al lado.',
+      volumen: 'Trago · 45 ml',
       precio: 5_000,
       etiquetas: ['favorita'],
       relato:
@@ -27,12 +31,14 @@ export const tragos: MenuCategory = {
       id: 'trago-ron',
       nombre: 'Ron',
       descripcion: 'Con hielo o con soda. Como usted diga.',
+      volumen: 'Trago · 45 ml',
       precio: 5_000,
     },
     {
       id: 'trago-tequila-jose-cuervo',
       nombre: 'Tequila José Cuervo',
       descripcion: 'Con sal y limón.',
+      volumen: 'Trago · 45 ml',
       precio: 10_000,
       etiquetas: ['fuerte'],
     },
@@ -40,12 +46,14 @@ export const tragos: MenuCategory = {
       id: 'trago-whisky',
       nombre: 'Whisky',
       descripcion: 'En las rocas, para el que no está de afán.',
+      volumen: 'Trago · 45 ml',
       precio: 10_000,
     },
     {
       id: 'trago-tequila-el-jimador',
       nombre: 'Tequila El Jimador',
       descripcion: 'Cien por ciento agave. El que sabe, lo pide derecho.',
+      volumen: 'Trago · 45 ml',
       precio: 15_000,
       etiquetas: ['fuerte'],
     },

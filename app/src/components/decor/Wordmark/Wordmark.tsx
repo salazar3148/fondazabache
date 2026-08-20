@@ -44,19 +44,26 @@ export function Wordmark({ uid = 'wordmark', decorative = false, className }: Wo
   return (
     <svg viewBox="0 0 300 120" className={cn(styles.wordmark, className)} {...semantica}>
       <defs>
-        {/* La fibra tostada: hueso arriba (recibe luz) y cuero abajo (quemó más) */}
+        {/*
+         * La fibra tostada: hueso arriba (recibe luz) y cuero abajo (quemó
+         * más). Mismos tonos aclarados que BurntTitle.module.css: el cuero
+         * original (#8a5a2c) se fundía con la tabla de fondo y el letrero
+         * costaba leerlo.
+         */}
         <linearGradient id={burnId} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#f7e8cd" />
-          <stop offset="38%" stopColor="#e6c793" />
-          <stop offset="72%" stopColor="#c08c4d" />
-          <stop offset="100%" stopColor="#8a5a2c" />
+          <stop offset="0%" stopColor="#fbf1de" />
+          <stop offset="34%" stopColor="#f0d6a0" />
+          <stop offset="66%" stopColor="#dcae6c" />
+          <stop offset="100%" stopColor="#b3814a" />
         </linearGradient>
 
-        {/* Chispa de luz, penumbra cálida y rescoldo naranja alrededor */}
+        {/* Chispa de luz, penumbra cálida y rescoldo naranja alrededor. El
+            rescoldo sube de opacidad junto con BurntTitle: separa el trazo de
+            la tabla oscura y ayuda a leer el letrero. */}
         <filter id={emberId} x="-40%" y="-40%" width="180%" height="180%">
-          <feDropShadow dx="0" dy="1" stdDeviation="0" floodColor="#f6efe3" floodOpacity="0.12" />
+          <feDropShadow dx="0" dy="1" stdDeviation="0" floodColor="#f6efe3" floodOpacity="0.18" />
           <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#0e0b08" floodOpacity="0.85" />
-          <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="#e0752f" floodOpacity="0.35" />
+          <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="#e0752f" floodOpacity="0.46" />
         </filter>
       </defs>
 
