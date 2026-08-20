@@ -14,8 +14,15 @@ import { PRECIO_SIN_CONFIRMAR } from '@/lib/constants';
  * aclaración de botella contra copa la resolvía mejor la propia sección de
  * tragos.
  *
- * `volumen` va en mililitros, con la presentación de fábrica estándar en
- * Colombia para cada botella (docs/13, pendiente #3).
+ * `descripciones: false`: esta sección no muestra `descripcion` en la fila
+ * (solo cerveza la muestra). El dato sigue viviendo aquí para la Ruleta.
+ *
+ * Sin `volumen` (ml de fábrica) y sin `compartir`: todo aquí se vende por
+ * botella única, no hay tamaño ni "para compartir" que elegir.
+ *
+ * Orden dentro de cada tipo: el más accesible primero, el más premium
+ * después — así el segundo funciona como ancla de precio que hace ver bien
+ * el primero, y como upsell para quien ya decidió el tipo de licor.
  *
  * Cinco precios sin confirmar: se muestran como "Pregunte".
  */
@@ -25,54 +32,43 @@ export const deFuera: MenuCategory = {
   subtitulo: 'Vodka, tequila y whisky',
   chip: 'De fuera',
   licor: true,
+  descripciones: false,
   items: [
     {
       id: 'smirnoff-de-lulo',
       nombre: 'Smirnoff de lulo',
       descripcion: 'Lulo de verdad. Con soda, con jugo o solo con hielo.',
-      volumen: '750 ml',
       precio: 90_000,
-      etiquetas: ['compartir'],
-    },
-    {
-      id: 'tequila-1800-reposado',
-      nombre: '1800 Reposado',
-      descripcion: 'Reposado en barrica de roble. Sal, limón y decisión.',
-      volumen: '700 ml',
-      precio: PRECIO_SIN_CONFIRMAR,
-      etiquetas: ['fuerte'],
     },
     {
       id: 'tequila-jose-cuervo',
       nombre: 'José Cuervo',
       descripcion: 'El que todo el mundo conoce. Con sal y limón.',
-      volumen: '700 ml',
       precio: PRECIO_SIN_CONFIRMAR,
-      etiquetas: ['fuerte'],
+    },
+    {
+      id: 'tequila-1800-reposado',
+      nombre: '1800 Reposado',
+      descripcion: 'Reposado en barrica de roble. Sal, limón y decisión.',
+      precio: PRECIO_SIN_CONFIRMAR,
     },
     {
       id: 'whisky-old-parr',
       nombre: 'Old Parr',
       descripcion: 'Escocés de mezcla, suave y sin filo. Con hielo.',
-      volumen: '750 ml',
       precio: PRECIO_SIN_CONFIRMAR,
-      etiquetas: ['compartir'],
     },
     {
       id: 'whisky-buchanans-12',
       nombre: "Buchanan's 12",
       descripcion: 'Doce años. La botella que se pone en el centro.',
-      volumen: '750 ml',
       precio: PRECIO_SIN_CONFIRMAR,
-      etiquetas: ['compartir'],
     },
     {
       id: 'jagermeister',
       nombre: 'Jägermeister',
       descripcion: 'Cincuenta y seis hierbas. Bien frío, de un solo golpe.',
-      volumen: '700 ml',
       precio: PRECIO_SIN_CONFIRMAR,
-      etiquetas: ['fuerte'],
     },
   ],
 };

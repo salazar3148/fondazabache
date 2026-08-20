@@ -6,8 +6,14 @@ import type { MenuCategory } from '@/types/menu';
  * "Tequila Jugador" era una mala lectura de la carta manuscrita: la marca es
  * El Jimador (tequila 100 % agave de la casa Herradura). Corregido nombre e id.
  *
- * `volumen` usa 45 ml: la medida estándar de un trago de licor destilado en
- * Colombia (docs/13, pendiente #3).
+ * `descripciones: false`: esta sección no muestra `descripcion` en la fila
+ * (solo cerveza la muestra). El dato sigue viviendo aquí para la Ruleta.
+ *
+ * Sin `volumen` (los 45 ml de fábrica) y sin `fuerte` ("Cargado"): son datos
+ * de letra pequeña que no cambian la decisión de pedir un trago por copa.
+ *
+ * Orden: la favorita primero, y de ahí en adelante de menor a mayor precio —
+ * ancla con la opción más querida y sube de a poco, sin saltos que espanten.
  */
 export const tragos: MenuCategory = {
   id: 'tragos',
@@ -16,46 +22,38 @@ export const tragos: MenuCategory = {
   chip: 'Tragos',
   nota: 'Servido en el momento, sin comprar botella.',
   licor: true,
+  descripciones: false,
   items: [
     {
       id: 'trago-aguardiente',
       nombre: 'Aguardiente',
       descripcion: 'Servido derecho, con el limón al lado.',
-      volumen: 'Trago · 45 ml',
       precio: 5_000,
       etiquetas: ['favorita'],
-      relato:
-        'Cinco mil pesos de guaro y una canción de Darío Gómez: el presupuesto exacto de una noche que se recuerda.',
     },
     {
       id: 'trago-ron',
       nombre: 'Ron',
       descripcion: 'Con hielo o con soda. Como usted diga.',
-      volumen: 'Trago · 45 ml',
       precio: 5_000,
     },
     {
       id: 'trago-tequila-jose-cuervo',
       nombre: 'Tequila José Cuervo',
       descripcion: 'Con sal y limón.',
-      volumen: 'Trago · 45 ml',
       precio: 10_000,
-      etiquetas: ['fuerte'],
     },
     {
       id: 'trago-whisky',
       nombre: 'Whisky',
       descripcion: 'En las rocas, para el que no está de afán.',
-      volumen: 'Trago · 45 ml',
       precio: 10_000,
     },
     {
       id: 'trago-tequila-el-jimador',
       nombre: 'Tequila El Jimador',
       descripcion: 'Cien por ciento agave. El que sabe, lo pide derecho.',
-      volumen: 'Trago · 45 ml',
       precio: 15_000,
-      etiquetas: ['fuerte'],
     },
   ],
 };

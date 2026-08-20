@@ -1,5 +1,4 @@
-import type { MenuCategory, MenuItem } from '@/types/menu';
-import { itemsPorId } from '@/content/menu';
+import type { MenuCategory } from '@/types/menu';
 import { BurntTitle } from '@/components/decor/BurntTitle';
 import { PlankFrame } from '@/components/decor/PlankFrame';
 import { Reveal } from '@/components/layout/Reveal';
@@ -11,17 +10,6 @@ export interface CategorySectionProps {
   categoria: MenuCategory;
   /** true para la primera sección: sin Reveal ni content-visibility. */
   first?: boolean | undefined;
-}
-
-/**
- * Resuelve `vaBienCon` a los productos reales y a la sección donde viven, para
- * que el sheet pueda enlazarlos. El validador ya garantizó que los ids existen.
- */
-function resolverRelacionados(item: MenuItem) {
-  return (item.vaBienCon ?? []).flatMap((id) => {
-    const encontrado = itemsPorId.get(id);
-    return encontrado ? [encontrado] : [];
-  });
 }
 
 /** docs/07 §5.1 · Server Component. */
@@ -49,7 +37,7 @@ export function CategorySection({ categoria, first = false }: CategorySectionPro
 
       <ul className={styles.items}>
         {categoria.items.map((item) => (
-          <MenuItemRow key={item.id} item={item} relacionados={resolverRelacionados(item)} />
+          <MenuItemRow key={item.id} item={item} mostrarDescripcion={categoria.descripciones} />
         ))}
       </ul>
     </section>

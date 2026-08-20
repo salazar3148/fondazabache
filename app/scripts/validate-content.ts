@@ -3,12 +3,10 @@
  * mal, el build falla. Es la red de seguridad del flujo "cambio un precio el
  * jueves a las 11 de la noche".
  *
- * Cuatro invariantes además del esquema:
+ * Invariantes además del esquema:
  *   1. ids de producto únicos
- *   2. tope de relatos (8)
- *   3. referencias de vaBienCon existentes
- *   4. ids de categoría únicos (son anclas de la URL)
- *   5. la Ruleta tiene de dónde sortear
+ *   2. ids de categoría únicos (son anclas de la URL)
+ *   3. la Ruleta tiene de dónde sortear
  */
 import { licores, menu } from '../src/content/menu';
 import { menuSchema } from '../src/lib/schemas';
@@ -36,27 +34,12 @@ const ids = items.map((i) => i.id);
 const duplicados = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
 if (duplicados.length) error(`IDs de producto duplicados: ${duplicados.join(', ')}`);
 
-// ── 4 · ids de categoría únicos ────────────────────────────────────
+// ── 2 · ids de categoría únicos ────────────────────────────────────
 const catIds = menu.map((c) => c.id);
 const catDup = [...new Set(catIds.filter((id, i) => catIds.indexOf(id) !== i))];
 if (catDup.length) error(`IDs de categoría duplicados: ${catDup.join(', ')}`);
 
-// ── 2 · tope de relatos ────────────────────────────────────────────
-const conRelato = items.filter((i) => i.relato);
-if (conRelato.length > 8) {
-  error(`${conRelato.length} productos con relato. El máximo es 8 (docs/06 §1).`);
-}
-
-// ── 3 · referencias de vaBienCon ───────────────────────────────────
-const idsSet = new Set(ids);
-for (const item of items) {
-  for (const ref of item.vaBienCon ?? []) {
-    if (!idsSet.has(ref)) error(`"${item.id}".vaBienCon apunta a "${ref}", que no existe.`);
-    if (ref === item.id) error(`"${item.id}".vaBienCon se apunta a sí mismo.`);
-  }
-}
-
-// ── 5 · la Ruleta tiene de dónde sortear ───────────────────────────
+// ── 3 · la Ruleta tiene de dónde sortear ───────────────────────────
 // Sin esto, marcar `licor: false` de más deja la Ruleta mostrando "Hoy no hay
 // nada que sortear" y nadie se enteraría hasta abrirla en producción.
 if (licores.length < 3) {
@@ -78,7 +61,6 @@ const agotados = items.filter((i) => i.disponible === false);
 const seccionesLicor = menu.filter((c) => c.licor).map((c) => c.titulo);
 
 console.log(`✔ Carta válida: ${menu.length} secciones, ${ids.length} productos.`);
-console.log(`  · Con relato: ${conRelato.length}/8`);
 console.log(
   `  · Ruleta: ${licores.length} licores de ${seccionesLicor.length} secciones ` +
     `(${seccionesLicor.join(', ')})`,

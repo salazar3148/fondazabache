@@ -13,6 +13,7 @@ export const pasantes: MenuCategory = {
 
   /* Fuera de la Ruleta: es la sección sin alcohol. */
   licor: false,
+  descripciones: false,
   items: [
     {
       id: 'coca-cola',

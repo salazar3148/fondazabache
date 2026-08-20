@@ -1,7 +1,6 @@
 /* docs/07 §5.2 */
 
 .row {
-  /* Ancla del disparador estirado del sheet (ItemSheet.module.css) */
   position: relative;
   padding-block: var(--sp-4);
   padding-inline: var(--sp-1);
@@ -77,33 +76,12 @@
   margin-top: var(--sp-3);
 }
 
-.volumen {
-  font-size: var(--t-meta);
-  letter-spacing: 0.01em;
-  color: var(--c-fg-subtle);
-}
-
 .noHay {
   font-size: var(--t-meta);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--c-candela-400);
-}
-
-/* Afordance de relato. El chevron NUNCA va solo: sin la palabra es adivinanza. */
-.leer {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-1);
-  margin-left: auto;
-  font-size: var(--t-meta);
-  color: var(--c-hueso-500);
-}
-
-.leerIcono {
-  width: 14px;
-  height: 14px;
 }
 
 /* ── Agotado: nunca pointer-events:none, para que el lector lo alcance ── */

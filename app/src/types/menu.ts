@@ -31,13 +31,6 @@ export interface MenuItem {
   etiquetas?: ItemTag[];
   /** `false` muestra la fila atenuada con "Hoy no hay". Por defecto true. */
   disponible?: boolean;
-  /**
-   * Relato corto (1–2 frases) que se muestra en el bottom sheet.
-   * Su presencia habilita el sheet. Máximo 8 en toda la carta.
-   */
-  relato?: string;
-  /** "Va bien con": ids de otros productos. Máximo 2. */
-  vaBienCon?: string[];
 }
 
 /** Una sección de la carta. */
@@ -65,6 +58,18 @@ export interface MenuCategory {
    * silencio, que es exactamente el bug que nadie encuentra.
    */
   licor: boolean;
+  /**
+   * `true` si las filas de esta sección muestran `descripcion`. Solo cervezas
+   * la tiene en `true`: es la única sección donde la frase corta se queda
+   * visible en la carta. En el resto (aguardiente, ron, de fuera, tragos y
+   * pasantes) la fila no la muestra, aunque el dato puede seguir viviendo en
+   * el producto — la Ruleta del Azabache sí la lee y la enseña al sortear un
+   * licor, por eso no se borra del contenido, solo se oculta en la lista.
+   *
+   * Igual que `licor`, es obligatorio para forzar la decisión en cada
+   * sección nueva.
+   */
+  descripciones: boolean;
   items: MenuItem[];
 }
 

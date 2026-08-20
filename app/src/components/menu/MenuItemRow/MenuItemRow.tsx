@@ -1,65 +1,33 @@
 import type { MenuItem } from '@/types/menu';
-import { ChevronDown } from '@/components/icons';
 import { cn } from '@/lib/cn';
 import { ItemBadges } from '../ItemBadges';
 import { PriceTag } from '../PriceTag';
-import { ItemSheetTrigger } from '../ItemSheet';
 import styles from './MenuItemRow.module.css';
 
 export interface MenuItemRowProps {
   item: MenuItem;
-  /** Productos de `vaBienCon` ya resueltos, con la sección a la que saltan. */
-  relacionados?: Array<{ item: MenuItem; categoriaId: string }> | undefined;
+  /** Muestra `item.descripcion` en la fila. Solo `true` en cervezas. */
+  mostrarDescripcion?: boolean | undefined;
   /** Resalta la fila. Se usa como resultado de la Ruleta del Azabache. */
   destacado?: boolean | undefined;
   className?: string | undefined;
 }
 
 /**
- * docs/07 §5.2 · Server Component. Solo la envoltura del sheet es cliente, y
- * solo en las filas que tienen relato (4 de 46).
+ * docs/07 §5.2 · Server Component. Sin sheet ni interacción: la fila solo
+ * informa.
  *
  * La alineación de la primera línea es por `baseline`, no `center`: es lo que
  * hace que el nombre y el precio se lean como una sola línea y no como dos
  * cosas puestas al lado.
- *
- * Sin relato, la fila NO es tocable: cero falsas promesas.
  */
 export function MenuItemRow({
   item,
-  relacionados = [],
+  mostrarDescripcion = false,
   destacado = false,
   className,
 }: MenuItemRowProps) {
   const agotado = item.disponible === false;
-  const tieneRelato = Boolean(item.relato) && !agotado;
-
-  const contenido = (
-    <>
-      <div className={styles.head}>
-        <h3 className={styles.nombre}>{item.nombre}</h3>
-        {/* Guía de puntos, puramente decorativa: ata el nombre a su precio. */}
-        <span className={styles.guia} aria-hidden="true" />
-        <PriceTag valor={item.precio} agotado={agotado} />
-      </div>
-
-      {item.descripcion && <p className={styles.descripcion}>{item.descripcion}</p>}
-
-      {(item.volumen || item.etiquetas?.length || agotado || tieneRelato) && (
-        <div className={styles.meta}>
-          {item.volumen && <span className={styles.volumen}>{item.volumen}</span>}
-          {agotado && <span className={styles.noHay}>Hoy no hay</span>}
-          <ItemBadges etiquetas={item.etiquetas} />
-          {tieneRelato && (
-            <span className={styles.leer} aria-hidden="true">
-              <ChevronDown className={styles.leerIcono} />
-              leer
-            </span>
-          )}
-        </div>
-      )}
-    </>
-  );
 
   return (
     <li
@@ -71,8 +39,23 @@ export function MenuItemRow({
         className,
       )}
     >
-      {contenido}
-      {tieneRelato && <ItemSheetTrigger item={item} relacionados={relacionados} />}
+      <div className={styles.head}>
+        <h3 className={styles.nombre}>{item.nombre}</h3>
+        {/* Guía de puntos, puramente decorativa: ata el nombre a su precio. */}
+        <span className={styles.guia} aria-hidden="true" />
+        <PriceTag valor={item.precio} agotado={agotado} />
+      </div>
+
+      {mostrarDescripcion && item.descripcion && (
+        <p className={styles.descripcion}>{item.descripcion}</p>
+      )}
+
+      {(item.etiquetas?.length || agotado) && (
+        <div className={styles.meta}>
+          {agotado && <span className={styles.noHay}>Hoy no hay</span>}
+          <ItemBadges etiquetas={item.etiquetas} />
+        </div>
+      )}
     </li>
   );
 }

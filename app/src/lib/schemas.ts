@@ -40,8 +40,6 @@ export const menuItemSchema = z.object({
   volumen: z.string().max(24).optional(),
   etiquetas: z.array(itemTagSchema).max(2, 'máximo 2 etiquetas por producto').optional(),
   disponible: z.boolean().optional(),
-  relato: z.string().min(20).max(220).optional(),
-  vaBienCon: z.array(z.string()).max(2).optional(),
 });
 
 export const menuCategorySchema = z.object({
@@ -53,6 +51,8 @@ export const menuCategorySchema = z.object({
 
   /** Sin default: obligar a declararlo es el punto (ver types/menu.ts). */
   licor: z.boolean(),
+  /** Sin default, igual que `licor`: obliga a decidirlo en cada sección nueva. */
+  descripciones: z.boolean(),
   /**
    * El tope se subió de 9 a 14 respecto a docs/06: el catálogo real de
    * aguardientes tiene 13 presentaciones (3 referencias × 3 tamaños + 4

@@ -8,7 +8,14 @@ import type { MenuCategory } from '@/types/menu';
  * secciones de 6 y 2 dejaría una sección coja. La carta física las separa; en
  * pantalla el precio ya distingue cuál es cuál.
  *
- * El orden es de precio ascendente, que es también el orden en que se piden.
+ * Cerveza es la ÚNICA sección con `descripciones: true`: es la única fila de
+ * toda la carta donde la frase corta se queda visible bajo el nombre.
+ *
+ * El orden ya no es por precio ascendente: abre con la favorita (Pilsen) para
+ * anclar la recomendación, sigue con el bloque de nacionales al mismo precio,
+ * y cierra con las importadas (las más caras), que quedan últimas a propósito
+ * — funcionan como ancla de precio: después de leerlas, el resto de la carta
+ * se siente más barata.
  */
 export const cervezas: MenuCategory = {
   id: 'bien-fria',
@@ -19,7 +26,15 @@ export const cervezas: MenuCategory = {
 
   /* Fuera de la Ruleta: cerveza es cerveza, no es lo que uno duda. */
   licor: false,
+  descripciones: true,
   items: [
+    {
+      id: 'pilsen',
+      nombre: 'Pilsen',
+      descripcion: 'La de la casa. Bien fría, siempre.',
+      precio: 5_000,
+      etiquetas: ['favorita'],
+    },
     {
       id: 'aguila',
       nombre: 'Águila',
@@ -27,27 +42,23 @@ export const cervezas: MenuCategory = {
       precio: 5_000,
     },
     {
-      id: 'pilsen',
-      nombre: 'Pilsen',
-      descripcion: 'La de la casa. Bien fría, siempre.',
-      precio: 6_000,
-      etiquetas: ['favorita'],
-      relato:
-        'La Pilsen no se pide: se sobreentiende. Llega sudada, con el destapador todavía tibio y sin preguntar nada.',
-    },
-    {
       id: 'poker',
       nombre: 'Póker',
       descripcion: 'La del que llega tarde y se queda hasta el final.',
-      precio: 6_000,
+      precio: 5_000,
     },
     {
       id: 'aguila-light',
       nombre: 'Águila Light',
       descripcion: 'Suave y ligera. Para aguantar la noche completa.',
-      precio: 6_000,
+      precio: 5_000,
     },
-    { id: 'andina', nombre: 'Andina', precio: 6_000 },
+    {
+      id: 'andina',
+      nombre: 'Andina',
+      descripcion: 'La liviana que aguanta el paso cuando ya van varias rondas.',
+      precio: 5_000,
+    },
     {
       id: 'club-dorada',
       nombre: 'Club Dorada',

@@ -30,11 +30,3 @@ export const licores: ItemConCategoria[] = menu
       .filter((i) => i.disponible !== false)
       .map((i) => ({ ...i, categoriaId: c.id, categoriaTitulo: c.titulo })),
   );
-
-/**
- * Índice id → { producto, sección donde vive }. Lo usa "Va bien con" del
- * bottom sheet, que necesita el ancla de destino además del producto.
- */
-export const itemsPorId = new Map(
-  menu.flatMap((c) => c.items.map((item) => [item.id, { item, categoriaId: c.id }] as const)),
-);
