@@ -10,6 +10,9 @@ export const pasantes: MenuCategory = {
   subtitulo: 'Gaseosas y aguas',
   chip: 'Pasantes',
   nota: 'Para bajar el trago o para no tomarlo.',
+
+  /* Fuera de la Ruleta: es la sección sin alcohol. */
+  licor: false,
   items: [
     {
       id: 'coca-cola',

@@ -52,6 +52,19 @@ export interface MenuCategory {
   chip: string;
   /** Nota opcional bajo el título. */
   nota?: string;
+  /**
+   * `true` si la sección es de licores: aguardiente, ron, importados y tragos
+   * por copa. La Ruleta del Azabache sortea SOLO entre estas.
+   *
+   * Cerveza y pasantes quedan fuera a propósito: quien abre la Ruleta no está
+   * indeciso entre una Póker y un agua, está indeciso entre licores. Sugerirle
+   * "Agua" arruina el juguete de una sola vez.
+   *
+   * Es obligatorio y no opcional para que al crear una sección haya que
+   * decidirlo. Con un `?` la sección nueva se quedaría fuera del sorteo en
+   * silencio, que es exactamente el bug que nadie encuentra.
+   */
+  licor: boolean;
   items: MenuItem[];
 }
 

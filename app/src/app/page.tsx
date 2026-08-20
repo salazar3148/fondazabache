@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { menu, todosLosItems } from '@/content/menu';
+import { licores, menu } from '@/content/menu';
 import { site } from '@/content/site';
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/layout/Hero';
@@ -53,7 +53,9 @@ export default function CartaPage() {
       <Footer />
 
       <WhatsAppFab />
-      <RuletaAzabache items={todosLosItems} portadaId={PORTADA_ID} />
+      {/* Solo licores: la Ruleta no sortea cerveza ni pasantes (ver
+          content/menu/index.ts y la bandera `licor` de cada sección). */}
+      <RuletaAzabache items={licores} portadaId={PORTADA_ID} />
     </>
   );
 }

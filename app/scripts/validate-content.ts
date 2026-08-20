@@ -8,8 +8,9 @@
  *   2. tope de relatos (8)
  *   3. referencias de vaBienCon existentes
  *   4. ids de categoría únicos (son anclas de la URL)
+ *   5. la Ruleta tiene de dónde sortear
  */
-import { menu } from '../src/content/menu';
+import { licores, menu } from '../src/content/menu';
 import { menuSchema } from '../src/lib/schemas';
 
 let fallo = false;
@@ -55,6 +56,16 @@ for (const item of items) {
   }
 }
 
+// ── 5 · la Ruleta tiene de dónde sortear ───────────────────────────
+// Sin esto, marcar `licor: false` de más deja la Ruleta mostrando "Hoy no hay
+// nada que sortear" y nadie se enteraría hasta abrirla en producción.
+if (licores.length < 3) {
+  error(
+    `La Ruleta solo tiene ${licores.length} licores para sortear. ` +
+      'Revisa la bandera `licor` de cada sección: hacen falta al menos 3.',
+  );
+}
+
 if (fallo) {
   console.error('');
   process.exit(1);
@@ -64,8 +75,14 @@ if (fallo) {
 const sinPrecio = items.filter((i) => i.precio === 0);
 const agotados = items.filter((i) => i.disponible === false);
 
+const seccionesLicor = menu.filter((c) => c.licor).map((c) => c.titulo);
+
 console.log(`✔ Carta válida: ${menu.length} secciones, ${ids.length} productos.`);
 console.log(`  · Con relato: ${conRelato.length}/8`);
+console.log(
+  `  · Ruleta: ${licores.length} licores de ${seccionesLicor.length} secciones ` +
+    `(${seccionesLicor.join(', ')})`,
+);
 if (agotados.length) console.log(`  · Marcados agotados: ${agotados.length}`);
 if (sinPrecio.length) {
   console.log(

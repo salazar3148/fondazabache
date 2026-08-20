@@ -17,12 +17,19 @@ import { pasantes } from './pasantes';
  */
 export const menu: Menu = [cervezas, aguardientes, ron, deFuera, tragos, pasantes];
 
-/** Todos los productos disponibles, con su categoría. Lo usa la Ruleta. */
-export const todosLosItems: ItemConCategoria[] = menu.flatMap((c) =>
-  c.items
-    .filter((i) => i.disponible !== false)
-    .map((i) => ({ ...i, categoriaId: c.id, categoriaTitulo: c.titulo })),
-);
+/**
+ * El bolsillo del que sortea la Ruleta del Azabache: los licores disponibles,
+ * con su categoría. Cerveza y pasantes quedan fuera por la bandera `licor` de
+ * cada sección, no por una lista de ids aquí: así, al añadir una sección, la
+ * decisión se toma en el archivo de la sección y no en este.
+ */
+export const licores: ItemConCategoria[] = menu
+  .filter((c) => c.licor)
+  .flatMap((c) =>
+    c.items
+      .filter((i) => i.disponible !== false)
+      .map((i) => ({ ...i, categoriaId: c.id, categoriaTitulo: c.titulo })),
+  );
 
 /**
  * Índice id → { producto, sección donde vive }. Lo usa "Va bien con" del

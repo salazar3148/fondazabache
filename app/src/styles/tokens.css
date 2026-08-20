@@ -104,6 +104,11 @@
   --fab-size: 56px;
   --fab-gap: 12px;
 
+  /* La Ruleta es un pelo más pequeña que WhatsApp: es el juguete, no la acción
+     de negocio. Vive aquí porque el aviso "¿No sabe qué pedir?" es hermano
+     suyo en el DOM y necesita la misma medida para alinearse. */
+  --ruleta-size: 52px;
+
   /* ── Tipografía · familias ───────────────────────────────── */
   --font-display: var(--font-fraunces), georgia, serif;
   --font-body: var(--font-instrument), system-ui, sans-serif;

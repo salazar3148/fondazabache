@@ -21,6 +21,7 @@ export const deFuera: MenuCategory = {
   titulo: 'De fuera',
   subtitulo: 'Vodka, tequila y whisky',
   chip: 'De fuera',
+  licor: true,
   items: [
     {
       id: 'smirnoff-de-lulo',

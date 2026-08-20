@@ -17,6 +17,7 @@ export const ron: MenuCategory = {
   subtitulo: 'Rones',
   chip: 'De la cava',
   nota: 'Derecho, con hielo o con soda. Usted decide.',
+  licor: true,
   items: [
     {
       id: 'media-medellin',

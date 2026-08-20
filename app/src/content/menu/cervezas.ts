@@ -16,6 +16,9 @@ export const cervezas: MenuCategory = {
   subtitulo: 'Cervezas',
   chip: 'Bien fría',
   nota: 'Todas de la nevera, ninguna del estante.',
+
+  /* Fuera de la Ruleta: cerveza es cerveza, no es lo que uno duda. */
+  licor: false,
   items: [
     {
       id: 'aguila',

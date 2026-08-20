@@ -21,6 +21,7 @@ export const aguardientes: MenuCategory = {
   subtitulo: 'Aguardientes',
   chip: 'Del estante',
   nota: 'Verde, rojo y azul son las tres referencias del Antioqueño.',
+  licor: true,
   items: [
     {
       id: 'media-verde',

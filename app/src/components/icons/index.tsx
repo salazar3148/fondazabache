@@ -122,6 +122,48 @@ export function Share(props: IconProps) {
   );
 }
 
+/** Bocina con ondas: el sonido de la Ruleta está encendido. */
+export function Volume(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path
+        d="M4 9.5h3L11.5 6v12L7 14.5H4a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.5 9.2a4 4 0 0 1 0 5.6M18.4 6.4a8 8 0 0 1 0 11.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+/** Bocina tachada: el sonido de la Ruleta está apagado. */
+export function VolumeOff(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path
+        d="M4 9.5h3L11.5 6v12L7 14.5H4a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="m15.5 9.5 5 5m0-5-5 5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function ChevronDown(props: IconProps) {
   return (
     <svg {...base} {...props}>

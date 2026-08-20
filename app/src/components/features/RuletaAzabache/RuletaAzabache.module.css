@@ -1,10 +1,29 @@
-/* docs/07 §6.1 · Botón flotante y contenido del sheet de la Ruleta */
+/**
+ * docs/07 §6.1 · Botón flotante, aviso de fondo de carta y contenido del sheet
+ * de la Ruleta del Azabache.
+ *
+ * DESVIACIÓN del inventario de docs/08 §8: este módulo define tres animaciones
+ * propias (`onda-ruleta`, `barajear-nombre`, `sellar`) además de la de
+ * resultado. Se justifican porque la Ruleta es la única parte de la carta que
+ * es un juguete y no información: es lo que la gente le muestra al de al lado,
+ * y sin movimiento no se lee como ruleta sino como un cuadro de diálogo.
+ *
+ * El coste está acotado a propósito:
+ *   · las tres son `rotate`, `scale`, `translate` u `opacity`, todas de
+ *     compositor: cero reflow y cero repintado;
+ *   · dos viven dentro de un overlay que bloquea el scroll de fondo, así que
+ *     no compiten con el momento crítico;
+ *   · la única que corre fuera del overlay (`onda-ruleta`) solo late mientras
+ *     el aviso está a la vista — es decir, al final de la carta y con el dedo
+ *     quieto —, no durante toda la sesión.
+ */
 
 /**
  * La pila de botones flotantes se ordena de abajo hacia arriba por prioridad
- * de negocio: WhatsApp abajo (lo que da plata) y la Ruleta encima. Las dos
- * alturas viven en --fab-size / --fab-gap de tokens.css para que ninguna de
- * las dos tenga que adivinar el alto de la otra.
+ * de negocio: WhatsApp abajo (lo que da plata) y la Ruleta encima. Las alturas
+ * viven en --fab-size / --fab-gap / --ruleta-size de tokens.css para que
+ * ninguna de las dos tenga que adivinar la medida de la otra, y para que el
+ * aviso pueda alinearse con la Ruleta sin números sueltos.
  */
 .fab {
   position: fixed;
@@ -13,13 +32,28 @@
   z-index: var(--z-fab);
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
+  width: var(--ruleta-size);
+  height: var(--ruleta-size);
   border-radius: 50%;
-  background: var(--c-madera-700);
-  border: 1px solid var(--c-laton-500);
+
+  /* Latón bruñido en vez del marrón plano de antes: es el juguete de la carta
+     y tiene que verse como una moneda en el bolsillo, no como un botón
+     desactivado. El brillo especular arriba a la izquierda es lo que le quita
+     el aire de icono impreso. */
+  background:
+    radial-gradient(circle at 34% 26%, rgb(246 239 227 / 20%) 0%, transparent 54%),
+    linear-gradient(
+      165deg,
+      var(--c-madera-600) 0%,
+      var(--c-madera-800) 60%,
+      var(--c-azabache) 100%
+    );
+  border: 1px solid var(--c-laton-400);
   color: var(--c-laton-300);
-  box-shadow: var(--sh-raised);
+  box-shadow:
+    inset 0 1px 0 rgb(246 239 227 / 16%),
+    var(--sh-raised),
+    var(--sh-ember);
   opacity: 0;
   translate: 0 12px;
   pointer-events: none;
@@ -39,7 +73,10 @@
 }
 
 .fab:hover {
-  box-shadow: var(--sh-raised), var(--sh-ember);
+  box-shadow:
+    inset 0 1px 0 rgb(246 239 227 / 16%),
+    var(--sh-raised),
+    var(--sh-ember-md);
 }
 
 .fab:active {
@@ -47,24 +84,125 @@
 }
 
 .fabIcono {
+  position: relative;
+  z-index: 1;
   width: 26px;
   height: 26px;
 }
 
-/* Tooltip-chip de primera vez. Se muestra una sola vez por sesión. */
-.tooltip {
+/* Onda de atención: un aro de brasa que sale del botón. Late SOLO mientras el
+   aviso está a la vista. */
+.onda {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid var(--c-candela-400);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ondaActiva {
+  animation: onda-ruleta 2.2s var(--e-out) infinite;
+}
+
+@keyframes onda-ruleta {
+  0% {
+    scale: 1;
+    opacity: 0.7;
+  }
+
+  70%,
+  100% {
+    scale: 1.7;
+    opacity: 0;
+  }
+}
+
+/* ── Aviso "¿No sabe qué pedir?" ────────────────────────────── */
+
+/**
+ * Aparece solo al final de la carta, cuando ya no se puede bajar más. Es el
+ * momento exacto del problema: acabó de leerlo todo y sigue sin decidir.
+ *
+ * Se alinea con el centro vertical de la Ruleta restando su propio alto del de
+ * ella, así que si --ruleta-size cambia, esto sigue centrado sin tocar nada.
+ */
+.aviso {
+  --aviso-h: 36px;
+
   position: fixed;
-  right: calc(var(--sp-4) + 60px);
-  bottom: calc(var(--sp-4) + var(--safe-bottom) + var(--fab-size) + var(--fab-gap) + 12px);
+  right: calc(var(--sp-4) + var(--ruleta-size) + var(--sp-2));
+  bottom: calc(
+    var(--sp-4) + var(--safe-bottom) + var(--fab-size) + var(--fab-gap) +
+      (var(--ruleta-size) - var(--aviso-h)) / 2
+  );
   z-index: var(--z-fab);
-  padding: var(--sp-2) var(--sp-3);
+  display: inline-flex;
+  align-items: center;
+  height: var(--aviso-h);
+  padding-inline: var(--sp-3);
   border-radius: var(--r-pill);
-  background: var(--c-madera-800);
-  border: 1px solid var(--c-laton-500);
-  color: var(--c-fg-muted);
+  background: linear-gradient(180deg, var(--c-madera-700) 0%, var(--c-madera-800) 100%);
+  border: 1px solid var(--c-laton-400);
+  color: var(--c-fg);
   font-size: var(--t-meta);
+  font-weight: 600;
+  letter-spacing: 0.01em;
   white-space: nowrap;
-  box-shadow: var(--sh-raised);
+  box-shadow:
+    var(--sh-raised),
+    var(--sh-ember);
+
+  /**
+   * Estado oculto, y SIN transición a propósito: al salir del fondo el aviso
+   * desaparece en seco. Eso es lo que lo convierte en un hallazgo — solo existe
+   * ahí abajo — en vez de en un cartel que se despide despacio.
+   */
+  opacity: 0;
+  translate: var(--sp-3) 0;
+  pointer-events: none;
+  transition: none;
+}
+
+/**
+ * La transición vive SOLO en el estado visible. Al quitar la clase, el
+ * `transition: none` de arriba vuelve a aplicarse en el mismo recálculo de
+ * estilo, así que la entrada se desvanece y la salida es instantánea.
+ */
+.avisoVisible {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity var(--d-reveal) var(--e-out),
+    translate var(--d-reveal) var(--e-spring);
+}
+
+/* Pico que apunta al botón: sin él el aviso es un chip suelto en la esquina. */
+.aviso::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  translate: 0 -50%;
+  rotate: 45deg;
+  background: var(--c-madera-800);
+  border-top: 1px solid var(--c-laton-400);
+  border-right: 1px solid var(--c-laton-400);
+}
+
+/**
+ * Centinela del final del documento, que es lo que dispara el aviso. El margen
+ * negativo se come su propio píxel de alto: así no añade scroll y "el fondo"
+ * sigue siendo el fondo del pie.
+ */
+.centinela {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: -1px;
+  pointer-events: none;
 }
 
 /* ── Contenido del sheet ───────────────────────────────────── */
@@ -76,26 +214,230 @@
   gap: var(--sp-4);
 }
 
-.sello {
-  margin-bottom: var(--sp-2);
+.cabecera {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  /* Se recupera el hueco del gap: el interruptor no es contenido, es control. */
+  margin-bottom: calc(var(--sp-4) * -1);
 }
 
-/* Fase de barajeo: nombres que pasan. Ligeramente apagados y desenfocados
-   para que se lean como "todavía no es el resultado". */
-.barajeo {
-  min-height: 2.4em;
+/* Interruptor de sonido. 44 px de área táctil aunque el icono mida 18. */
+.sonido {
   display: grid;
   place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--c-fg-subtle);
+  border: 1px solid var(--c-border);
+  transition:
+    color var(--d-fast) var(--e-out),
+    border-color var(--d-fast) var(--e-out),
+    scale var(--d-instant) var(--e-out);
+}
+
+.sonido[aria-pressed='true'] {
+  color: var(--c-laton-300);
+  border-color: var(--c-laton-500);
+}
+
+.sonido:active {
+  scale: 0.94;
+}
+
+.sonidoIcono {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── La rueda ──────────────────────────────────────────────── */
+.rueda {
+  /* El tope de 152 px no es estético: el sheet tiene que caber en 85dvh de una
+     pantalla de 667 px con rueda, resultado y tres botones. */
+  --rueda-d: clamp(124px, 38vw, 152px);
+
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--rueda-d);
+  height: var(--rueda-d);
+
+  /* El brillo usa mix-blend-mode: aislar evita que se mezcle con la tabla del
+     sheet en vez de con la propia rueda. */
+  isolation: isolate;
+}
+
+/**
+ * La corona: doce gajos alternos de latón y madera. La rotación la acumula el
+ * componente y llega por estilo inline; aquí solo vive el frenado.
+ *
+ * --e-spring es una curva de salida muy marcada, que es exactamente la
+ * sensación de un trinquete perdiendo fuerza. La duración suma dos tokens
+ * (420 + 320 = 740 ms) para no inventar un valor suelto, y queda por encima de
+ * los 630 ms del barajeo a propósito: la rueda todavía se está acomodando
+ * cuando el nombre aparece, y eso hace que el resultado se sienta cazado y no
+ * simplemente mostrado.
+ */
+.corona {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from -90deg,
+    var(--c-laton-500) 0deg 30deg,
+    var(--c-madera-700) 30deg 60deg
+  );
+  box-shadow:
+    inset 0 0 0 2px rgb(14 11 8 / 55%),
+    inset 0 0 20px rgb(14 11 8 / 60%),
+    0 6px 18px -8px rgb(14 11 8 / 85%);
+  transition:
+    rotate calc(var(--d-reveal) + var(--d-slow)) var(--e-spring),
+    filter var(--d-base) var(--e-out);
+}
+
+/* Mientras gira, el latón se enciende un punto: la rueda parada y la rueda en
+   movimiento no se ven igual. */
+.coronaGirando {
+  filter: saturate(1.2) brightness(1.1);
+}
+
+/* Brillo especular fijo. No rota con la corona, y por eso la rueda se lee como
+   un objeto bajo una luz y no como una textura girando. */
+.brillo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 90% at 30% 12%,
+    rgb(246 239 227 / 22%) 0%,
+    rgb(246 239 227 / 7%) 34%,
+    transparent 62%
+  );
+  mix-blend-mode: soft-light;
+}
+
+/* Cubo de la rueda: madera tallada con la herradura. Tampoco rota. */
+.centro {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 58%;
+  height: 58%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 36% 28%, rgb(246 239 227 / 12%) 0%, transparent 58%),
+    linear-gradient(170deg, var(--c-madera-700) 0%, var(--c-madera-900) 100%);
+  border: 1px solid var(--c-laton-500);
+  color: var(--c-laton-300);
+  box-shadow:
+    inset 0 2px 6px rgb(14 11 8 / 70%),
+    0 2px 6px rgb(14 11 8 / 55%);
+  transition:
+    box-shadow var(--d-slow) var(--e-out),
+    color var(--d-slow) var(--e-out);
+}
+
+/* Momento culminante: la herradura se pone al rojo cuando hay resultado. */
+.centroGanador {
+  color: var(--c-candela-300);
+  box-shadow:
+    inset 0 2px 6px rgb(14 11 8 / 70%),
+    var(--sh-ember-lg);
+}
+
+.centroIcono {
+  width: 42%;
+  height: 42%;
+}
+
+/* Aguja fija arriba. Sin ella la corona es un disco bonito; con ella es una
+   ruleta, porque hay un sitio donde la suerte "cae". */
+.aguja {
+  position: absolute;
+  z-index: 3;
+  top: -7px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  translate: -50% 0;
+  border-inline: 7px solid transparent;
+  border-top: 12px solid var(--c-laton-300);
+  filter: drop-shadow(0 1px 2px rgb(14 11 8 / 90%));
+}
+
+/* El lacre cae sobre la rueda al fijar el resultado. Es la única aparición del
+   Sello en esta pantalla (docs/03 §7). */
+.sello {
+  position: absolute;
+  z-index: 4;
+  right: -8px;
+  bottom: -4px;
+  animation: sellar var(--d-slow) var(--e-spring) both;
+}
+
+@keyframes sellar {
+  from {
+    scale: 0.4;
+    rotate: -26deg;
+    opacity: 0;
+  }
+
+  to {
+    scale: 1;
+    rotate: -6deg;
+    opacity: 1;
+  }
+}
+
+/* ── Marquesina: barajeo y resultado ───────────────────────── */
+
+/**
+ * El alto mínimo le da sitio al nombre que baraja (dos renglones de display),
+ * para que la zona no se vea diminuta mientras gira. El resultado siempre es
+ * más alto y hace crecer el panel: ese crecimiento sí se quiere, es parte del
+ * revelado.
+ */
+.marquesina {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 104px;
+}
+
+/* Nombres que pasan. Apagados y con un pelo de desenfoque para que se lean
+   como "todavía no es el resultado". */
+.barajeo {
   font-family: var(--font-display);
   font-size: var(--t-display-lg);
   font-weight: 600;
   line-height: 1.1;
-  color: var(--c-fg-muted);
-  opacity: 0.65;
-  filter: blur(0.4px);
+  color: var(--c-laton-300);
+  opacity: 0.7;
+  text-wrap: balance;
+  filter: blur(0.6px);
+  animation: barajear-nombre var(--d-instant) var(--e-out) both;
 }
 
-.resultado {
+@keyframes barajear-nombre {
+  from {
+    opacity: 0.2;
+    translate: 0 7px;
+  }
+
+  to {
+    opacity: 0.7;
+    translate: 0 0;
+  }
+}
+
+.anuncio {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,20 +445,27 @@
   width: 100%;
 }
 
+/* Antetítulo: de qué sección salió. Va arriba porque orienta antes de nombrar. */
+.categoria {
+  font-size: var(--t-subtitle);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-laton-400);
+}
+
+/* El nombre va en letra quemada: es el gesto de marca más fuerte del sistema y
+   este es el momento que lo merece. */
 .nombre {
-  font-family: var(--font-display);
   font-size: var(--t-display-lg);
-  font-weight: 600;
-  line-height: 1.1;
-  color: var(--c-fg);
-  text-wrap: balance;
+  line-height: 1.12;
   animation: aparecer-resultado var(--d-base) var(--e-spring) both;
 }
 
 @keyframes aparecer-resultado {
   from {
     scale: 1.06;
-    opacity: 0.4;
+    opacity: 0.35;
   }
 
   to {
@@ -125,48 +474,37 @@
   }
 }
 
-.destello {
-  border-radius: var(--r-lg);
-  padding: var(--sp-3);
-  animation: destello-ruleta 400ms var(--e-out) both;
-}
-
-/* Animación 6 del inventario. Única animación de box-shadow permitida:
-   dura 400 ms, sobre un elemento pequeño, en un overlay sin scroll
-   simultáneo, y es el momento culminante de la interacción (docs/08 §8). */
-@keyframes destello-ruleta {
-  0% {
-    box-shadow: 0 0 0 rgb(224, 117, 47, 0);
-  }
-
-  35% {
-    box-shadow: 0 0 26px rgb(224, 117, 47, 0.5);
-  }
-
-  100% {
-    box-shadow: 0 0 14px rgb(224, 117, 47, 0.22);
-  }
+/**
+ * Placa de latón para el precio. En la carta el precio va desnudo porque hay 47
+ * seguidos y enmarcarlos sería ruido; aquí hay uno solo y es el dato que cierra
+ * la jugada, así que se le pone marco.
+ */
+.placa {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--sp-1);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-pill);
+  background: color-mix(in oklab, var(--c-azabache) 55%, transparent);
+  border: var(--b-brass);
+  box-shadow:
+    inset 0 1px 0 rgb(246 239 227 / 8%),
+    var(--sh-ember);
 }
 
 .descripcion {
+  margin-top: var(--sp-1);
   font-size: var(--t-body);
   line-height: 1.5;
   color: var(--c-fg-muted);
   text-wrap: pretty;
 }
 
-.categoria {
-  font-size: var(--t-subtitle);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--c-laton-500);
-}
-
 .acciones {
   display: flex;
   gap: var(--sp-2);
   width: 100%;
-  margin-top: var(--sp-6);
+  margin-top: var(--sp-4);
 }
 
 .accion {

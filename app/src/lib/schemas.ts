@@ -50,6 +50,9 @@ export const menuCategorySchema = z.object({
   subtitulo: z.string().min(3).max(28),
   chip: z.string().min(2).max(14, 'el chip debe caber en la barra'),
   nota: z.string().max(70).optional(),
+
+  /** Sin default: obligar a declararlo es el punto (ver types/menu.ts). */
+  licor: z.boolean(),
   /**
    * El tope se subió de 9 a 14 respecto a docs/06: el catálogo real de
    * aguardientes tiene 13 presentaciones (3 referencias × 3 tamaños + 4

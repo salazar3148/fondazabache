@@ -12,6 +12,7 @@ export const tragos: MenuCategory = {
   subtitulo: 'Por copa',
   chip: 'Tragos',
   nota: 'Servido en el momento, sin comprar botella.',
+  licor: true,
   items: [
     {
       id: 'trago-aguardiente',
