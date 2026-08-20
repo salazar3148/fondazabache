@@ -3,16 +3,33 @@
   white-space: nowrap;
   font-family: var(--font-display);
   font-size: var(--t-price);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.01em;
   font-variant-numeric: tabular-nums;
-  color: var(--c-candela-400);
+
+  /**
+   * candela-300 y no 400: sobre la madera aclarada el 400 se queda en 5.4:1 y
+   * el precio es, después del nombre, el dato que más se busca en la carta.
+   * Con el 300 sube a 7.5:1 y además se despega del marrón del fondo.
+   */
+  color: var(--c-candela-300);
+
+  /**
+   * Surco de sombra: la cifra se lee grabada en la tabla y no impresa encima,
+   * y sobre todo no se pierde cuando la veta del fondo pasa justo por detrás.
+   * El segundo halo es rescoldo, muy tenue: es lo que le da el brillo de brasa
+   * sin convertir el precio en un neón.
+   */
+  text-shadow:
+    0 1px 0 rgb(14 11 8 / 80%),
+    0 0 10px rgb(224 117 47 / 20%);
 }
 
 .agotado {
   color: var(--c-hueso-500);
   text-decoration: line-through;
+  text-shadow: 0 1px 0 rgb(14 11 8 / 70%);
 }
 
 /* Precio pendiente de confirmar con el negocio: se dice, no se inventa. */
@@ -20,6 +37,8 @@
   color: var(--c-laton-300);
   font-size: var(--t-meta);
   font-family: var(--font-body);
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-shadow: 0 1px 0 rgb(14 11 8 / 70%);
 }

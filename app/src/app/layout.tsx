@@ -44,7 +44,9 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   // NO se fija maximumScale: el zoom es un derecho de accesibilidad.
-  themeColor: '#15100b',
+  // Réplica de --c-madera-900 (tokens.css). Si la rampa de madera cambia,
+  // este valor y el del manifest cambian con ella.
+  themeColor: '#251b12',
   colorScheme: 'dark',
 };
 

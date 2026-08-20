@@ -58,14 +58,23 @@
 }
 
 /* ── Lema quemado ───────────────────────────────────────────── */
+
+/**
+ * El lema es la frase que define el negocio, así que pesa más que la bajada y
+ * casi tanto como el letrero: cuerpo propio (--t-lema, ~20 % por encima de
+ * --t-display-lg) y caja más ancha.
+ *
+ * El tracking baja de 0.02em a 0.015em: al subir el cuerpo, el mismo tracking
+ * empujaba "Aquí se bebe bueno," fuera del renglón en pantallas de 360–390 px.
+ */
 .lema {
   display: flex;
   flex-direction: column;
   gap: var(--sp-1);
-  max-width: 20ch;
-  font-size: var(--t-display-lg);
-  line-height: 1.1;
-  letter-spacing: 0.02em;
+  max-width: 22ch;
+  font-size: var(--t-lema);
+  line-height: 1.08;
+  letter-spacing: 0.015em;
 }
 
 .lemaLinea {
@@ -81,7 +90,10 @@
  */
 .lemaCierre {
   display: block;
-  letter-spacing: 0.05em;
+
+  /* 0.035em en vez de 0.05em: sigue abriendo el cierre respecto a las otras
+     dos líneas, pero con el cuerpo nuevo 0.05em ya no cabía en un renglón. */
+  letter-spacing: 0.035em;
 }
 
 /* ── Bajada ─────────────────────────────────────────────────── */

@@ -11,7 +11,12 @@ export const pasantes: MenuCategory = {
   chip: 'Pasantes',
   nota: 'Para bajar el trago o para no tomarlo.',
   items: [
-    { id: 'coca-cola', nombre: 'Coca-Cola', precio: 4_000 },
+    {
+      id: 'coca-cola',
+      nombre: 'Coca-Cola',
+      descripcion: 'Bien fría. Para bajar el trago sin perder el hilo.',
+      precio: 4_000,
+    },
     {
       id: 'soda-bretana',
       nombre: 'Soda Bretaña',

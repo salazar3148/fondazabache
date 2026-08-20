@@ -38,6 +38,8 @@ export function MenuItemRow({
     <>
       <div className={styles.head}>
         <h3 className={styles.nombre}>{item.nombre}</h3>
+        {/* Guía de puntos, puramente decorativa: ata el nombre a su precio. */}
+        <span className={styles.guia} aria-hidden="true" />
         <PriceTag valor={item.precio} agotado={agotado} />
       </div>
 

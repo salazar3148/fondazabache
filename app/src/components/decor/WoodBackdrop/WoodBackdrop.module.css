@@ -13,26 +13,30 @@
     /* Capa 5: luz de vela, arriba y al centro */
     radial-gradient(
       70% 38% at 50% 4%,
-      rgb(224, 117, 47, 0.11) 0%,
-      rgb(224, 117, 47, 0.04) 45%,
+      rgb(224, 117, 47, 0.1) 0%,
+      rgb(224, 117, 47, 0.035) 45%,
       transparent 78%
     ),
-    /* Capa 4: viñeta */
+    /* Capa 4: viñeta. Se bajó de 0.34/0.62 a 0.22/0.46: con la rampa de madera
+       aclarada, la viñeta original devolvía las esquinas al negro y se comía el
+       tono más claro que se buscaba. */
     radial-gradient(
-        130% 88% at 50% 12%,
-        transparent 38%,
-        rgb(14, 11, 8, 0.34) 74%,
-        rgb(14, 11, 8, 0.62) 100%
+        132% 90% at 50% 12%,
+        transparent 42%,
+        rgb(14, 11, 8, 0.22) 76%,
+        rgb(14, 11, 8, 0.46) 100%
       ),
-    /* Capa 2: tablones verticales de ancho irregular */
+    /* Capa 2: tablones verticales de ancho irregular. Surco más marcado y
+       canto más iluminado que antes: sobre madera clara la junta necesita más
+       contraste para leerse como junta. */
     repeating-linear-gradient(
         90deg,
-        rgb(14, 11, 8, 0.55) 0 1.5px,
-        rgb(246, 239, 227, 0.045) 1.5px 3px,
+        rgb(14, 11, 8, 0.62) 0 1.5px,
+        rgb(246, 239, 227, 0.07) 1.5px 3px,
         transparent 3px 118px
       ),
     /* Capa 1: degradado de profundidad */
-    linear-gradient(175deg, var(--c-madera-800) 0%, var(--c-madera-900) 46%, #100c07 100%);
+    linear-gradient(175deg, var(--c-madera-800) 0%, var(--c-madera-900) 46%, #1b130c 100%);
   background-repeat: no-repeat, no-repeat, repeat, no-repeat;
 }
 
@@ -43,7 +47,10 @@
   background-image: url('/textures/wood-grain-256.svg');
   background-size: 256px 256px;
   background-repeat: repeat;
-  opacity: 0.38;
+
+  /* Sube de 0.38 a 0.46: la madera es ahora el protagonista del fondo, no una
+     insinuación. Es el cambio que hace que se lea "amaderado" y no "marrón". */
+  opacity: 0.46;
   mix-blend-mode: overlay;
 }
 
@@ -55,7 +62,7 @@
   background-image: url('/textures/wood-grain-256.svg');
   background-size: 512px 768px;
   background-repeat: repeat;
-  opacity: 0.16;
+  opacity: 0.22;
   mix-blend-mode: soft-light;
   transform: scaleX(-1);
 }

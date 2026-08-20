@@ -2,8 +2,9 @@ import type { MenuCategory } from '@/types/menu';
 
 /**
  * Catálogo real: lo que se sirve por copa, sin comprar botella.
- * "Tequila Jugador" está tal cual la carta física — pendiente de confirmar si
- * es el nombre de la marca (docs/13, pendiente #2).
+ *
+ * "Tequila Jugador" era una mala lectura de la carta manuscrita: la marca es
+ * El Jimador (tequila 100 % agave de la casa Herradura). Corregido nombre e id.
  */
 export const tragos: MenuCategory = {
   id: 'tragos',
@@ -15,12 +16,18 @@ export const tragos: MenuCategory = {
     {
       id: 'trago-aguardiente',
       nombre: 'Aguardiente',
+      descripcion: 'Servido derecho, con el limón al lado.',
       precio: 5_000,
       etiquetas: ['favorita'],
       relato:
         'Cinco mil pesos de guaro y una canción de Darío Gómez: el presupuesto exacto de una noche que se recuerda.',
     },
-    { id: 'trago-ron', nombre: 'Ron', precio: 5_000 },
+    {
+      id: 'trago-ron',
+      nombre: 'Ron',
+      descripcion: 'Con hielo o con soda. Como usted diga.',
+      precio: 5_000,
+    },
     {
       id: 'trago-tequila-jose-cuervo',
       nombre: 'Tequila José Cuervo',
@@ -28,10 +35,16 @@ export const tragos: MenuCategory = {
       precio: 10_000,
       etiquetas: ['fuerte'],
     },
-    { id: 'trago-whisky', nombre: 'Whisky', precio: 10_000 },
     {
-      id: 'trago-tequila-jugador',
-      nombre: 'Tequila Jugador',
+      id: 'trago-whisky',
+      nombre: 'Whisky',
+      descripcion: 'En las rocas, para el que no está de afán.',
+      precio: 10_000,
+    },
+    {
+      id: 'trago-tequila-el-jimador',
+      nombre: 'Tequila El Jimador',
+      descripcion: 'Cien por ciento agave. El que sabe, lo pide derecho.',
       precio: 15_000,
       etiquetas: ['fuerte'],
     },

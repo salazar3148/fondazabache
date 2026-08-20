@@ -9,27 +9,50 @@
 :root {
   color-scheme: dark;
 
-  /* ── Color · madera (fondos y superficies) ───────────────── */
+  /**
+   * ── Color · madera (fondos y superficies) ─────────────────
+   *
+   * Rampa aclarada y calentada un paso respecto a la original: el fondo era
+   * casi azabache y la veta se perdía. Ahora la base es nogal, no carbón, y la
+   * textura de madera sí se lee.
+   *
+   * Aclarar el fondo baja el contraste de todo lo que va encima, así que tres
+   * tonos se recalibraron con él: --c-hueso-500, el nuevo --c-laton-400 y el
+   * color del precio (ver PriceTag.module.css). Con eso, hueso-100 sobre --c-bg
+   * da 14.6:1, hueso-300 10.8:1 y hueso-500 6.8:1.
+   *
+   * --c-azabache NO se aclara: es el negro de las sombras y de los surcos, y
+   * es justo lo que le da relieve a la madera clara.
+   */
   --c-azabache: #0e0b08;
-  --c-madera-900: #15100b;
-  --c-madera-800: #1c1510;
-  --c-madera-700: #2a1f16;
-  --c-madera-600: #3a2a1d;
-  --c-madera-500: #4e3826;
-  --c-madera-400: #6b4e36;
-  --c-cuero-500: #8a5a32;
-  --c-tabaco-400: #a6703f;
+  --c-madera-900: #251b12;
+  --c-madera-800: #32251a;
+  --c-madera-700: #412f20;
+  --c-madera-600: #503b28;
+  --c-madera-500: #644a32;
+  --c-madera-400: #82623f;
+  --c-cuero-500: #9a6839;
+  --c-tabaco-400: #b57d48;
 
   /* ── Color · hueso (texto) ───────────────────────────────── */
   --c-hueso-100: #f6efe3;
   --c-hueso-300: #dccdb6;
-  --c-hueso-500: #a8977e;
+
+  /* Aclarado de #a8977e junto con la rampa de madera: es el tono de las notas,
+     los volúmenes y el "Hoy no hay", y sobre tabla clara se quedaba en 4.5:1
+     justo. Ahora da 5.1:1 sobre tabla y 6.8:1 sobre el fondo. */
+  --c-hueso-500: #b3a289;
 
   /* ── Color · acentos ─────────────────────────────────────── */
   --c-candela-500: #c6551f;
   --c-candela-400: #e0752f;
   --c-candela-300: #f0975a;
   --c-laton-500: #b08d57;
+
+  /* Paso intermedio de latón: --c-laton-500 sobre tabla clara se queda en
+     4.1:1 y --c-laton-300 grita. Este da 5.4:1 sobre tabla y 7.2:1 sobre el
+     fondo, que es lo que necesitan los subtítulos de sección. */
+  --c-laton-400: #c8a468;
   --c-laton-300: #e3c77e;
   --c-vino-600: #7b2d26;
   --c-musgo-500: #7e9b5e;
@@ -92,10 +115,20 @@
   /* ── Tipografía · escala (docs/02 §3.2) ──────────────────── */
   --t-display-xl: clamp(2.75rem, 12vw, 3.5rem);
   --t-display-lg: clamp(1.75rem, 7vw, 2.25rem);
+
+  /* El lema de la portada tiene su propio paso, ~20 % por encima de
+     --t-display-lg: es la frase que define el negocio y en la portada quedaba
+     por debajo del letrero. Los tres valores están calibrados para que las tres
+     líneas de site.lema quepan cada una en un renglón, desde 360 px hasta la
+     columna de 480 px. */
+  --t-lema: clamp(1.8rem, 8.6vw, 2.45rem);
   --t-title: 1.5rem;
   --t-subtitle: 0.75rem;
   --t-item: 1.0625rem;
-  --t-price: 1.0625rem;
+
+  /* Un paso por encima de --t-item: el precio es el segundo dato que se busca
+     en una carta y al mismo cuerpo que el nombre se perdía en la fila. */
+  --t-price: 1.1875rem;
   --t-body: 0.9375rem;
   --t-meta: 0.8125rem;
   --t-badge: 0.6875rem;

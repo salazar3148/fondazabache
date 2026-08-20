@@ -6,6 +6,10 @@ import type { MenuCategory } from '@/types/menu';
  * "Botella / litro / garrafa tradicional" van sin marca en la carta, igual que
  * allá: en la sección de ron y después de las medias de Caldas, en la fonda se
  * entiende. No se les inventa marca.
+ *
+ * Las descripciones van en las medias (que son lo que más rota) y en la
+ * garrafa; las botellas y el litro quedan en seco a propósito, para que la fila
+ * que habla sea la que se quiere destacar.
  */
 export const ron: MenuCategory = {
   id: 'de-la-cava',
@@ -14,8 +18,18 @@ export const ron: MenuCategory = {
   chip: 'De la cava',
   nota: 'Derecho, con hielo o con soda. Usted decide.',
   items: [
-    { id: 'media-medellin', nombre: 'Media Medellín', precio: 55_000 },
-    { id: 'media-medellin-29', nombre: 'Media Medellín 29°', precio: 60_000 },
+    {
+      id: 'media-medellin',
+      nombre: 'Media Medellín',
+      descripcion: 'Añejo, dulce y redondo. El clásico de siempre.',
+      precio: 55_000,
+    },
+    {
+      id: 'media-medellin-29',
+      nombre: 'Media Medellín 29°',
+      descripcion: 'Menos grados, más conversación.',
+      precio: 60_000,
+    },
     {
       id: 'media-caldas-tradicional',
       nombre: 'Media Caldas tradicional',
@@ -25,8 +39,18 @@ export const ron: MenuCategory = {
       relato:
         'El ron del que no tiene afán: se sirve, se mira, se conversa, y solo después se toma. El que lo apura, lo desperdicia.',
     },
-    { id: 'media-caldas-5-anos', nombre: 'Media Caldas 5 años', precio: 65_000 },
-    { id: 'media-esencial', nombre: 'Media Esencial', precio: 70_000 },
+    {
+      id: 'media-caldas-5-anos',
+      nombre: 'Media Caldas 5 años',
+      descripcion: 'Cinco años en roble. Se le nota en el final.',
+      precio: 65_000,
+    },
+    {
+      id: 'media-esencial',
+      nombre: 'Media Esencial',
+      descripcion: 'El de las ocasiones. Derecho y sin hielo.',
+      precio: 70_000,
+    },
     {
       id: 'botella-tradicional',
       nombre: 'Botella tradicional',
@@ -42,6 +66,7 @@ export const ron: MenuCategory = {
     {
       id: 'botella-roble-blanco',
       nombre: 'Botella Roble Blanco',
+      descripcion: 'Claro y seco. Se lleva bien con la soda.',
       precio: 110_000,
       etiquetas: ['compartir'],
     },
@@ -54,6 +79,7 @@ export const ron: MenuCategory = {
     {
       id: 'garrafa-tradicional',
       nombre: 'Garrafa tradicional',
+      descripcion: 'La que llega cuando la mesa ya cantó dos veces.',
       precio: 280_000,
       etiquetas: ['compartir'],
     },

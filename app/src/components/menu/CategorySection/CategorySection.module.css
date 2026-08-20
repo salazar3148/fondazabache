@@ -35,7 +35,9 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 500;
-  color: var(--c-laton-500);
+
+  /* laton-400, no 500: sobre la tabla aclarada el 500 se quedaba en 4.1:1. */
+  color: var(--c-laton-400);
 }
 
 .filete {

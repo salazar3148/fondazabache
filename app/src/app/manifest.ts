@@ -20,8 +20,9 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: '/',
     display: 'standalone',
     orientation: 'portrait',
-    background_color: '#15100b',
-    theme_color: '#15100b',
+    // Réplica de --c-madera-900 (tokens.css), igual que viewport.themeColor.
+    background_color: '#251b12',
+    theme_color: '#251b12',
     icons: [
       { src: '/icon.svg', sizes: 'any', type: 'image/svg+xml' },
       { src: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
