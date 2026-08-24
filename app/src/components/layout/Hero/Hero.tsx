@@ -43,7 +43,7 @@ export function Hero() {
         </PlankFrame>
       </div>
 
-      <BurntTitle as="p" intensity="hot" className={styles.lema}>
+      <BurntTitle as="p" intensity="bone" className={styles.lema}>
         <span className={styles.lemaLinea}>{linea1}</span>
         <span className={styles.lemaLinea}>{linea2}</span>
         <span className={styles.lemaCierre}>{linea3}</span>

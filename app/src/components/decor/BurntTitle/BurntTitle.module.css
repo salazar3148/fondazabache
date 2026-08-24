@@ -98,7 +98,33 @@
     background-image: linear-gradient(180deg, #fdf4e0 0%, #e3bd8b 100%);
     filter: drop-shadow(0 1px 1px rgb(14, 11, 8, 0.8));
   }
+
+  /*
+   * ── Hueso sólido: sin hierro, solo contraste ──
+   *
+   * A diferencia de .hot/.warm/.scorch, esta variante NO usa el degradado de
+   * fibra tostada ni el contorno de carbón: es --c-hueso-100 plano, el mismo
+   * tono que ya usa el resto de la marca para texto sobre madera (14.6:1
+   * contra --c-bg). Se anula el `background-image` y el `-webkit-text-stroke`
+   * heredados de `.burnt` para que el color quede sólido y no transparente.
+   *
+   * El único resto del efecto "quemado" que se conserva es la sombra: un
+   * rescoldo cálido (tono candela) más una sombra de profundidad, para que la
+   * letra hueso no quede plana sobre la veta de madera y siga leyéndose como
+   * parte del mismo objeto físico que el resto de la carta.
+   */
+  .bone {
+    color: var(--c-hueso-100);
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-stroke-width: 0;
+    filter: drop-shadow(0 2px 3px rgb(14, 11, 8, 0.6)) drop-shadow(0 0 22px rgb(224, 117, 47, 0.25));
+  }
 }
+
+/* Estado seguro (sin @supports): ya es hueso sólido por defecto en `.burnt`,
+   así que `.bone` no necesita nada extra aquí. */
 
 /* .warm son los valores base de .burnt: existe para que la API del componente
    sea uniforme (intensity siempre mapea a una clase). */
@@ -114,4 +140,14 @@
   background-clip: text;
   -webkit-text-stroke: 0;
   filter: drop-shadow(0 1px 0 rgb(255, 250, 240, 0.55)) drop-shadow(0 0 8px rgb(120, 60, 20, 0.18));
+}
+
+/* .bone es sólido a propósito (ver arriba): en tema claro el mismo criterio
+   pide tinta oscura sólida en vez del degradado de hierro de `.burnt`. */
+:global([data-theme='dia']) .bone {
+  color: var(--c-fg);
+  background-image: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  filter: drop-shadow(0 1px 0 rgb(255, 250, 240, 0.4));
 }

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 import styles from './BurntTitle.module.css';
 
-export type BurntIntensity = 'hot' | 'warm' | 'scorch';
+export type BurntIntensity = 'hot' | 'warm' | 'scorch' | 'bone';
 
 export interface BurntTitleProps {
   children: ReactNode;
