@@ -4,7 +4,7 @@ import styles from './Chip.module.css';
 
 export interface ChipProps {
   children: ReactNode;
-  /** Ancla real: "#del-estante". Funciona sin JS. */
+  /** Ancla real: "#aguardientes". Funciona sin JS. */
   href: string;
   active?: boolean | undefined;
 }

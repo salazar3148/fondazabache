@@ -7,8 +7,9 @@
  */
 
 .burnt {
-  /* Estado seguro por defecto */
-  color: var(--c-laton-300);
+  /* Estado seguro por defecto: crema, no latón. Si el navegador no sabe pintar
+     el efecto, el texto queda del mismo tono claro que tiene con efecto. */
+  color: var(--c-hueso-100);
   background-image: none;
 
   /* Higiene tipográfica */
@@ -30,30 +31,41 @@
     /*
      * Capa 3: la fibra tostada (relleno en degradado).
      *
-     * Aclarada un paso respecto a la versión original: el tramo bajo del
-     * degradado (el "cuero" quemado) usaba #8a5a2c, un tono casi idéntico al
-     * marrón de las tablas de fondo (--c-madera-700/800), así que la mitad
-     * inferior de cada letra se fundía con la madera y el texto se leía
-     * apagado. Los cuatro tonos suben de valor manteniendo la misma curva
-     * (claro arriba, más quemado abajo): el efecto de hierro candente se
-     * conserva, pero la letra ya no compite en oscuridad con la tabla.
+     * Segunda subida de valor. La primera ya había sacado el tramo bajo del
+     * marrón de las tablas, pero se quedó corta: #b3814a daba 3.7:1 contra la
+     * tabla (--c-madera-700) y la mitad inferior de cada letra seguía leyéndose
+     * apagada, sobre todo en los títulos de sección, que son los más pequeños.
+     * Ahora el rango es crema: del hueso encendido de arriba al tostado claro
+     * de abajo, que da 6:1 contra la tabla. La curva es la misma (claro arriba,
+     * quemado abajo), así que el hierro candente se conserva; lo que cambia es
+     * que el punto más oscuro del degradado ya no es un marrón medio.
      */
     color: transparent;
     background-image: linear-gradient(
       177deg,
-      #fbf1de 0%,
-      /* hueso muy cálido, aún más claro: el borde superior recibe la luz */
-        #f0d6a0 34%,
-      /* latón claro, aclarado de #e6c793 */ #dcae6c 66%,
-      /* tostado, aclarado de #c08c4d */ #b3814a 100% /* cuero: sigue siendo
-        el tono más oscuro de los cuatro, pero ya no se funde con la tabla */
+      #fffaf1 0%,
+      /* crema encendida: el borde superior recibe la luz */ #f7e6c6 34%,
+      /* crema tostada, aclarada de #f0d6a0 */ #ebd0a2 66%,
+      /* latón claro, aclarado de #dcae6c */ #d3ab73 100%
+        /* tostado: sigue
+        siendo el más oscuro de los cuatro, pero ahora por encima de la tabla */
     );
     -webkit-background-clip: text;
     background-clip: text;
 
-    /* Capa 2: el surco carbonizado. paint-order dibuja el trazo ANTES del
-       relleno, así el contorno no se come la letra: queda por fuera. */
-    -webkit-text-stroke: 3px #180d05;
+    /*
+     * Capa 2: el surco carbonizado. paint-order dibuja el trazo ANTES del
+     * relleno, así el contorno no se come la letra: queda por fuera.
+     *
+     * El grosor va en `em`, no en px, y esa es la otra mitad del arreglo del
+     * "se ve muy oscuro". Con 3px fijos el trazo era proporcional al lema de
+     * la portada (~39 px) pero brutal en los títulos de sección (--t-title,
+     * 24 px): 1.5 px de carbón por cada lado sobre un asta de ~2.8 px dejaba
+     * la letra más negra que crema, y los contraformas de la a, la e y la o se
+     * cerraban. En `em` el surco crece con la letra: ~1.3 px a 24 px y ~2.1 px
+     * a 39 px. Mismo dibujo en los dos tamaños.
+     */
+    -webkit-text-stroke: 0.055em #180d05;
     paint-order: stroke fill;
 
     /*
@@ -66,21 +78,24 @@
      * separa el contorno de la letra de la tabla oscura del fondo y ayuda a
      * leerla sin aplanar el degradado.
      */
-    filter: drop-shadow(0 1px 0 rgb(246, 239, 227, 0.18)) drop-shadow(0 2px 3px rgb(14, 11, 8, 0.85))
-      drop-shadow(0 0 12px rgb(224, 117, 47, 0.4)) drop-shadow(0 0 30px rgb(198, 85, 31, 0.22));
+    filter: drop-shadow(0 1px 0 rgb(246, 239, 227, 0.22))
+      drop-shadow(0 2px 3px rgb(14, 11, 8, 0.85)) drop-shadow(0 0 12px rgb(224, 117, 47, 0.46))
+      drop-shadow(0 0 32px rgb(198, 85, 31, 0.26));
   }
 
-  /* ── Marca profunda: solo el lema de portada ── */
+  /* ── Marca profunda: solo el lema de portada ──
+     0.075em ≈ 2.9 px en el lema (--t-lema llega a 39 px) y ≈ 2.1 px en los
+     display-lg del 404 y de la Ruleta. Antes eran 4px planos. */
   .hot {
-    -webkit-text-stroke-width: 4px;
-    filter: drop-shadow(0 1px 0 rgb(246, 239, 227, 0.22)) drop-shadow(0 3px 4px rgb(14, 11, 8, 0.9))
-      drop-shadow(0 0 16px rgb(224, 117, 47, 0.46)) drop-shadow(0 0 40px rgb(198, 85, 31, 0.26));
+    -webkit-text-stroke-width: 0.075em;
+    filter: drop-shadow(0 1px 0 rgb(246, 239, 227, 0.26)) drop-shadow(0 3px 4px rgb(14, 11, 8, 0.9))
+      drop-shadow(0 0 16px rgb(224, 117, 47, 0.52)) drop-shadow(0 0 42px rgb(198, 85, 31, 0.3));
   }
 
   /* ── Roce leve: badges, chip activo ── */
   .scorch {
     -webkit-text-stroke-width: 0;
-    background-image: linear-gradient(180deg, #f6e6c4 0%, #d8b17c 100%);
+    background-image: linear-gradient(180deg, #fdf4e0 0%, #e3bd8b 100%);
     filter: drop-shadow(0 1px 1px rgb(14, 11, 8, 0.8));
   }
 }

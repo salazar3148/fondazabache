@@ -15,13 +15,16 @@ import type { MenuCategory } from '@/types/menu';
  *
  * Orden: la favorita (media Caldas tradicional) primero, para anclar la
  * recomendación desde la primera fila. Luego el resto de medias, botellas,
- * litro y garrafa: el mismo camino de upsell de aguardientes.
+ * litros y garrafa: el mismo camino de upsell de aguardientes.
+ *
+ * Título y subtítulo invertidos por la misma razón que en aguardientes: arriba
+ * el producto ("Ron"), abajo la frase de fonda ("De la cava").
  */
 export const ron: MenuCategory = {
-  id: 'de-la-cava',
-  titulo: 'De la cava',
-  subtitulo: 'Rones',
-  chip: 'De la cava',
+  id: 'ron',
+  titulo: 'Ron',
+  subtitulo: 'De la cava',
+  chip: 'Ron',
   nota: 'Derecho, con hielo o con soda. Usted decide.',
   licor: true,
   descripciones: false,
@@ -77,6 +80,12 @@ export const ron: MenuCategory = {
       id: 'litro-tradicional',
       nombre: 'Litro tradicional',
       precio: 130_000,
+    },
+    {
+      id: 'litro-esencial',
+      nombre: 'Litro Esencial',
+      descripcion: 'El de las ocasiones, en litro. Para mesa que se queda.',
+      precio: 140_000,
     },
     {
       id: 'garrafa-tradicional',

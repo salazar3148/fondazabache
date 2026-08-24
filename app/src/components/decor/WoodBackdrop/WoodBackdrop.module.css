@@ -1,4 +1,10 @@
-/* docs/03 §2 · Fondo de madera de seis capas. Cero fotos. */
+/* docs/03 §2 · Fondo de madera. Cero fotos.
+ *
+ * Eran seis capas; ahora son diez: siete degradados en `.backdrop` más tres
+ * pasadas de veta en los hijos. Las cuatro nuevas (tres manchas de quemado y la
+ * pasada de carbón) son el encargo de que la tabla se vea quemada y no solo
+ * marrón oscuro. Siguen siendo cero peticiones de imagen: un SVG de ~700 bytes
+ * reutilizado en tres tamaños. */
 
 .backdrop {
   position: fixed;
@@ -10,34 +16,59 @@
   contain: strict;
   background-color: var(--c-madera-900);
   background-image:
-    /* Capa 5: luz de vela, arriba y al centro */
+    /* Capa 6: luz de vela, arriba y al centro. Sube un punto: sobre la tabla
+       más oscura de ahora, el foco cálido tenía que marcarse más para seguir
+       leyéndose como una luz y no como una mancha clara. */
     radial-gradient(
       70% 38% at 50% 4%,
-      rgb(224, 117, 47, 0.1) 0%,
-      rgb(224, 117, 47, 0.035) 45%,
+      rgb(224, 117, 47, 0.13) 0%,
+      rgb(224, 117, 47, 0.045) 45%,
       transparent 78%
     ),
-    /* Capa 4: viñeta. Se bajó de 0.34/0.62 a 0.22/0.46: con la rampa de madera
-       aclarada, la viñeta original devolvía las esquinas al negro y se comía el
-       tono más claro que se buscaba. */
+    /* Capa 5b: lo que hace que la tabla se lea QUEMADA y no solo oscura. Son
+       tres manchas grandes y muy difusas: dos de carbón, descentradas y de
+       tamaño distinto (una tabla no se quema parejo ni simétrico), y una
+       tercera de brasa que las acompaña arriba a la derecha. Sin la de brasa
+       las otras dos leen como mugre; con ella leen como fuego que ya pasó. */
+    radial-gradient(
+        54% 36% at 13% 28%,
+        rgb(14, 11, 8, 0.5) 0%,
+        rgb(14, 11, 8, 0.2) 46%,
+        transparent 74%
+      ),
+    radial-gradient(
+      44% 28% at 89% 66%,
+      rgb(14, 11, 8, 0.44) 0%,
+      rgb(14, 11, 8, 0.18) 44%,
+      transparent 72%
+    ),
+    radial-gradient(40% 26% at 78% 14%, rgb(198, 85, 31, 0.11) 0%, transparent 70%),
+    /* Capa 5: viñeta. Vuelve a 0.36/0.68 (había bajado a 0.22/0.46 cuando la
+       rampa de madera se aclaró). Ahora el encargo es el contrario: se quiere
+       el borde más cerrado, y la letra quemada pasó a tono crema, así que ya
+       no hay riesgo de que el texto se hunda con las esquinas. */
     radial-gradient(
         132% 90% at 50% 12%,
-        transparent 42%,
-        rgb(14, 11, 8, 0.22) 76%,
-        rgb(14, 11, 8, 0.46) 100%
+        transparent 40%,
+        rgb(14, 11, 8, 0.36) 76%,
+        rgb(14, 11, 8, 0.68) 100%
       ),
     /* Capa 2: tablones verticales de ancho irregular. Surco más marcado y
        canto más iluminado que antes: sobre madera clara la junta necesita más
        contraste para leerse como junta. */
     repeating-linear-gradient(
         90deg,
-        rgb(14, 11, 8, 0.62) 0 1.5px,
-        rgb(246, 239, 227, 0.07) 1.5px 3px,
+        rgb(14, 11, 8, 0.72) 0 1.5px,
+        rgb(246, 239, 227, 0.06) 1.5px 3px,
         transparent 3px 118px
       ),
-    /* Capa 1: degradado de profundidad */
-    linear-gradient(175deg, var(--c-madera-800) 0%, var(--c-madera-900) 46%, #1b130c 100%);
-  background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+    /* Capa 1: degradado de profundidad. Bajado un paso completo respecto a la
+       rampa de tokens (madera-800 → madera-900 → #1b130c). No se toca el token:
+       las tablas de las tarjetas siguen con su contraste calibrado y lo único
+       que se oscurece es el fondo detrás de ellas, que es justo lo que las hace
+       despegarse. */
+    linear-gradient(175deg, #2b1f14 0%, #1c1409 48%, #100a05 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
 }
 
 /* ── Capa 3: veta ───────────────────────────────────────────── */
@@ -48,9 +79,12 @@
   background-size: 256px 256px;
   background-repeat: repeat;
 
-  /* Sube de 0.38 a 0.46: la madera es ahora el protagonista del fondo, no una
-     insinuación. Es el cambio que hace que se lea "amaderado" y no "marrón". */
-  opacity: 0.46;
+  /* 0.38 → 0.46 → 0.62: la madera es el protagonista del fondo, no una
+     insinuación. Es el cambio que hace que se lea "amaderado" y no "marrón".
+     La última subida acompaña al fondo más oscuro: en overlay, cuanto más
+     oscura la base, menos se nota la veta, así que mantener la textura visible
+     al oscurecer exige subir la capa. */
+  opacity: 0.62;
   mix-blend-mode: overlay;
 }
 
@@ -62,7 +96,25 @@
   background-image: url('/textures/wood-grain-256.svg');
   background-size: 512px 768px;
   background-repeat: repeat;
-  opacity: 0.22;
+  opacity: 0.34;
   mix-blend-mode: soft-light;
   transform: scaleX(-1);
+}
+
+/* ── Capa 3b: el carbón ─────────────────────────────────────
+   La misma veta, a escala grande y en multiply: oscurece SIGUIENDO la fibra,
+   que es como se quema la madera de verdad — el fuego corre por la vena, no en
+   parches redondos. Es lo que le da al fondo el grano quemado que las manchas
+   de la capa 5b solas no dan, porque esas son suaves y sin dirección.
+
+   Tercer tamaño del mismo archivo (256, 512×768 y este): el navegador rasteriza
+   una vez por tamaño y cachea. Son ~700 bytes de SVG, cero peticiones nuevas. */
+.carbon {
+  position: absolute;
+  inset: 0;
+  background-image: url('/textures/wood-grain-256.svg');
+  background-size: 1024px 1536px;
+  background-repeat: repeat;
+  opacity: 0.3;
+  mix-blend-mode: multiply;
 }

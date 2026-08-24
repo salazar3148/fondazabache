@@ -58,8 +58,15 @@ export const menuCategorySchema = z.object({
    * aguardientes tiene 13 presentaciones (3 referencias × 3 tamaños + 4
    * marcas alternas) y partirlas en dos secciones confundiría más que
    * ayudar. 14 sigue siendo un techo que obliga a pensar antes de crecer.
+   *
+   * El piso bajó de 2 a 1. El 2 existía para que ningún chip de la barra
+   * llevara a una sección casi vacía, y eso sigue siendo cierto cuando la
+   * sección es un tema (una "sección coja"); pero al desglosar lo importado
+   * por tipo de licor, el chip promete un TIPO, no una cantidad: "Vodka" con
+   * una referencia cumple lo que anuncia (ver content/menu/vodka.ts). Una
+   * sección de cero productos sigue siendo un error.
    */
-  items: z.array(menuItemSchema).min(2).max(14, 'más de 14 productos por sección abruma'),
+  items: z.array(menuItemSchema).min(1).max(14, 'más de 14 productos por sección abruma'),
 });
 
 export const menuSchema = z

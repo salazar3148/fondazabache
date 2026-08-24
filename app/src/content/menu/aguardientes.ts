@@ -21,17 +21,22 @@ import { PRECIO_SIN_CONFIRMAR } from '@/lib/constants';
  * alternas (Manzanares, Real) quedan al final: son la opción de respaldo, no
  * la primera que se quiere mostrar.
  *
- * Los cuatro precios de Manzanares y Real siguen sin confirmar y se muestran
- * como "Pregunte".
+ * Los tres precios que faltan (Manzanares botella, Real media y Real botella)
+ * siguen sin confirmar y se muestran como "Pregunte".
+ *
+ * Título y subtítulo van al revés de lo que pedía el diseño original: arriba,
+ * quemado, el producto ("Aguardientes"), y debajo la frase de fonda ("Del
+ * estante"). Quien abre la carta busca el licor, no la metáfora: con "Del
+ * estante" arriba tocaba leer el renglón chico para saber qué sección era.
  */
 export const aguardientes: MenuCategory = {
-  id: 'del-estante',
-  titulo: 'Del estante',
-  subtitulo: 'Aguardientes',
-  chip: 'Del estante',
+  id: 'aguardientes',
+  titulo: 'Aguardientes',
+  subtitulo: 'Del estante',
+  chip: 'Aguardientes',
   nota: 'Verde, rojo y azul son las tres referencias del Antioqueño.',
   licor: true,
-  descripciones: false, 
+  descripciones: false,
   items: [
     {
       id: 'media-verde',
@@ -89,8 +94,8 @@ export const aguardientes: MenuCategory = {
     },
     {
       id: 'manzanares-media',
-      nombre: 'Manzanares media',
-      precio: PRECIO_SIN_CONFIRMAR,
+      nombre: 'Media Manzanares',
+      precio: 65_000,
     },
     {
       id: 'manzanares-botella',

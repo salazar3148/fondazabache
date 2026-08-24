@@ -4,8 +4,8 @@ import type { MenuCategory } from '@/types/menu';
  * Catálogo real, con los nombres tal cual la carta física (corrigiendo solo la
  * ortografía de las marcas: "Águila laght" → "Águila Light").
  *
- * Nacionales e importadas van juntas: son ocho referencias y partirlas en dos
- * secciones de 6 y 2 dejaría una sección coja. La carta física las separa; en
+ * Nacionales e importadas van juntas: son nueve referencias y partirlas en dos
+ * secciones de 7 y 2 dejaría una sección coja. La carta física las separa; en
  * pantalla el precio ya distingue cuál es cuál.
  *
  * Cerveza es la ÚNICA sección con `descripciones: true`: es la única fila de
@@ -64,6 +64,12 @@ export const cervezas: MenuCategory = {
       nombre: 'Club Dorada',
       descripcion: 'Malta tostada y más cuerpo. Se toma sin afán.',
       precio: 8_000,
+    },
+    {
+      id: 'club-trigo',
+      nombre: 'Club Colombia Trigo',
+      descripcion: 'De trigo, turbia y suave. Sorprende al que no la conoce.',
+      precio: 8_500,
     },
     { id: 'corona', nombre: 'Corona', descripcion: 'Con limón, si quiere.', precio: 9_000 },
     {

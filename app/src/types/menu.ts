@@ -37,9 +37,20 @@ export interface MenuItem {
 export interface MenuCategory {
   /** Ancla de la URL y del chip de navegación. kebab-case, estable. */
   id: string;
-  /** Nombre con voz de fonda. Va quemado. */
+  /**
+   * Qué se vende en la sección, en la palabra con que se pide: "Aguardientes",
+   * "Ron", "Whisky". Va quemado, es lo primero que se lee.
+   *
+   * En las secciones de licor este renglón dice el producto y NO la frase de
+   * fonda: la frase bajó a `subtitulo`. Cerveza y pasantes conservan la voz
+   * arriba ("Bien fría") porque ahí el producto no admite duda.
+   */
   titulo: string;
-  /** Subtítulo literal, en mayúsculas pequeñas. */
+  /**
+   * El renglón chico bajo el título, en mayúsculas pequeñas de latón: la voz
+   * de la fonda ("Del estante", "De la cava", "De fuera") o el matiz que el
+   * título no dice ("Por copa").
+   */
   subtitulo: string;
   /** Texto corto del chip. Puede ser más breve que el título. */
   chip: string;
@@ -61,10 +72,11 @@ export interface MenuCategory {
   /**
    * `true` si las filas de esta sección muestran `descripcion`. Solo cervezas
    * la tiene en `true`: es la única sección donde la frase corta se queda
-   * visible en la carta. En el resto (aguardiente, ron, de fuera, tragos y
-   * pasantes) la fila no la muestra, aunque el dato puede seguir viviendo en
-   * el producto — la Ruleta del Azabache sí la lee y la enseña al sortear un
-   * licor, por eso no se borra del contenido, solo se oculta en la lista.
+   * visible en la carta. En el resto (aguardiente, ron, whisky, tequila,
+   * vodka, tragos y pasantes) la fila no la muestra, aunque el dato puede
+   * seguir viviendo en el producto — la Ruleta del Azabache sí la lee y la
+   * enseña al sortear un licor, por eso no se borra del contenido, solo se
+   * oculta en la lista.
    *
    * Igual que `licor`, es obligatorio para forzar la decisión en cada
    * sección nueva.

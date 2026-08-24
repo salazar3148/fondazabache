@@ -45,25 +45,27 @@ export function Wordmark({ uid = 'wordmark', decorative = false, className }: Wo
     <svg viewBox="0 0 300 120" className={cn(styles.wordmark, className)} {...semantica}>
       <defs>
         {/*
-         * La fibra tostada: hueso arriba (recibe luz) y cuero abajo (quemó
-         * más). Mismos tonos aclarados que BurntTitle.module.css: el cuero
-         * original (#8a5a2c) se fundía con la tabla de fondo y el letrero
-         * costaba leerlo.
+         * La fibra tostada: crema arriba (recibe luz) y tostado abajo (quemó
+         * más). Los cuatro tonos son los mismos de BurntTitle.module.css y se
+         * mueven con él: el letrero y los títulos de sección tienen que ser el
+         * mismo hierro. Van en rango crema porque los marrones medios de antes
+         * (#dcae6c → #b3814a en el tramo bajo) se fundían con la tabla del
+         * fondo y el letrero se leía apagado.
          */}
         <linearGradient id={burnId} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#fbf1de" />
-          <stop offset="34%" stopColor="#f0d6a0" />
-          <stop offset="66%" stopColor="#dcae6c" />
-          <stop offset="100%" stopColor="#b3814a" />
+          <stop offset="0%" stopColor="#fffaf1" />
+          <stop offset="34%" stopColor="#f7e6c6" />
+          <stop offset="66%" stopColor="#ebd0a2" />
+          <stop offset="100%" stopColor="#d3ab73" />
         </linearGradient>
 
         {/* Chispa de luz, penumbra cálida y rescoldo naranja alrededor. El
             rescoldo sube de opacidad junto con BurntTitle: separa el trazo de
             la tabla oscura y ayuda a leer el letrero. */}
         <filter id={emberId} x="-40%" y="-40%" width="180%" height="180%">
-          <feDropShadow dx="0" dy="1" stdDeviation="0" floodColor="#f6efe3" floodOpacity="0.18" />
+          <feDropShadow dx="0" dy="1" stdDeviation="0" floodColor="#f6efe3" floodOpacity="0.22" />
           <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#0e0b08" floodOpacity="0.85" />
-          <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="#e0752f" floodOpacity="0.46" />
+          <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="#e0752f" floodOpacity="0.52" />
         </filter>
       </defs>
 
@@ -79,7 +81,7 @@ export function Wordmark({ uid = 'wordmark', decorative = false, className }: Wo
           letterSpacing="6"
           fill={`url(#${burnId})`}
           stroke="#180d05"
-          strokeWidth="2.4"
+          strokeWidth="2.25"
           paintOrder="stroke fill"
         >
           FONDA
@@ -93,7 +95,7 @@ export function Wordmark({ uid = 'wordmark', decorative = false, className }: Wo
           letterSpacing="4"
           fill={`url(#${burnId})`}
           stroke="#180d05"
-          strokeWidth="2.6"
+          strokeWidth="2.55"
           paintOrder="stroke fill"
         >
           AZABACHE
