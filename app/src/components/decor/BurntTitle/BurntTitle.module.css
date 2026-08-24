@@ -102,30 +102,44 @@
   /*
    * ── Hueso incrustado: talla de madera con incrustación de hueso ──
    *
-   * Sigue siendo de la familia hueso (nunca baja de --c-hueso-300, que ya da
-   * 10.8:1 contra --c-bg), pero deja de ser un color plano encima del texto.
-   * La referencia es la incrustación de hueso/nácar en madera oscura: una
-   * pieza clara, tallada, con un filo que la separa de la veta y una luz que
-   * resbala por el borde superior. Cuatro capas, mismo orden que .hot:
+   * Sigue siendo de la familia hueso (el degradado base nunca baja de
+   * --c-hueso-300, 10.8:1 contra --c-bg), pero deja de ser un color plano
+   * encima del texto. La referencia es la incrustación de hueso/nácar en
+   * madera oscura: una pieza clara, tallada, con veta propia y un brillo que
+   * la mueve al mirarla desde distintos ángulos. Tres capas de fondo, de
+   * arriba hacia abajo, más el filo y la sombra:
    *
-   * 1. Relleno en degradado sutil (marfil arriba → hueso-300 abajo): le da
-   *    volumen a la pieza sin oscurecerla lo suficiente para perder contraste.
-   * 2. Filo oscuro y semitransparente (no negro sólido como en .hot): separa
-   *    la letra de la textura de la madera sin volverla "quemada".
-   * 3. Luz superior: una línea clara justo en el borde de arriba, como si la
-   *    pieza recibiera luz rasante.
-   * 4. Sombra de profundidad + un rescoldo cálido muy tenue, para que la
-   *    incrustación siga leyéndose como parte del mismo objeto físico que el
-   *    resto de la carta (que sí es hierro caliente) sin tomar su color.
+   * 1. Reflejo de nácar: un solo destello tibio (tinte latón, el mismo acento
+   *    metálico de chips, badges y el Sello) en la esquina superior. Es lo
+   *    que separa "hueso liso" de "nácar": el nácar real cambia de brillo
+   *    según de dónde le llegue la luz, y este halo fijo evoca eso sin
+   *    animación.
+   * 2. Veta fina repetida (mismo patrón que la tabla en textures.css, pero a
+   *    escala de letra): le da textura de material real a la pieza en vez de
+   *    un degradado de pantalla.
+   * 3. Relleno base en degradado (marfil arriba → hueso-300 abajo): el
+   *    volumen de la pieza.
+   * 4. Filo oscuro semitransparente (no negro sólido como en .hot): separa la
+   *    letra de la madera sin volverla "quemada".
+   * 5. Sombra de profundidad + rescoldo cálido muy tenue: integra la pieza a
+   *    la misma atmósfera de brasa del resto de la carta sin tomar su color.
    */
   .bone {
     color: var(--c-hueso-100);
-    background-image: linear-gradient(
-      180deg,
-      #fffdf8 0%,
-      var(--c-hueso-100) 48%,
-      var(--c-hueso-300) 100%
-    );
+    background-image:
+      radial-gradient(
+        140% 180% at 22% -10%,
+        rgb(227 199 126 / 50%) 0%,
+        rgb(255 253 246 / 30%) 18%,
+        transparent 42%
+      ),
+      repeating-linear-gradient(
+        94deg,
+        transparent 0 3px,
+        rgb(24 15 7 / 7%) 3px 4px,
+        transparent 4px 9px
+      ),
+      linear-gradient(180deg, #fffdf8 0%, var(--c-hueso-100) 48%, var(--c-hueso-300) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-stroke: 0.032em rgb(24 15 7 / 55%);
@@ -154,12 +168,26 @@
   filter: drop-shadow(0 1px 0 rgb(255, 250, 240, 0.55)) drop-shadow(0 0 8px rgb(120, 60, 20, 0.18));
 }
 
-/* .bone conserva la talla en tema claro, pero invertida: sobre madera clara
-   la incrustación se lee más oscura que la tabla, con luz por debajo del
-   filo en vez de por encima (mismo criterio de inversión que usa .burnt). */
+/* .bone conserva la talla y la veta en tema claro, pero invertida: sobre
+   madera clara la incrustación se lee más oscura que la tabla, con luz por
+   debajo del filo en vez de por encima (mismo criterio de inversión que usa
+   .burnt). */
 :global([data-theme='dia']) .bone {
   color: var(--c-fg);
-  background-image: linear-gradient(180deg, #3a2a1c 0%, var(--c-fg) 55%, #1c130b 100%);
+  background-image:
+    radial-gradient(
+      140% 180% at 22% -10%,
+      rgb(122 74 18 / 30%) 0%,
+      rgb(58 42 28 / 22%) 18%,
+      transparent 42%
+    ),
+    repeating-linear-gradient(
+      94deg,
+      transparent 0 3px,
+      rgb(255 250 240 / 8%) 3px 4px,
+      transparent 4px 9px
+    ),
+    linear-gradient(180deg, #3a2a1c 0%, var(--c-fg) 55%, #1c130b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-stroke: 0.032em rgb(255 250 240 / 45%);
