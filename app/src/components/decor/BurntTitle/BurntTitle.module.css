@@ -100,26 +100,38 @@
   }
 
   /*
-   * ── Hueso sólido: sin hierro, solo contraste ──
+   * ── Hueso incrustado: talla de madera con incrustación de hueso ──
    *
-   * A diferencia de .hot/.warm/.scorch, esta variante NO usa el degradado de
-   * fibra tostada ni el contorno de carbón: es --c-hueso-100 plano, el mismo
-   * tono que ya usa el resto de la marca para texto sobre madera (14.6:1
-   * contra --c-bg). Se anula el `background-image` y el `-webkit-text-stroke`
-   * heredados de `.burnt` para que el color quede sólido y no transparente.
+   * Sigue siendo de la familia hueso (nunca baja de --c-hueso-300, que ya da
+   * 10.8:1 contra --c-bg), pero deja de ser un color plano encima del texto.
+   * La referencia es la incrustación de hueso/nácar en madera oscura: una
+   * pieza clara, tallada, con un filo que la separa de la veta y una luz que
+   * resbala por el borde superior. Cuatro capas, mismo orden que .hot:
    *
-   * El único resto del efecto "quemado" que se conserva es la sombra: un
-   * rescoldo cálido (tono candela) más una sombra de profundidad, para que la
-   * letra hueso no quede plana sobre la veta de madera y siga leyéndose como
-   * parte del mismo objeto físico que el resto de la carta.
+   * 1. Relleno en degradado sutil (marfil arriba → hueso-300 abajo): le da
+   *    volumen a la pieza sin oscurecerla lo suficiente para perder contraste.
+   * 2. Filo oscuro y semitransparente (no negro sólido como en .hot): separa
+   *    la letra de la textura de la madera sin volverla "quemada".
+   * 3. Luz superior: una línea clara justo en el borde de arriba, como si la
+   *    pieza recibiera luz rasante.
+   * 4. Sombra de profundidad + un rescoldo cálido muy tenue, para que la
+   *    incrustación siga leyéndose como parte del mismo objeto físico que el
+   *    resto de la carta (que sí es hierro caliente) sin tomar su color.
    */
   .bone {
     color: var(--c-hueso-100);
-    background-image: none;
-    -webkit-background-clip: border-box;
-    background-clip: border-box;
-    -webkit-text-stroke-width: 0;
-    filter: drop-shadow(0 2px 3px rgb(14, 11, 8, 0.6)) drop-shadow(0 0 22px rgb(224, 117, 47, 0.25));
+    background-image: linear-gradient(
+      180deg,
+      #fffdf8 0%,
+      var(--c-hueso-100) 48%,
+      var(--c-hueso-300) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 0.032em rgb(24 15 7 / 55%);
+    paint-order: stroke fill;
+    filter: drop-shadow(0 1px 0 rgb(255, 253, 246, 0.5)) drop-shadow(0 3px 5px rgb(14, 11, 8, 0.55))
+      drop-shadow(0 0 20px rgb(224, 117, 47, 0.2));
   }
 }
 
@@ -142,12 +154,14 @@
   filter: drop-shadow(0 1px 0 rgb(255, 250, 240, 0.55)) drop-shadow(0 0 8px rgb(120, 60, 20, 0.18));
 }
 
-/* .bone es sólido a propósito (ver arriba): en tema claro el mismo criterio
-   pide tinta oscura sólida en vez del degradado de hierro de `.burnt`. */
+/* .bone conserva la talla en tema claro, pero invertida: sobre madera clara
+   la incrustación se lee más oscura que la tabla, con luz por debajo del
+   filo en vez de por encima (mismo criterio de inversión que usa .burnt). */
 :global([data-theme='dia']) .bone {
   color: var(--c-fg);
-  background-image: none;
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
+  background-image: linear-gradient(180deg, #3a2a1c 0%, var(--c-fg) 55%, #1c130b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 0.032em rgb(255 250 240 / 45%);
   filter: drop-shadow(0 1px 0 rgb(255, 250, 240, 0.4));
 }
