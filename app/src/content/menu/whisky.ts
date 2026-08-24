@@ -1,5 +1,4 @@
 import type { MenuCategory } from '@/types/menu';
-import { PRECIO_SIN_CONFIRMAR } from '@/lib/constants';
 
 /**
  * Catálogo real: whisky en botella. Salió de la antigua sección "De fuera",
@@ -21,8 +20,6 @@ import { PRECIO_SIN_CONFIRMAR } from '@/lib/constants';
  * Orden: el más accesible primero, el más premium después — así el segundo
  * funciona como ancla de precio que hace ver bien el primero. El Jäger cierra:
  * es el que no es whisky.
- *
- * Los tres precios siguen sin confirmar: se muestran como "Pregunte".
  */
 export const whisky: MenuCategory = {
   id: 'whisky',
@@ -37,19 +34,19 @@ export const whisky: MenuCategory = {
       id: 'whisky-old-parr',
       nombre: 'Old Parr',
       descripcion: 'Escocés de mezcla, suave y sin filo. Con hielo.',
-      precio: PRECIO_SIN_CONFIRMAR,
+      precio: 290_000,
     },
     {
       id: 'whisky-buchanans-12',
       nombre: "Buchanan's 12",
       descripcion: 'Doce años. La botella que se pone en el centro.',
-      precio: PRECIO_SIN_CONFIRMAR,
+      precio: 325_000,
     },
     {
       id: 'jagermeister',
       nombre: 'Jägermeister',
       descripcion: 'Cincuenta y seis hierbas. Bien frío, de un solo golpe.',
-      precio: PRECIO_SIN_CONFIRMAR,
+      precio: 200_000,
     },
   ],
 };

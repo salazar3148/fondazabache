@@ -19,6 +19,10 @@ import type { MenuCategory } from '@/types/menu';
  *
  * Título y subtítulo invertidos por la misma razón que en aguardientes: arriba
  * el producto ("Ron"), abajo la frase de fonda ("De la cava").
+ *
+ * Nombres en Title Case: los descriptores genéricos (Tradicional, Años) van
+ * en mayúscula igual que los nombres propios (Roble Blanco, Esencial), para
+ * que ninguna fila se lea distinto de las demás.
  */
 export const ron: MenuCategory = {
   id: 'ron',
@@ -31,7 +35,7 @@ export const ron: MenuCategory = {
   items: [
     {
       id: 'media-caldas-tradicional',
-      nombre: 'Media Caldas tradicional',
+      nombre: 'Media Caldas Tradicional',
       descripcion: 'Trago servido, sin apuro.',
       precio: 60_000,
       etiquetas: ['favorita'],
@@ -50,7 +54,7 @@ export const ron: MenuCategory = {
     },
     {
       id: 'media-caldas-5-anos',
-      nombre: 'Media Caldas 5 años',
+      nombre: 'Media Caldas 5 Años',
       descripcion: 'Cinco años en roble. Se le nota en el final.',
       precio: 65_000,
     },
@@ -62,12 +66,12 @@ export const ron: MenuCategory = {
     },
     {
       id: 'botella-tradicional',
-      nombre: 'Botella tradicional',
+      nombre: 'Botella Tradicional',
       precio: 100_000,
     },
     {
       id: 'botella-5-anos',
-      nombre: 'Botella 5 años',
+      nombre: 'Botella 5 Años',
       precio: 110_000,
     },
     {
@@ -78,7 +82,7 @@ export const ron: MenuCategory = {
     },
     {
       id: 'litro-tradicional',
-      nombre: 'Litro tradicional',
+      nombre: 'Litro Tradicional',
       precio: 130_000,
     },
     {
@@ -89,7 +93,7 @@ export const ron: MenuCategory = {
     },
     {
       id: 'garrafa-tradicional',
-      nombre: 'Garrafa tradicional',
+      nombre: 'Garrafa Tradicional',
       descripcion: 'La que llega cuando la mesa ya cantó dos veces.',
       precio: 280_000,
       etiquetas: ['compartir'],

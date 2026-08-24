@@ -1,5 +1,4 @@
 import type { MenuCategory } from '@/types/menu';
-import { PRECIO_SIN_CONFIRMAR } from '@/lib/constants';
 
 /**
  * Catálogo real, con los NOMBRES TAL CUAL la carta física: en la fonda no se
@@ -21,13 +20,15 @@ import { PRECIO_SIN_CONFIRMAR } from '@/lib/constants';
  * alternas (Manzanares, Real) quedan al final: son la opción de respaldo, no
  * la primera que se quiere mostrar.
  *
- * Los tres precios que faltan (Manzanares botella, Real media y Real botella)
- * siguen sin confirmar y se muestran como "Pregunte".
- *
  * Título y subtítulo van al revés de lo que pedía el diseño original: arriba,
  * quemado, el producto ("Aguardientes"), y debajo la frase de fonda ("Del
  * estante"). Quien abre la carta busca el licor, no la metáfora: con "Del
  * estante" arriba tocaba leer el renglón chico para saber qué sección era.
+ *
+ * Nombres en Title Case (cada palabra principal en mayúscula): es el mismo
+ * criterio que ya se usaba en los nombres de marca (Manzanares, Real) y
+ * ahora se extiende a los descriptores genéricos (Verde, Roja, Azul) para
+ * que ninguna fila se lea distinto de las demás.
  */
 export const aguardientes: MenuCategory = {
   id: 'aguardientes',
@@ -40,55 +41,55 @@ export const aguardientes: MenuCategory = {
   items: [
     {
       id: 'media-verde',
-      nombre: 'Media verde',
+      nombre: 'Media Verde',
       descripcion: 'La de tapa verde. Con hielo, limón y una canción.',
       precio: 48_000,
       etiquetas: ['favorita'],
     },
     {
       id: 'media-roja',
-      nombre: 'Media roja',
+      nombre: 'Media Roja',
       descripcion: 'Tapa roja: más dulce al paso, más brava al otro día.',
       precio: 50_000,
     },
     {
       id: 'media-azul',
-      nombre: 'Media azul',
+      nombre: 'Media Azul',
       descripcion: 'Sin azúcar. Más seco, menos guayabo.',
       precio: 55_000,
     },
     {
       id: 'litro-verde',
-      nombre: 'Litro verde',
+      nombre: 'Litro Verde',
       descripcion: 'El que se pide cuando nadie tiene afán de irse.',
       precio: 85_000,
     },
     {
       id: 'litro-rojo',
-      nombre: 'Litro rojo',
+      nombre: 'Litro Rojo',
       precio: 90_000,
     },
     {
       id: 'litro-azul',
-      nombre: 'Litro azul',
+      nombre: 'Litro Azul',
       precio: 95_000,
     },
     {
       id: 'garrafa-verde',
-      nombre: 'Garrafa verde',
+      nombre: 'Garrafa Verde',
       descripcion: 'Para la mesa que ya decidió amanecer.',
       precio: 190_000,
       etiquetas: ['compartir'],
     },
     {
       id: 'garrafa-roja',
-      nombre: 'Garrafa roja',
+      nombre: 'Garrafa Roja',
       precio: 235_000,
       etiquetas: ['compartir'],
     },
     {
       id: 'garrafa-azul',
-      nombre: 'Garrafa azul',
+      nombre: 'Garrafa Azul',
       precio: 255_000,
       etiquetas: ['compartir'],
     },
@@ -101,17 +102,17 @@ export const aguardientes: MenuCategory = {
       id: 'manzanares-botella',
       nombre: 'Aguardiente Manzanares',
       descripcion: 'Para cambiar de etiqueta sin cambiar de costumbre.',
-      precio: PRECIO_SIN_CONFIRMAR,
+      precio: 115_000,
     },
     {
       id: 'real-media',
-      nombre: 'Aguardiente Real media',
-      precio: PRECIO_SIN_CONFIRMAR,
+      nombre: 'Aguardiente Real Media',
+      precio: 45_000,
     },
     {
       id: 'real-botella',
       nombre: 'Aguardiente Real',
-      precio: PRECIO_SIN_CONFIRMAR,
+      precio: 70_000,
     },
   ],
 };

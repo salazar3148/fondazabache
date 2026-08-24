@@ -1,5 +1,4 @@
 import type { MenuCategory } from '@/types/menu';
-import { PRECIO_SIN_CONFIRMAR } from '@/lib/constants';
 
 /**
  * Catálogo real: tequila en botella. Salió de la antigua sección "De fuera"
@@ -14,8 +13,6 @@ import { PRECIO_SIN_CONFIRMAR } from '@/lib/constants';
  *
  * Orden: el más accesible primero, el reposado después — ancla de precio y
  * upsell para quien ya decidió que es noche de tequila.
- *
- * Los dos precios siguen sin confirmar: se muestran como "Pregunte".
  */
 export const tequila: MenuCategory = {
   id: 'tequila',
@@ -30,13 +27,13 @@ export const tequila: MenuCategory = {
       id: 'tequila-jose-cuervo',
       nombre: 'José Cuervo',
       descripcion: 'El que todo el mundo conoce. Con sal y limón.',
-      precio: PRECIO_SIN_CONFIRMAR,
+      precio: 165_000,
     },
     {
       id: 'tequila-1800-reposado',
       nombre: '1800 Reposado',
       descripcion: 'Reposado en barrica de roble. Sal, limón y decisión.',
-      precio: PRECIO_SIN_CONFIRMAR,
+      precio: 350_000,
     },
   ],
 };

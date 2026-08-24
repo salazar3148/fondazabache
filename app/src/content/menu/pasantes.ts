@@ -28,7 +28,7 @@ export const pasantes: MenuCategory = {
       precio: 4_000,
     },
     { id: 'agua', nombre: 'Agua', precio: 4_000 },
-    { id: 'agua-con-gas', nombre: 'Agua con gas', precio: 5_000 },
+    { id: 'agua-con-gas', nombre: 'Agua con Gas', precio: 5_000 },
     {
       id: 'gatorade',
       nombre: 'Gatorade',
