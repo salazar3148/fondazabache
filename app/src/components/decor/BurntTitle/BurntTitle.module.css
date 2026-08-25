@@ -26,6 +26,20 @@
   padding-block: 0.08em;
 }
 
+/**
+ * Fallback de `.bone`. Va ANTES del @supports a propósito: un @supports no
+ * aporta especificidad, así que si esta regla fuera después le ganaría al
+ * `color: transparent` de dentro y taparía el degradado (fue exactamente el
+ * bug de la primera versión: la letra salía plana y blanca).
+ *
+ * `.burnt` deja hueso-100, que es más blanco de lo que pide esta variante, así
+ * que aquí se baja a la crema media del degradado para que el estado sin
+ * efecto tenga el mismo carácter que el completo.
+ */
+.bone {
+  color: #ecdab4;
+}
+
 @supports (-webkit-background-clip: text) and (-webkit-text-stroke: 1px #000) {
   .burnt {
     /*
@@ -100,57 +114,60 @@
   }
 
   /*
-   * ── Hueso incrustado: talla de madera con incrustación de hueso ──
+   * ── Hueso viejo: incrustación de marfil crema en madera ──
    *
-   * Sigue siendo de la familia hueso (el degradado base nunca baja de
-   * --c-hueso-300, 10.8:1 contra --c-bg), pero deja de ser un color plano
-   * encima del texto. La referencia es la incrustación de hueso/nácar en
-   * madera oscura: una pieza clara, tallada, con veta propia y un brillo que
-   * la mueve al mirarla desde distintos ángulos. Tres capas de fondo, de
-   * arriba hacia abajo, más el filo y la sombra:
+   * `color: transparent` es OBLIGATORIO aquí, igual que en `.burnt`: con
+   * `background-clip: text` el glifo se pinta ENCIMA del fondo recortado, así
+   * que cualquier `color` opaco tapa el degradado y la letra sale plana.
    *
-   * 1. Reflejo de nácar: un solo destello tibio (tinte latón, el mismo acento
-   *    metálico de chips, badges y el Sello) en la esquina superior. Es lo
-   *    que separa "hueso liso" de "nácar": el nácar real cambia de brillo
-   *    según de dónde le llegue la luz, y este halo fijo evoca eso sin
-   *    animación.
-   * 2. Veta fina repetida (mismo patrón que la tabla en textures.css, pero a
-   *    escala de letra): le da textura de material real a la pieza en vez de
-   *    un degradado de pantalla.
-   * 3. Relleno base en degradado (marfil arriba → hueso-300 abajo): el
-   *    volumen de la pieza.
-   * 4. Filo oscuro semitransparente (no negro sólido como en .hot): separa la
-   *    letra de la madera sin volverla "quemada".
-   * 5. Sombra de profundidad + rescoldo cálido muy tenue: integra la pieza a
-   *    la misma atmósfera de brasa del resto de la carta sin tomar su color.
+   * El rango es crema tostada, no blanco: arranca en marfil cálido (#f4e6c8)
+   * y baja hasta un crema tabaco (#c9a877) que ya roza la familia latón. Todo
+   * el degradado vive dentro del eje cálido de la carta (amarillo-naranja), sin
+   * un solo tono neutro ni azulado, que es lo que hacía que la versión
+   * anterior se leyera como "letra blanca puesta encima" en vez de como una
+   * pieza que pertenece a la tabla. El punto más oscuro da ~8.3:1 contra el
+   * fondo, así que la legibilidad no se negocia por el tono.
+   *
+   * Cuatro capas de fondo (se pintan en el orden en que se declaran, la
+   * primera arriba), más filo y sombra:
+   *
+   * 1. Lustre de nácar: un destello de latón (--c-laton-300) en la esquina
+   *    alta. Es el punto que llama la atención y el mismo acento metálico que
+   *    ya usan chips, badges y el Sello, así que no mete un color nuevo.
+   * 2. Veta del hueso: rayado fino en marrón cálido, mismo patrón que la tabla
+   *    en textures.css pero a escala de letra. Da grano de material real.
+   * 3. Manchas de envejecido: dos aguadas tabaco muy diluidas que rompen la
+   *    uniformidad del degradado, como el hueso que llevaba años en la pared.
+   * 4. Cuerpo de la pieza: el degradado crema de arriba.
+   * 5. Filo oscuro semitransparente (no negro sólido como en .hot) y sombra de
+   *    profundidad con rescoldo cálido, para que la pieza quede asentada en la
+   *    madera y dentro de la misma atmósfera de brasa del resto de la carta.
    */
   .bone {
-    color: var(--c-hueso-100);
+    color: transparent;
     background-image:
       radial-gradient(
-        140% 180% at 22% -10%,
-        rgb(227 199 126 / 50%) 0%,
-        rgb(255 253 246 / 30%) 18%,
-        transparent 42%
+        130% 170% at 24% -12%,
+        rgb(227 199 126 / 62%) 0%,
+        rgb(244 230 200 / 34%) 22%,
+        transparent 48%
       ),
       repeating-linear-gradient(
         94deg,
         transparent 0 3px,
-        rgb(24 15 7 / 7%) 3px 4px,
+        rgb(90 56 24 / 11%) 3px 4px,
         transparent 4px 9px
       ),
-      linear-gradient(180deg, #fffdf8 0%, var(--c-hueso-100) 48%, var(--c-hueso-300) 100%);
+      radial-gradient(60% 50% at 78% 68%, rgb(154 104 57 / 16%) 0%, transparent 100%),
+      linear-gradient(178deg, #f4e6c8 0%, #ecdab4 34%, #dcc49a 68%, #c9a877 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-stroke: 0.032em rgb(24 15 7 / 55%);
+    -webkit-text-stroke: 0.03em rgb(30 18 8 / 52%);
     paint-order: stroke fill;
-    filter: drop-shadow(0 1px 0 rgb(255, 253, 246, 0.5)) drop-shadow(0 3px 5px rgb(14, 11, 8, 0.55))
-      drop-shadow(0 0 20px rgb(224, 117, 47, 0.2));
+    filter: drop-shadow(0 1px 0 rgb(248, 236, 208, 0.42))
+      drop-shadow(0 3px 5px rgb(14, 11, 8, 0.55)) drop-shadow(0 0 22px rgb(224, 117, 47, 0.24));
   }
 }
-
-/* Estado seguro (sin @supports): ya es hueso sólido por defecto en `.burnt`,
-   así que `.bone` no necesita nada extra aquí. */
 
 /* .warm son los valores base de .burnt: existe para que la API del componente
    sea uniforme (intensity siempre mapea a una clase). */
@@ -171,25 +188,26 @@
 /* .bone conserva la talla y la veta en tema claro, pero invertida: sobre
    madera clara la incrustación se lee más oscura que la tabla, con luz por
    debajo del filo en vez de por encima (mismo criterio de inversión que usa
-   .burnt). */
+   .burnt). `color: transparent` por la misma razón que en el tema oscuro: con
+   un color opaco el degradado queda tapado. */
 :global([data-theme='dia']) .bone {
-  color: var(--c-fg);
+  color: transparent;
   background-image:
     radial-gradient(
-      140% 180% at 22% -10%,
-      rgb(122 74 18 / 30%) 0%,
-      rgb(58 42 28 / 22%) 18%,
-      transparent 42%
+      130% 170% at 24% -12%,
+      rgb(122 74 18 / 32%) 0%,
+      rgb(58 42 28 / 22%) 22%,
+      transparent 48%
     ),
     repeating-linear-gradient(
       94deg,
       transparent 0 3px,
-      rgb(255 250 240 / 8%) 3px 4px,
+      rgb(255 250 240 / 9%) 3px 4px,
       transparent 4px 9px
     ),
-    linear-gradient(180deg, #3a2a1c 0%, var(--c-fg) 55%, #1c130b 100%);
+    linear-gradient(178deg, #4a3419 0%, #2f2113 55%, #1c130b 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-stroke: 0.032em rgb(255 250 240 / 45%);
-  filter: drop-shadow(0 1px 0 rgb(255, 250, 240, 0.4));
+  -webkit-text-stroke: 0.03em rgb(255 250 240 / 45%);
+  filter: drop-shadow(0 1px 0 rgb(255, 250, 240, 0.45));
 }
